@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WaypointMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: e408a7ad5aca7ed4783a599b26600072, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _SampleTexture2D_256c16c131224e998926bac7ca319416_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 0872fd2175653594b9a6916f7fc62f25, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_1: -0.73
+    - Vector1_624b4a29027d4bfa88a3f872bb20c874: 3.52
+    m_Colors:
+    - Color_00dd234b5e2c41f59c35416d79b434d3: {r: 0, g: 0.058036704, b: 0.43015438, a: 0.92156863}
+    - Color_1: {r: 0.4228399, g: 0.7097493, b: 2.422759, a: 0}
+  m_BuildTextureStacks: []
