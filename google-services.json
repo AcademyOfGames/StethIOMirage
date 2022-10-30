@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "772359624287",
+    "project_id": "stethiomeditation",
+    "storage_bucket": "stethiomeditation.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:772359624287:android:48ddb98ec0de3a9fd72dea",
+        "android_client_info": {
+          "package_name": "com.StethIO.Mindfulness"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "772359624287-20lanta3jkusiipk7tck0fle6hjnfcnh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCols1fJDv-sj8tDpHy7SvKIU5H927RkwM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "772359624287-20lanta3jkusiipk7tck0fle6hjnfcnh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
