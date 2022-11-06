@@ -85,7 +85,7 @@ public class FirebaseData : MonoBehaviour
         {
             user = LoginTask.Result;
             levelSelectUI.SetActive(true);
-            foreach (var v in transform.GetComponentsInChildren<Transform>())
+            foreach (var v in transform.parent.GetComponentsInChildren<Transform>())
             {
                 if (v.name != gameObject.name)
                 {

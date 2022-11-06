@@ -48,7 +48,7 @@ public class LevelManager : MonoBehaviour
     public void EndSession(string message)
     {
         if (sessionEnded) return;
-        FindObjectOfType<SwanMovement1>().FindSpotNearPlayer(1);
+        FindObjectOfType<SwanMovement1>().SetLandingSpot();
         endMessage.text = "Session complete: \n" + message;
         sessionEnded = true;
     }

@@ -383,7 +383,6 @@ public class CurvedUIInputModule : StandaloneInputModule {
         
         if (button.buttonState == PointerEventData.FramePressState.Pressed)
         {
-            print("Button processed pressed");
             eventData.delta = Vector2.zero;
             eventData.dragging = false;
             eventData.pressPosition = eventData.position;
@@ -420,8 +419,6 @@ public class CurvedUIInputModule : StandaloneInputModule {
         // FramePressState.Released
         if (button.buttonState == PointerEventData.FramePressState.Released)
         {
-            print("Button processed release");
-
             ExecuteEvents.Execute(eventData.pointerPress, eventData, ExecuteEvents.pointerUpHandler);
 
             var pointerUpHandler = ExecuteEvents.GetEventHandler<IPointerClickHandler>(currentRaycastGo);

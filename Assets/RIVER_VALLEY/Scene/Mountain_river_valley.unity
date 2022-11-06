@@ -4348,7 +4348,7 @@ GameObject:
   - component: {fileID: 379754594}
   m_Layer: 15
   m_Name: Terrain
-  m_TagString: LandingSpot
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

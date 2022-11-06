@@ -35,8 +35,7 @@ public class SceneControls : MonoBehaviour
             timePassed += Time.deltaTime *.3f;
             yield return new WaitForEndOfFrame();
         }
-        SceneManager.LoadScene(FindObjectOfType<LevelDetails>().scene);
-
+        SceneManager.LoadSceneAsync(FindObjectOfType<LevelDetails>().scene);
     }
     
     public  void BackToLobby()

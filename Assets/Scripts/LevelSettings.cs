@@ -16,6 +16,7 @@ public class LevelSettings : MonoBehaviour
 
     public TextMeshProUGUI levelTotalTimeText;
     public TextMeshProUGUI levelInhaleText;
+    public TextMeshProUGUI levelExhaleText;
     public static LevelSettings Instance { get { return _instance; } }
 
     private void Update()
@@ -27,8 +28,8 @@ public class LevelSettings : MonoBehaviour
         
         if (levelInhaleText != null)
         {
-            levelInhaleTarget = float.Parse(levelInhaleText.text.Split('/')[0]);
-            levelExhaleTarget = float.Parse(levelInhaleText.text.Split('/')[1]);
+            levelInhaleTarget = float.Parse(levelInhaleText.text);
+            levelExhaleTarget = float.Parse(levelExhaleText.text);
         }      
 
     }

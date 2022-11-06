@@ -12,7 +12,7 @@ public class TimePassedTracker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeLeft = LevelSettings.Instance.levelTotalTime;
+        timeLeft = LevelSettings.Instance.levelTotalTime * 60f;
     }
 
     // Update is called once per frame

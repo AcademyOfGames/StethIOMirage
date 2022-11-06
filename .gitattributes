@@ -3,7 +3,7 @@
 *AgoraRtcKit filter=lfs diff=lfs merge=lfs -text
 *LightingData.asset filter=lfs diff=lfs merge=lfs -text
 *boards_MetallicSmoothness.tga filter=lfs diff=lfs merge=lfs -text
-*FirebaseCppApp-9_5_0.bundle filter=lfs diff=lfs merge=lfs -text
-*sharedassets0.assets.resS filter=lfs diff=lfs merge=lfs -text
-*sharedassets0.assets.resS.private.0 filter=lfs diff=lfs merge=lfs -text
-*sharedassets0.assets.resS.private.1 filter=lfs diff=lfs merge=lfs -text
+*sharedassets0* filter=lfs diff=lfs merge=lfs -text
+*sharedassets* filter=lfs diff=lfs merge=lfs -text
+*FirebaseCppApp-9_3_0.bundle filter=lfs diff=lfs merge=lfs -text
+*0.bundle filter=lfs diff=lfs merge=lfs -text

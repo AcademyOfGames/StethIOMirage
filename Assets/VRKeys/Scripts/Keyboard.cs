@@ -260,7 +260,9 @@ namespace VRKeys {
 		/// </summary>
 		/// <param name="character">Character.</param>
 		public void AddCharacter (string character) {
+			print("adding character " + character);
 			text += character;
+			print("Text is now " + text);
 			UpdateDisplayText ();
 			PlaceholderVisibility ();
 
@@ -589,6 +591,8 @@ namespace VRKeys {
 		/// </summary>
 		private void UpdateDisplayText () {
 			string display = (text.Length > 37) ? text.Substring (text.Length - 37) : text;
+
+			print("Updating text of " + displayText.gameObject.name + " parent " + displayText.transform.parent.name);
 
 			displayText.text = display;
 		}

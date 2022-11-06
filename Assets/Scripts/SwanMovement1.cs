@@ -79,22 +79,16 @@ public class SwanMovement1 : MonoBehaviour
         StartCoroutine("RandomFlapping");
         SwitchAnimation("Glide");
 
-        //birdAudio.PlaySound("hawkFlying");
-        //birdAudio.PlaySound("forest");
-
         for (int i = 0; i < 500; i++)
         {
             FindNewWaypoint();
         }
         StartCoroutine("RandomSounds");
-//        birdState.SwitchState(BirdStateChanger.BirdState.GoToLanding);
-
     }
 
     IEnumerator RandomSounds()
     {
         yield return new WaitForSeconds(Random.Range(8, 20));
-        //birdAudio.PlaySound("hawkFlying");
     }
 
     IEnumerator RandomFlapping()
@@ -157,7 +151,6 @@ public class SwanMovement1 : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        print("trigger entered " + other.gameObject.name);
         if (other.CompareTag("LandingSpot"))
         {
             birdState.SwitchState(BirdStateChanger.BirdState.Landing);        }
@@ -173,8 +166,6 @@ public class SwanMovement1 : MonoBehaviour
             newRot.x = 0;
             transform.localEulerAngles = newRot;
             //other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
-            
-        
     }
 
     // Update is called once per frame
@@ -410,7 +401,15 @@ public class SwanMovement1 : MonoBehaviour
 
         //flyingRange = Mathf.Lerp(_initialFlyRange, closeFlyRange,heartRateProgress);
     }
-    
+
+    public void SetLandingSpot()
+    {
+        currentWaypoint = landingSpot.position;
+        goToPlayer = true;
+        foundLandingSpot = true;
+        birdState.SwitchState(BirdStateChanger.BirdState.GoToLanding);
+
+    }
     public void FindSpotNearPlayer(float lookDownModifier)
     {
         goToPlayer = true;
@@ -430,8 +429,8 @@ public class SwanMovement1 : MonoBehaviour
                 landingSpot.position = hit.point + Vector3.down * 3f;
                 currentWaypoint = landingSpot.position;
 
-                Instantiate(testcube, landingSpot.position, Quaternion.identity);
-             
+               // Instantiate(testcube, landingSpot.position, Quaternion.identity);
+
                 foundLandingSpot = true;
             }
             else
