@@ -7,3 +7,4 @@
 *sharedassets* filter=lfs diff=lfs merge=lfs -text
 *FirebaseCppApp-9_3_0.bundle filter=lfs diff=lfs merge=lfs -text
 *0.bundle filter=lfs diff=lfs merge=lfs -text
+*MirageMetaDemo_Main.apk filter=lfs diff=lfs merge=lfs -text
