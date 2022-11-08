@@ -22,6 +22,7 @@ public class FirebaseData : MonoBehaviour
     [Header("Login")] 
     public TMP_InputField emailLoginField;
     public TMP_InputField passwordLoginField;
+    public TMP_Text warningLoginText;
 
     [Header("Register")] 
     public TMP_InputField usernameRegisterField;
@@ -29,6 +30,8 @@ public class FirebaseData : MonoBehaviour
     public TMP_InputField passwordRegisterField;
     public TMP_InputField passwordRegisterVerifyField;
     public TMP_Text warningRegisterText;
+    
+    
     public TextMeshProUGUI heartRateText;
     public GameObject levelSelectUI;    
     
@@ -79,24 +82,18 @@ public class FirebaseData : MonoBehaviour
         {
             FirebaseException ex = LoginTask.Exception.GetBaseException() as FirebaseException;
 
-            print("LoginFailed" + ex);
+            StartCoroutine(ShowMessage(warningLoginText, "Error " +  ex.Message));
         }
         else
         {
             user = LoginTask.Result;
-            levelSelectUI.SetActive(true);
-            foreach (var v in transform.parent.GetComponentsInChildren<Transform>())
-            {
-                if (v.name != gameObject.name)
-                {
-                    v.gameObject.SetActive(false);
-                }
-            }
 
-            FindObjectOfType<OnlineStats>().GetHeartData(user);
+            Invoke("GoToLevelSelect",2.5f);
+            StartCoroutine(ShowMessage(warningLoginText, "Success!"));
+
         }
     }
-
+    
     private IEnumerator Register(string _email, string _password, string _username)
     {
         var RegisterTask = auth.CreateUserWithEmailAndPasswordAsync(_email, _password);
@@ -105,8 +102,7 @@ public class FirebaseData : MonoBehaviour
         if (RegisterTask.Exception != null)
         {
             FirebaseException ex = RegisterTask.Exception.GetBaseException() as FirebaseException;
-            
-            print("Exception: " + ex.Message);
+            StartCoroutine(ShowMessage(warningRegisterText, "Error " +  ex.Message));
         }
         else
         {
@@ -122,16 +118,39 @@ public class FirebaseData : MonoBehaviour
 
                 if (ProfileTask.Exception != null)
                 {
+                    StartCoroutine(ShowMessage(warningRegisterText, "Error " +  ProfileTask.Exception.GetBaseException()));
                     print("Exception: " + ProfileTask.Exception.GetBaseException());
                 }
                 else
                 {
-                    print("RegisterComplete!");
-                    warningRegisterText.transform.parent.gameObject.SetActive(true);
-                    warningRegisterText.text = "Register Complete!";
+                    StartCoroutine(ShowMessage(warningRegisterText, "Registration Complete!"));
+                    Invoke("GoToLevelSelect",2.5f);
                 }
             }
         }      
+    }
+
+    void GoToLevelSelect()
+    {
+        levelSelectUI.SetActive(true);
+        foreach (var v in transform.parent.GetComponentsInChildren<Transform>())
+        {
+            if (v.name != gameObject.name)
+            {
+                v.gameObject.SetActive(false);
+            }
+        }
+
+        FindObjectOfType<OnlineStats>().GetHeartData(user);
+    }
+    IEnumerator ShowMessage(TMP_Text text,string message){
+        
+        text.transform.gameObject.SetActive(true);
+        text.text = message;
+        yield return new WaitForSeconds(2.5f);
+                
+        text.transform.gameObject.SetActive(false);
+        text.text = "";
     }
 
     IEnumerator GetHeartRate()
