@@ -3878,8 +3878,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339776592}
-  m_LocalRotation: {x: -0.000000009330485, y: 0.26837912, z: 0.0000000033610175, w: 0.9633134}
-  m_LocalPosition: {x: 0, y: 0, z: 3.11}
+  m_LocalRotation: {x: -0.000000008162895, y: 0.013491346, z: 0.000000005632204, w: 0.999909}
+  m_LocalPosition: {x: 0, y: 0, z: 3.16}
   m_LocalScale: {x: 0.003, y: 0.003, z: 0.003}
   m_Children:
   - {fileID: 1895595092}
@@ -3888,10 +3888,10 @@ RectTransform:
   - {fileID: 705528564}
   m_Father: {fileID: 141186504}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 1.546, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.79, y: 5.58}
+  m_AnchoredPosition: {x: 1.73, y: 4.34}
   m_SizeDelta: {x: 5000, y: 5000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &340930870
@@ -4374,13 +4374,13 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: 8f41072af537a904fb8a0fa183fdd8ee, type: 2}
-  m_TreeDistance: 2000
+  m_TreeDistance: 1400
   m_TreeBillboardDistance: 2000
   m_TreeCrossFadeLength: 0
   m_TreeMaximumFullLODCount: 0
-  m_DetailObjectDistance: 500
-  m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 121
+  m_DetailObjectDistance: 22.6
+  m_DetailObjectDensity: 0.116
+  m_HeightmapPixelError: 113.3
   m_SplatMapDistance: 5000
   m_HeightmapMaximumLOD: 0
   m_ShadowCastingMode: 2
@@ -4410,7 +4410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BasemapDistance: 5000
-  DetailDistance: 500
+  DetailDistance: 313.6
 --- !u!4 &379754597
 Transform:
   m_ObjectHideFlags: 0
@@ -4731,7 +4731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &403617486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7776,7 +7776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DoNotTesselate: 0
-  savedPos: {x: -222.00116, y: -1392.0001, z: 213.0296}
+  savedPos: {x: -222.08304, y: -971.15, z: 213.01624}
   savedUp: {x: 1.364242e-15, y: 1, z: -6.82121e-16}
   savedRectSize: {x: 2581.8994, y: 1892.3}
   savedColor: {r: 0, g: 0, b: 0, a: 0.392}
@@ -8294,7 +8294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DoNotTesselate: 0
-  savedPos: {x: -242.50897, y: -1491.9999, z: 213.0296}
+  savedPos: {x: -242.58395, y: -1193.6499, z: 213.0061}
   savedUp: {x: 0, y: 1, z: 0}
   savedRectSize: {x: 200, y: 50}
   savedColor: {r: 0.26415092, g: 0.20309716, b: 0.20309716, a: 1}
@@ -8646,7 +8646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 991539597, guid: 6df9bf33397721941939ea4339a098a0, type: 3}
       propertyPath: levelTotalTime
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 991539597, guid: 6df9bf33397721941939ea4339a098a0, type: 3}
       propertyPath: levelHeartTarget
@@ -15820,7 +15820,7 @@ MonoBehaviour:
   rHand: {fileID: 794126442}
   lHand: {fileID: 794126443}
   timeLeft: 20
-  endUI: {fileID: 705528563}
+  endUI: {fileID: 339776592}
   endMessage: {fileID: 433616786}
   sessionEnded: 0
   endChime: {fileID: 8300000, guid: c4c37a087dc62cc47a682c9f58aeb5bc, type: 3}
@@ -16103,7 +16103,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1471283179
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23530,7 +23530,7 @@ MonoBehaviour:
   orbitSpeed: 2
   minOrbitRadius: 10
   wayPointVolume: {fileID: 160891414}
-  landingSpot: {fileID: 1721259805}
+  landingSpot: {fileID: 1356518440}
   handLandingSpot: {fileID: 1721259805}
   currentWaypoint: {x: 0, y: 0, z: 0}
   testcube: {fileID: 168225348109433476, guid: 11ee8e2cc7e2c394a94296bd0fdbc178, type: 3}

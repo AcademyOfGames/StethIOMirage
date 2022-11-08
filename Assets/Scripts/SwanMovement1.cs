@@ -76,30 +76,9 @@ public class SwanMovement1 : MonoBehaviour
 
         // Spawn a new waypoint at the beginning of the game
         FindNewWaypoint();
-        StartCoroutine("RandomFlapping");
-        SwitchAnimation("Glide");
-
-        for (int i = 0; i < 500; i++)
-        {
-            FindNewWaypoint();
-        }
-        StartCoroutine("RandomSounds");
     }
 
-    IEnumerator RandomSounds()
-    {
-        yield return new WaitForSeconds(Random.Range(8, 20));
-    }
 
-    IEnumerator RandomFlapping()
-    {
-        yield return new WaitForSeconds(Random.Range(glidingRate, glidingRate * 2.2f));
-        SwitchAnimation("Flap");
-
-        yield return new WaitForSeconds(Random.Range(flappngRate, flappngRate * 2));
-        SwitchAnimation("Glide");
-        StartCoroutine("RandomFlapping");
-    }
 
     void SwitchAnimation(string triggerName)
     {
@@ -158,7 +137,7 @@ public class SwanMovement1 : MonoBehaviour
     
     public void BirdLanded( )
     {
-
+            print("bird landed called");
             FindObjectOfType<LevelManager>().ShowEndUI();
             anim.SetTrigger("Landing");
             _landing = true;
@@ -362,32 +341,8 @@ public class SwanMovement1 : MonoBehaviour
             transform.Rotate(Vector3.right * -.3f);
         }
 
-        FlapWingCheck();
     }
-
-    private void FlapWingCheck()
-    {
-        if (transform.forward.y < -.05f)
-        {
-            flappngRate = originalFlappngRate * .1f;
-            glidingRate = originalGlidingRate * 2;
-
-            SwitchAnimation("Glide");
-        }
-        else if (transform.forward.y > .1f)
-        {
-            flappngRate = originalFlappngRate * 2;
-            glidingRate = originalGlidingRate * .1f;
-
-            SwitchAnimation("Flap");
-
-        }
-        else
-        {
-            flappngRate = originalFlappngRate;
-            glidingRate = originalGlidingRate;
-        }
-    }
+    
     
     public void FlapWings()
     {

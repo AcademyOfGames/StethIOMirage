@@ -61,8 +61,6 @@ public class BirdStateChanger : MonoBehaviour
     public void SwitchState(BirdState birdState)
     {
         if (currentState == birdState) return;
-        print("SwitchState " +birdState);
-
         switch (birdState)
         {
             case BirdState.Hunting:

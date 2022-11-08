@@ -44,7 +44,7 @@ public class HeartStatsTracker : MonoBehaviour
                 
                 if (stats == null)
                 {
-                    initialHeartRate = 97;
+                    initialHeartRate = 30;
                 }
                 else
                 {

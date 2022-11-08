@@ -25,12 +25,6 @@ public class LevelManager : MonoBehaviour
         UISounds = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ShowEndUI()
     {
         UISounds.clip = endChime;
