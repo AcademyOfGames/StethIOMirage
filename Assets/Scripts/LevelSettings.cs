@@ -11,26 +11,21 @@ public class LevelSettings : MonoBehaviour
     public float levelTotalTime;
     public float levelInhaleTarget;
     public float levelExhaleTarget;
+    public float levelInhaleHoldTarget;
+    public float levelExhaleHoldTarget;
     public float levelHeartTarget = 60;
     private static LevelSettings _instance;
 
     public TextMeshProUGUI levelTotalTimeText;
     public TextMeshProUGUI levelInhaleText;
     public TextMeshProUGUI levelExhaleText;
+    public TextMeshProUGUI levelInhaleHoldText;
+    public TextMeshProUGUI levelExhaleHoldText;
     public static LevelSettings Instance { get { return _instance; } }
 
     private void Update()
     {
-        if (levelTotalTimeText != null)
-        {
-            levelTotalTime = float.Parse(levelTotalTimeText.text.Split(' ')[0]);
-        }
-        
-        if (levelInhaleText != null)
-        {
-            levelInhaleTarget = float.Parse(levelInhaleText.text);
-            levelExhaleTarget = float.Parse(levelExhaleText.text);
-        }      
+            
 
     }
 
@@ -43,6 +38,28 @@ public class LevelSettings : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             _instance = this;
         }
+    }
+
+    public void ApplyLevelSettings()
+    {
+        if (levelTotalTimeText != null)
+        {
+            levelTotalTime = float.Parse(levelTotalTimeText.text.Split(' ')[0]);
+        }
+
+        if (levelInhaleText != null && levelExhaleText != null)
+        {
+            levelInhaleTarget = float.Parse(levelInhaleText.text);
+            levelExhaleTarget = float.Parse(levelExhaleText.text);
+        }
+
+        if (levelInhaleHoldText != null && levelExhaleHoldText != null)
+        {
+            levelInhaleHoldTarget = float.Parse(levelInhaleHoldText.text);
+            levelExhaleHoldTarget = float.Parse(levelExhaleHoldText.text);
+        }
+
+
     }
     
 }

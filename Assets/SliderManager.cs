@@ -61,6 +61,10 @@ public class SliderManager : MonoBehaviour
 
     public void SendValue()
     {
-        currentStat.UpdateValue(slider.value);
+        if(currentStat != null)
+        {
+            currentStat.UpdateValue(slider.value);
+        }
+        
     }
 }

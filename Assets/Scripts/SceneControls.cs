@@ -10,15 +10,19 @@ public class SceneControls : MonoBehaviour
 
     public Renderer loadingBG;
     public TextMeshPro loadingText;
+
+    private LevelSettings levelSettings;
     
     // Start is called before the first frame update
     void Start()
     {
-
+        levelSettings = GameObject.FindGameObjectWithTag("GameController").GetComponent<LevelSettings>();
     }
 
     public  void LoadWorld()
     {
+        levelSettings.ApplyLevelSettings();
+
         StartCoroutine(nameof(FadeLoadingIn));
     }
 

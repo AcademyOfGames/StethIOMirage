@@ -32,6 +32,7 @@ public class BreathStatsTracker : MonoBehaviour
 
     IEnumerator Breath()
     {
+        float holdTime = LevelSettings.Instance.levelInhaleHoldTarget;
         float taperTime = 3;
         float breathTime = LevelSettings.Instance.levelInhaleTarget - taperTime;
         yield return new WaitForSeconds(breathTime);
@@ -43,11 +44,12 @@ public class BreathStatsTracker : MonoBehaviour
             yield return null;
 
         }
-        yield return new WaitForSeconds(breathTime/1.5f);
+        yield return new WaitForSeconds(holdTime);
         breathSound.clip = exhaleClip;
         breathSound.Play();
         breathSound.volume = initialBreathVolume;
-        
+
+        holdTime = LevelSettings.Instance.levelExhaleHoldTarget;
         taperTime = 3;
         breathTime = LevelSettings.Instance.levelExhaleTarget - taperTime;
         yield return new WaitForSeconds(breathTime);
@@ -58,7 +60,7 @@ public class BreathStatsTracker : MonoBehaviour
             taperTime -= Time.deltaTime;
             yield return null;
         }
-        yield return new WaitForSeconds(breathTime/1.5f);
+        yield return new WaitForSeconds(holdTime);
 
         breathSound.volume = initialBreathVolume;
         breathSound.clip = inhaleClip;
