@@ -12,8 +12,19 @@ public class StatsDisplay : MonoBehaviour
     public string textAfterNum;
     public float maxRange;
     public bool showRatio;
+
+    public string ValueName;
+    public float defaultValue;
+    public float minValue;
+    public float maxValue;
+    private float currentValue;
+
+    public float CurrentValue { get => currentValue; set => currentValue = value; }
+
     private void Start()
     {
+        currentValue = defaultValue;
+        valueUI.text = defaultValue.ToString();
         print("Grabbing stats in " + gameObject.name);
         valueText = valueUI.text;
     }
@@ -41,8 +52,17 @@ public class StatsDisplay : MonoBehaviour
             totalBreathSeconds = currentSliderPos * maxRange;
             valueText = totalBreathSeconds.ToString("0.0");
             valueUI.text = valueText + " " + textAfterNum;
-        }
-        
-  
+        } 
     }
+
+    public void UpdateValue(float newValue)
+    {
+        currentValue = newValue;
+        valueUI.text = currentValue.ToString();
+    }
+
+
+
+
+
 }

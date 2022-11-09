@@ -355,7 +355,7 @@ namespace VRKeys {
 		/// Backspace one character.
 		/// </summary>
 		public void Backspace () {
-			print("deleted " + text.Substring (0, text.Length - 1) + " from " + text);
+			//print("deleted " + text.Substring (0, text.Length - 1) + " from " + text);
 
 			if (text.Length > 0) {
 				text = text.Substring (0, text.Length - 1);

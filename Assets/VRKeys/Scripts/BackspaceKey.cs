@@ -25,6 +25,14 @@ namespace VRKeys {
 			ActivateFor (0.3f);
 		}
 
+		public void PressBackspace()
+		{
+			print("BackspacePRessed");
+			keyboard.Backspace();
+
+			ActivateFor(0.3f);
+		}
+
 		public override void UpdateLayout (Layout translation) {
 			label.text = translation.backspaceButtonLabel;
 		}

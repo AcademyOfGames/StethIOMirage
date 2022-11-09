@@ -3668,7 +3668,7 @@ MonoBehaviour:
   keyboardLayout: 0
   placeholder: {fileID: 1002496770654841223}
   placeholderMessage: Tap the keys to begin typing
-  displayText: {fileID: 1002496773155796837}
+  displayText: {fileID: 0}
   validationNotice: {fileID: 900467491552958173}
   validationMessage: {fileID: 1002496770240259387}
   infoNotice: {fileID: 900467491574338455}

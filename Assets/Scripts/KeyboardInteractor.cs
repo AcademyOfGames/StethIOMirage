@@ -79,7 +79,18 @@ public class KeyboardInteractor : MonoBehaviour
             }
             BackspaceKey bk = hit.collider.GetComponent<BackspaceKey>();
             if(bk != null){
-                hit.collider.GetComponent<BackspaceKey>().keyboard.Backspace();
+                hit.collider.GetComponent<BackspaceKey>().PressBackspace();
+            }
+
+            ShiftKey shift = hit.collider.GetComponent<ShiftKey>();
+            if(shift != null){
+                hit.collider.GetComponent<ShiftKey>().PressShift();
+            }
+
+            SpaceKey space = hit.collider.GetComponent<SpaceKey>();
+            if(space != null)
+            {
+                hit.collider.GetComponent<SpaceKey>().PressSpace();
             }
         }
     }
