@@ -20,6 +20,8 @@ public class KeyboardInteractor : MonoBehaviour
 
     private bool previousPress;
 
+    public AudioSource audioSource;
+
     void Update()
     {
         //HandleState(GetComponent<XRController>());
@@ -66,31 +68,37 @@ public class KeyboardInteractor : MonoBehaviour
             LetterKey key = hit.collider.GetComponent<LetterKey>();
             if(key != null){
                 hit.collider.GetComponent<LetterKey>().KeySelected();
+                audioSource.Play();
             }
             
             EnterKey enter = hit.collider.GetComponent<EnterKey>();
             if(enter != null){
                 hit.collider.GetComponent<EnterKey>().SubmitEntry();
+                audioSource.Play();
             }
             
             ClearKey clear = hit.collider.GetComponent<ClearKey>();
             if(clear != null){
                 hit.collider.GetComponent<ClearKey>().ClearText();
+                audioSource.Play();
             }
             BackspaceKey bk = hit.collider.GetComponent<BackspaceKey>();
             if(bk != null){
                 hit.collider.GetComponent<BackspaceKey>().PressBackspace();
+                audioSource.Play();
             }
 
             ShiftKey shift = hit.collider.GetComponent<ShiftKey>();
             if(shift != null){
                 hit.collider.GetComponent<ShiftKey>().PressShift();
+                audioSource.Play();
             }
 
             SpaceKey space = hit.collider.GetComponent<SpaceKey>();
             if(space != null)
             {
                 hit.collider.GetComponent<SpaceKey>().PressSpace();
+                audioSource.Play();
             }
         }
     }
