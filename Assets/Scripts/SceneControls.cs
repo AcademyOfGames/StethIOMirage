@@ -33,12 +33,14 @@ public class SceneControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        levelSettings = FindObjectOfType<LevelSettings>();
+
+        if (progressBar == null) return;
         // Set 0 for progress values.
         progressBar.value = 0;
         currentValue = 0;
         targetValue = 0;
 
-        levelSettings = GameObject.FindGameObjectWithTag("GameController").GetComponent<LevelSettings>();
     }
 
     public  void LoadWorld()
@@ -81,7 +83,7 @@ public class SceneControls : MonoBehaviour
     
     public  void BackToLobby()
     {
-        SceneManager.LoadScene("futuristicExamRoom");
+        SceneManager.LoadSceneAsync("futuristicExamRoom");
     }
 
     // Update is called once per frame

@@ -42948,12 +42948,12 @@ Terrain:
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: 6eee21bc5cdb6a64a8fd88d756155aef, type: 2}
   m_TreeDistance: 5000
-  m_TreeBillboardDistance: 22
+  m_TreeBillboardDistance: 98
   m_TreeCrossFadeLength: 65
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 137
-  m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 5
+  m_DetailObjectDistance: 106
+  m_DetailObjectDensity: 0.817
+  m_HeightmapPixelError: 48
   m_SplatMapDistance: 1000
   m_HeightmapMaximumLOD: 0
   m_ShadowCastingMode: 2
@@ -67302,6 +67302,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6922009087896237674, guid: c447b7bddaf54dd4c834277664682e32, type: 3}
+      propertyPath: grassMovementStrength
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 7509937530692079218, guid: c447b7bddaf54dd4c834277664682e32, type: 3}
       propertyPath: m_Name
       value: AudioSystems

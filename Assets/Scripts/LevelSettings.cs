@@ -5,6 +5,10 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Assertions.Must;
 using UnityEngine.PlayerLoop;
+using UnityEngine.Purchasing;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class LevelSettings : MonoBehaviour
 {
@@ -21,13 +25,15 @@ public class LevelSettings : MonoBehaviour
     public TextMeshProUGUI levelExhaleText;
     public TextMeshProUGUI levelInhaleHoldText;
     public TextMeshProUGUI levelExhaleHoldText;
+    
+    //effects
+    public Volume postEffects;
+    private Bloom b;
+    private float startScatter;
+    private float startIntensity;
+    private float startThreshold;
     public static LevelSettings Instance { get { return _instance; } }
-
-    private void Update()
-    {
-            
-
-    }
+    
 
     private void Awake()
     {
@@ -38,8 +44,59 @@ public class LevelSettings : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             _instance = this;
         }
+
+        //Invoke("LoadSceneAuto",3f);
     }
 
+    private void LoadSceneAuto()
+    {
+        SceneManager.LoadScene("Mountain_river_valley");
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    
+    
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        postEffects = FindObjectOfType<Volume>();
+        
+        print("Loaded " + scene.name + " called by " + name);
+        if (postEffects == null) return;
+        postEffects.profile.TryGet(out b);
+        startScatter = b.scatter.value;
+        startIntensity = b.intensity.value;
+        startThreshold = b.threshold.value;
+
+        print(" Volume: " + postEffects.name);
+
+        if (scene.name == "futuristicExamRoom")
+        {
+            StartCoroutine("EndGlow");
+        }
+    }
+    IEnumerator EndGlow()
+    {
+        float timeLeft = 1f;
+        //swanMaterial.material.EnableKeyword("_EmissionColor");
+        
+        while (timeLeft >= 0)
+        {
+            timeLeft -= Time.deltaTime*.2f;
+            //swanMaterial.sharedMaterial.SetColor("_EmissionColor", Color.Lerp(Color.white,Color.black, timeLeft));
+            b.intensity.value = Mathf.Lerp(startIntensity,90, timeLeft);
+            b.scatter.value = Mathf.Lerp(startScatter,1, timeLeft);
+            b.threshold.value = Mathf.Lerp(startThreshold,.2f, timeLeft);
+            yield return new WaitForFixedUpdate();
+        }
+    }
     public void ApplyLevelSettings()
     {
         if (levelTotalTimeText != null)
@@ -58,8 +115,11 @@ public class LevelSettings : MonoBehaviour
             levelInhaleHoldTarget = float.Parse(levelInhaleHoldText.text);
             levelExhaleHoldTarget = float.Parse(levelExhaleHoldText.text);
         }
-
-
     }
-    
+
+    private void Update()
+    {
+        if (name == "GameManager") return;
+        print("Level settings is alive in " + name);
+    }
 }

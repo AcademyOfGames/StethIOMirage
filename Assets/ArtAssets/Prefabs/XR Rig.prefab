@@ -551,7 +551,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelTotalTime: 2
-  levelBreathTarget: 4
+  levelInhaleTarget: 0
+  levelExhaleTarget: 0
+  levelInhaleHoldTarget: 0
+  levelExhaleHoldTarget: 0
+  levelHeartTarget: 60
+  levelTotalTimeText: {fileID: 0}
+  levelInhaleText: {fileID: 0}
+  levelExhaleText: {fileID: 0}
+  levelInhaleHoldText: {fileID: 0}
+  levelExhaleHoldText: {fileID: 0}
+  postEffects: {fileID: 0}
 --- !u!1 &1785869275
 GameObject:
   m_ObjectHideFlags: 0

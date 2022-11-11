@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using Random = UnityEngine.Random;
 
 public class SwanMovement1 : MonoBehaviour
@@ -16,16 +16,13 @@ public class SwanMovement1 : MonoBehaviour
     public Transform target;
     public Transform player;
     public float turnAngleIntensity;
-
+    private Transform t;
     
     //Rotation
     private Vector3 direction;
     private Quaternion rotationGoal;
     private float currentTurnSpeed;
-
-    //Orbiting
-    public float orbitSpeed;
-    public float minOrbitRadius;
+    
     private Vector3 previousPos;
 
     // Waypoints
@@ -49,33 +46,23 @@ public class SwanMovement1 : MonoBehaviour
 
     private float originalGlidingRate = 5;
     private float glidingRate = 5;
-
-    public float maxSpeed;
-
+    
     private bool goToPlayer;
     private bool foundLandingSpot;
-
-
-    private static readonly int OnGround = Animator.StringToHash("OnGround");
-    private static readonly int Eating = Animator.StringToHash("Eating");
-    private static readonly int Flap = Animator.StringToHash("Flap");
-    private static readonly int Glide = Animator.StringToHash("Glide");
 
     private bool _landing;
 
     public Animator anim;
-    //private BirdAudioManager birdAudio;
 
-    //public StumpBehavior _stump;
+    //effects
+    public Volume postEffects;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         //birdAudio = GetComponent<BirdAudioManager>();
         birdState = GetComponent<BirdStateChanger>();
-
-        // Spawn a new waypoint at the beginning of the game
-        FindNewWaypoint();
+        t = transform;
     }
 
 
@@ -148,19 +135,19 @@ public class SwanMovement1 : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+   /* void Update()
     {
         if (_landing) return;
 
         switch (birdState.currentState)
-        {
+        {   
             case BirdStateChanger.BirdState.Hunting:
-                BasicFlying();
+                //BasicFlying();
                 break;
 
             case BirdStateChanger.BirdState.GoToLanding:
 
-                BasicFlying();
+                //BasicFlying();
                 break;
 
             case BirdStateChanger.BirdState.Landing:
@@ -204,10 +191,15 @@ public class SwanMovement1 : MonoBehaviour
             default:
                 break;
         }
-    }
+    }*/
 
 
-    IEnumerator SloMoForSeconds()
+   private void FixedUpdate()
+   {
+       FaceTowardMovement();
+   }
+
+   IEnumerator SloMoForSeconds()
     {
         Time.timeScale = .1f;
         yield return new WaitForSeconds(1.3f);
@@ -264,25 +256,12 @@ public class SwanMovement1 : MonoBehaviour
         previousPos = position;
     }
 
+    private Vector3 lastPos;
     void FaceTowardMovement()
     {
-        if (Vector3.Distance(player.position, transform.position) > minOrbitRadius)
-        {
-
-            transform.RotateAround(player.position, Vector3.up, orbitSpeed * Time.deltaTime);
-            OrbitRotation();
-        }
-        else
-        {
-
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
-
-            if (transform.position.y < 4f)
-            {
-                transform.Rotate(Vector3.right * -.3f);
-            }
-
-        }
+        Quaternion newDir = Quaternion.LookRotation(t.position - lastPos);;
+        t.rotation = Quaternion.Lerp(t.rotation, newDir, .01f);
+        lastPos = t.position;
     }
     private void Tilt()
     {
@@ -359,11 +338,30 @@ public class SwanMovement1 : MonoBehaviour
 
     public void SetLandingSpot()
     {
-        currentWaypoint = landingSpot.position;
-        goToPlayer = true;
-        foundLandingSpot = true;
-        birdState.SwitchState(BirdStateChanger.BirdState.GoToLanding);
+        StartCoroutine("StartGlow");
+    }
 
+    IEnumerator StartGlow()
+    {
+        Bloom b;
+        postEffects.gameObject.SetActive(true);
+        float timeLeft = 1f;
+        postEffects.profile.TryGet(out b);
+        //swanMaterial.material.EnableKeyword("_EmissionColor");
+
+        
+        while (timeLeft >= 0)
+        {
+            timeLeft -= Time.deltaTime*.15f;
+            //swanMaterial.sharedMaterial.SetColor("_EmissionColor", Color.Lerp(Color.white,Color.black, timeLeft));
+           b.intensity.value = Mathf.Lerp(90,0, timeLeft);
+            b.scatter.value = Mathf.Lerp(1,0.5f, timeLeft);
+            b.threshold.value = Mathf.Lerp(.2f,1, timeLeft);
+            yield return new WaitForFixedUpdate();
+        }
+        
+        FindObjectOfType<SceneControls>().BackToLobby();
+        
     }
     public void FindSpotNearPlayer(float lookDownModifier)
     {
