@@ -22,6 +22,11 @@ public class KeyboardInteractor : MonoBehaviour
 
     public AudioSource audioSource;
 
+    public GameObject loginPage;
+    public GameObject createPage;
+
+    public FirebaseData firebaseData;
+
     void Update()
     {
         //HandleState(GetComponent<XRController>());
@@ -73,7 +78,14 @@ public class KeyboardInteractor : MonoBehaviour
             
             EnterKey enter = hit.collider.GetComponent<EnterKey>();
             if(enter != null){
-                hit.collider.GetComponent<EnterKey>().SubmitEntry();
+                //hit.collider.GetComponent<EnterKey>().SubmitEntry();
+                if (loginPage.activeSelf)
+                {
+                    firebaseData.LoginButton();
+                }else if (createPage.activeSelf)
+                {
+                    firebaseData.RegisterButton();
+                }
                 audioSource.Play();
             }
             

@@ -16,7 +16,7 @@ public class LevelDetails : MonoBehaviour
     
     public void SetLevelDetails(string sceneName, string titleText,string bodyText,Sprite sceneImage)
     {
-        levelImageUI.sprite = sceneImage;
+        levelImageUI.overrideSprite = sceneImage;
         levelTextUI.text = bodyText;
         levelTitleUI.text = titleText;
         scene = sceneName;
