@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class LevelManager : MonoBehaviour
 {
-
+    [SerializeField] private InputActionReference gripAction;
     public GameObject rHand;
     public GameObject lHand;
     
@@ -19,6 +20,21 @@ public class LevelManager : MonoBehaviour
     private AudioSource UISounds;
 
     public AudioClip endChime;
+
+    private void OnEnable()
+    {
+        //grip
+        gripAction.action.performed += Gripping;
+        gripAction.action.canceled += GripRelease;
+    }
+
+    private void OnDisable()
+    {
+        //grip
+        gripAction.action.performed -= Gripping;
+        gripAction.action.canceled -= GripRelease;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,5 +61,17 @@ public class LevelManager : MonoBehaviour
         FindObjectOfType<SwanMovement1>().SetLandingSpot();
         endMessage.text = "Session complete: \n" + message;
         sessionEnded = true;
+    }
+
+    private void Gripping(InputAction.CallbackContext obj)
+    {
+        rHand.GetComponent<XRInteractorLineVisual>().enabled = true;
+        rHand.GetComponent<LineRenderer>().enabled = true;
+    }
+
+    private void GripRelease(InputAction.CallbackContext obj)
+    {
+        rHand.GetComponent<XRInteractorLineVisual>().enabled = false;
+        rHand.GetComponent<LineRenderer>().enabled = false;
     }
 }

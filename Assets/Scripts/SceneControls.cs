@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneControls : MonoBehaviour
 {
@@ -12,10 +13,31 @@ public class SceneControls : MonoBehaviour
     public TextMeshPro loadingText;
 
     private LevelSettings levelSettings;
-    
+
+    // Reference to the load operation.
+    private AsyncOperation loadOperation;
+
+    // Reference to the progress bar in the UI.
+    [SerializeField]
+    private Slider progressBar;
+
+    // Progress values.
+    private float currentValue;
+    private float targetValue;
+
+    // Multiplier for progress animation speed.
+    [SerializeField]
+    [Range(0, 1)]
+    private float progressAnimationMultiplier = 0.25f;
+
     // Start is called before the first frame update
     void Start()
     {
+        // Set 0 for progress values.
+        progressBar.value = 0;
+        currentValue = 0;
+        targetValue = 0;
+
         levelSettings = GameObject.FindGameObjectWithTag("GameController").GetComponent<LevelSettings>();
     }
 
@@ -28,9 +50,12 @@ public class SceneControls : MonoBehaviour
 
     IEnumerator FadeLoadingIn()
     {
+        loadOperation = SceneManager.LoadSceneAsync(FindObjectOfType<LevelDetails>().scene);
+        loadOperation.allowSceneActivation = false;
+
         float timePassed = 0;
         Color visible = Color.white;
-        while (timePassed <= 1)
+        while (timePassed <= 3)
         {
             loadingText.gameObject.SetActive(true);
             loadingBG.gameObject.SetActive(true);
@@ -39,7 +64,19 @@ public class SceneControls : MonoBehaviour
             timePassed += Time.deltaTime *.3f;
             yield return new WaitForEndOfFrame();
         }
-        SceneManager.LoadSceneAsync(FindObjectOfType<LevelDetails>().scene);
+
+        while (!Mathf.Approximately(currentValue, 1))
+        {
+            // Assign current load progress, divide by 0.9f to stretch it to values between 0 and 1.
+            targetValue = loadOperation.progress / 0.9f;
+
+            // Calculate progress value to display.
+            currentValue = Mathf.MoveTowards(currentValue, targetValue, progressAnimationMultiplier * Time.deltaTime);
+            progressBar.value = currentValue;
+        }
+
+        loadOperation.allowSceneActivation = true;
+        
     }
     
     public  void BackToLobby()

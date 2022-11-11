@@ -30,4 +30,9 @@ public class TimePassedTracker : MonoBehaviour
             timeLeftText.text = t.ToString("mm\\:ss");
         }
     }
+
+    public void SetTimeToZero()
+    {
+        timeLeft = 0f;
+    }
 }
