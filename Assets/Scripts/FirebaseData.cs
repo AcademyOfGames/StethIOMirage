@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -37,6 +38,7 @@ public class FirebaseData : MonoBehaviour
     
     void Awake()
     {
+        if (FindObjectOfType<OnlineStats>().userLoggedIn) return;
         InitializeFirebase();
         /*
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
@@ -49,6 +51,11 @@ public class FirebaseData : MonoBehaviour
               //  InitializeFirebase();
             }
         });*/
+    }
+
+    private void Start()
+    {   
+        if (FindObjectOfType<OnlineStats>().userLoggedIn) GoToLevelSelect();
     }
 
     void InitializeFirebase()
@@ -132,6 +139,7 @@ public class FirebaseData : MonoBehaviour
 
     void GoToLevelSelect()
     {
+        FindObjectOfType<OnlineStats>().userLoggedIn = true;
         levelSelectUI.SetActive(true);
         foreach (var v in transform.parent.GetComponentsInChildren<Transform>())
         {

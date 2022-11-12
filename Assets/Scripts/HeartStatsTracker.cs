@@ -68,7 +68,19 @@ public class HeartStatsTracker : MonoBehaviour
         timeSinceLastBeat -= Time.deltaTime;
         if (timeSinceLastBeat <= 0)
         {
-            heartRateText.text =currentHeartRate.ToString("F1"); 
+            if (stats.missingHeartData)
+            {
+                heartRateText.text = "No \n Data";
+                heartRateText.color = Color.magenta;
+
+            }
+            else
+            {
+                heartRateText.text =currentHeartRate.ToString("F1");  
+                heartRateText.color = Color.white;
+
+            }
+            
             timeSinceLastBeat =  60f/currentHeartRate ;
 
             heartRateProgress = Mathf.InverseLerp(initialHeartRate, LevelSettings.Instance.levelHeartTarget, currentHeartRate);

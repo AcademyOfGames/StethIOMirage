@@ -4,13 +4,16 @@ using Firebase.Auth;
 using Firebase.Database;
 using UnityEngine;
 
+
 public class OnlineStats : MonoBehaviour
 {
     public FirebaseAuth auth;
     public FirebaseUser user;
     private DatabaseReference db;
-    public int          currentHeartRate = -1;
-
+    public int currentHeartRate = -1;
+    public bool userLoggedIn;
+    public bool missingHeartData;
+    private long previousEarlyTimeStamp = 0;
     void Awake()
     {
         InitializeFirebase();
@@ -20,6 +23,7 @@ public class OnlineStats : MonoBehaviour
         user = _user;
         StartCoroutine("GetHeartRate");
     }
+    
     void InitializeFirebase()
     {
         auth = FirebaseAuth.DefaultInstance;
@@ -62,9 +66,14 @@ public class OnlineStats : MonoBehaviour
                 {
                     print("Couldn't parse " + timeStampValue);
                 }
+                
             }
 
-            yield return new WaitForSeconds(1);
+            if (previousEarlyTimeStamp == earliestTimeStamp)
+            {
+                missingHeartData = true;
+            }
+            yield return new WaitForSeconds(3);
             StartCoroutine(GetHeartRate());
         }
     }
