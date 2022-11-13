@@ -59,6 +59,8 @@ public class HeartStatsTracker : MonoBehaviour
         if (stats == null)
         {
             currentHeartRate = 90;
+            heartRateText.text =currentHeartRate.ToString("F1");  
+            return;
         }
         else
         {

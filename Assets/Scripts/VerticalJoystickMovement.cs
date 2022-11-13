@@ -36,6 +36,7 @@ public class VerticalJoystickMovement : MonoBehaviour
         move = GetComponent<ActionBasedContinuousMoveProvider>();
         originalMoveSpeed = move.moveSpeed;
         //print(joystick.action.ReadValue<float>());// += Move);
+        
 
     }
 
@@ -57,14 +58,26 @@ public class VerticalJoystickMovement : MonoBehaviour
     {
         yDir += context.ReadValue<Vector2>().y;
     }
-    // Update is called once per frame
+
     void Update()
     {
+        float joystickY = joystick.action.ReadValue<Vector2>().y;
         
-        yDir += joystick.action.ReadValue<Vector2>().y;
-        yDir = Mathf.Clamp(yDir, 0,Mathf.Infinity);
-        move.moveSpeed = originalMoveSpeed + yDir * moveSpeedMultiplier;
-        controller.Move(Vector3.up * joystick.action.ReadValue<Vector2>().y);
+        bool ceiling = transform.localPosition.y > .9f;
+        bool movingUp = joystickY > 0;
+        
+        bool floor = transform.localPosition.y < 0.1f;
+        bool movingDown = joystickY < 0;
+
+        if (ceiling &&  movingUp || floor && movingDown) return;
+        
+        
+        //added to adjust move speed the higher you are
+        //yDir += joystickY;
+        //yDir = Mathf.Clamp(yDir, 0,Mathf.Infinity);
+        //move.moveSpeed = originalMoveSpeed + yDir * moveSpeedMultiplier;
+        
+        controller.Move(Vector3.up * joystick.action.ReadValue<Vector2>().y * moveSpeedMultiplier);
         if (yDir <= .1f)
         {
             GetComponent<ActionBasedContinuousMoveProvider>().useGravity = true;

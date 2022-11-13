@@ -352,7 +352,7 @@ public class SwanMovement1 : MonoBehaviour
         
         while (timeLeft >= 0)
         {
-            timeLeft -= Time.deltaTime*.15f;
+            timeLeft -= Time.deltaTime*.08f;
             //swanMaterial.sharedMaterial.SetColor("_EmissionColor", Color.Lerp(Color.white,Color.black, timeLeft));
            b.intensity.value = Mathf.Lerp(90,0, timeLeft);
             b.scatter.value = Mathf.Lerp(1,0.5f, timeLeft);

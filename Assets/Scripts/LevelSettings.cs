@@ -122,9 +122,4 @@ public class LevelSettings : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        if (name == "GameManager") return;
-        print("Level settings is alive in " + name);
-    }
 }
