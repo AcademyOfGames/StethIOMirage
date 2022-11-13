@@ -67,4 +67,11 @@ public class SliderManager : MonoBehaviour
         }
         
     }
+
+    public void DeactivateSlider()
+    {
+        isActive = false;
+        slider.gameObject.SetActive(false);
+        currentStat = null;
+    }
 }

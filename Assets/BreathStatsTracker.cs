@@ -18,15 +18,21 @@ public class BreathStatsTracker : MonoBehaviour
     public AudioClip exhaleClip;
 
     private float initialBreathVolume;
+
+    public TMP_Text breathPerMinuteUI;
     // Start is called before the first frame update
     void Start()
     {
+        
+
         breathSound = GetComponent<AudioSource>();
         initialBreathVolume = breathSound.volume;
         
         breathSound.clip = inhaleClip;
         breathSound.Play();
         StartCoroutine("Breath");
+
+        breathPerMinuteUI.text = LevelSettings.Instance.breathsPerMinute.ToString("0.0");
 
     }
 

@@ -18,6 +18,7 @@ public class LevelSettings : MonoBehaviour
     public float levelInhaleHoldTarget;
     public float levelExhaleHoldTarget;
     public float levelHeartTarget = 60;
+    public float breathsPerMinute;
     private static LevelSettings _instance;
 
     public TextMeshProUGUI levelTotalTimeText;
@@ -68,7 +69,7 @@ public class LevelSettings : MonoBehaviour
     {
         postEffects = FindObjectOfType<Volume>();
         
-        print("Loaded " + scene.name + " called by " + name);
+        //print("Loaded " + scene.name + " called by " + name);
         if (postEffects == null) return;
         postEffects.profile.TryGet(out b);
         startScatter = b.scatter.value;
@@ -115,6 +116,10 @@ public class LevelSettings : MonoBehaviour
             levelInhaleHoldTarget = float.Parse(levelInhaleHoldText.text);
             levelExhaleHoldTarget = float.Parse(levelExhaleHoldText.text);
         }
+
+        
+        breathsPerMinute = 60f/(levelInhaleTarget + levelInhaleHoldTarget + levelExhaleTarget + levelExhaleHoldTarget);
+
     }
 
     private void Update()
