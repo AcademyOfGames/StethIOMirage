@@ -6467,7 +6467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0404fd4baf18fa4c84d55369dd63de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelTotalTime: 15
+  levelTotalTime: 0.01
   levelInhaleTarget: 7
   levelExhaleTarget: 7
   levelInhaleHoldTarget: 0
@@ -10314,6 +10314,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwanModelThreeLODs (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2581741017810750972, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
+      propertyPath: postEffects
+      value: 
+      objectReference: {fileID: 403617486}
     - target: {fileID: 2581741017810988300, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -10380,6 +10384,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
+--- !u!114 &1024068668 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2581741016032225711, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
+  m_PrefabInstance: {fileID: 1024068667}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1024068669 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2581741016242506349, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
+  m_PrefabInstance: {fileID: 1024068667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1025597822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14265,8 +14285,8 @@ MonoBehaviour:
   rHand: {fileID: 617611417}
   lHand: {fileID: 1073790174}
   timeLeft: 20
-  endUI: {fileID: 0}
-  endMessage: {fileID: 0}
+  endUI: {fileID: 1024068669}
+  endMessage: {fileID: 1024068668}
   sessionEnded: 0
   endChime: {fileID: 8300000, guid: c4c37a087dc62cc47a682c9f58aeb5bc, type: 3}
 --- !u!4 &1453386228
