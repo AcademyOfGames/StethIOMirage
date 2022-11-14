@@ -10302,6 +10302,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2581741016026326594, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581741016026326594, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581741016026326595, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581741016026326595, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
+      propertyPath: m_LineWidth
+      value: 0.0041
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581741016792515307, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581741016792515307, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1453386227}
+    - target: {fileID: 2581741016792515307, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EndSession
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581741016792515307, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581741016792515307, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Session ended early.
+      objectReference: {fileID: 0}
     - target: {fileID: 2581741017171543485, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
       propertyPath: moveSpeedMultiplier
       value: 0.15
