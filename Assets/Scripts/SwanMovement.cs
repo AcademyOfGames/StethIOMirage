@@ -262,4 +262,14 @@ public class SwanMovement : MonoBehaviour
         Debug.DrawRay(player.position, randomVector);
             
     }
+
+    public void SoftGlow()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void BackToNormalGlow()
+    {
+        throw new NotImplementedException();
+    }
 }

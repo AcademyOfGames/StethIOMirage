@@ -49,9 +49,9 @@ public class LevelSettings : MonoBehaviour
         //Invoke("LoadSceneAuto",3f);
     }
 
-    private void LoadSceneAuto()
+    public void SetTargetHeartRate(float target )
     {
-        SceneManager.LoadScene("Mountain_river_valley");
+        levelHeartTarget = target;
     }
 
     private void OnEnable()
