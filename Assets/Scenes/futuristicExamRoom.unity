@@ -7694,7 +7694,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4827452207342176940}
+      - m_Target: {fileID: 611595513}
         m_TargetAssemblyTypeName: SliderManager, Assembly-CSharp
         m_MethodName: DeactivateSlider
         m_Mode: 1
@@ -7948,7 +7948,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4827452207342176940}
+      - m_Target: {fileID: 611595513}
         m_TargetAssemblyTypeName: SliderManager, Assembly-CSharp
         m_MethodName: ActivateSlider
         m_Mode: 2
@@ -13699,7 +13699,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4827452207342176940}
+      - m_Target: {fileID: 611595513}
         m_TargetAssemblyTypeName: SliderManager, Assembly-CSharp
         m_MethodName: ActivateSlider
         m_Mode: 2
@@ -14150,6 +14150,8 @@ GameObject:
   - component: {fileID: 611595507}
   - component: {fileID: 611595506}
   - component: {fileID: 611595512}
+  - component: {fileID: 611595513}
+  - component: {fileID: 611595514}
   m_Layer: 5
   m_Name: curvedUI
   m_TagString: Untagged
@@ -14384,6 +14386,39 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &611595513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611595505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8788091330020348921e8d4814ca3bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1091851701}
+  minValueUI: {fileID: 1016061157}
+  MaxValueUI: {fileID: 157957137}
+  ValueNameUI: {fileID: 602702143}
+--- !u!114 &611595514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611595505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69cbe1f68f7081d4b84f1c5689871e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelTotalTimeText: {fileID: 88328684233131653}
+  levelInhaleText: {fileID: 1171681722}
+  levelExhaleText: {fileID: 88328684476693475}
+  levelInhaleHoldText: {fileID: 275201454}
+  levelExhaleHoldText: {fileID: 194948944}
 --- !u!4 &614914115 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8065188552600285332, guid: 927232924abbe7749aba0b85a30aa1db, type: 3}
@@ -16630,7 +16665,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4827452207342176940}
+      - m_Target: {fileID: 611595513}
         m_TargetAssemblyTypeName: SliderManager, Assembly-CSharp
         m_MethodName: ActivateSlider
         m_Mode: 2
@@ -23555,7 +23590,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4827452207342176940}
+      - m_Target: {fileID: 611595513}
         m_TargetAssemblyTypeName: SliderManager, Assembly-CSharp
         m_MethodName: DeactivateSlider
         m_Mode: 1
@@ -26134,7 +26169,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4827452207342176940}
+      - m_Target: {fileID: 611595513}
         m_TargetAssemblyTypeName: SliderManager, Assembly-CSharp
         m_MethodName: DeactivateSlider
         m_Mode: 1
@@ -26439,7 +26474,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4827452207342176940}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SliderManager, Assembly-CSharp
         m_MethodName: DeactivateSlider
         m_Mode: 1
@@ -37771,7 +37806,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4827452207342176940}
+      - m_Target: {fileID: 611595513}
         m_TargetAssemblyTypeName: SliderManager, Assembly-CSharp
         m_MethodName: ActivateSlider
         m_Mode: 2
@@ -38044,6 +38079,18 @@ MonoBehaviour:
       - m_Target: {fileID: 4827452207342176941}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 611595513}
+        m_TargetAssemblyTypeName: SliderManager, Assembly-CSharp
+        m_MethodName: DeactivateSlider
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -38852,9 +38899,11 @@ MonoBehaviour:
   levelSelect: {fileID: 8209913977132335452}
   titleText: Sanka, Nepal
   sceneName: Mountain_river_valley
-  text: ' Sanka, Nepal  is a place where the sky is so clear you can see the tops
-    of the some of the most beautiful mountains you''ve ever seen. Clear your mind
-    in Sanka''s serene lakes and become like the mythical  hamsa eagle.'
+  text: Mirage is an immersive experience for living in the moment. Inhale and exhale
+    with the guidance from our experts to experience the breath of life. Watch the
+    graceful swan fly along the mountains in Sanka, Nepal, fluttering to your heart
+    rate. Receive active biofeedback from your heart as a response to your breathing.
+    Choose the preset levels of immersion or pick your own settings.
   sceneImage: {fileID: 21300000, guid: e460c72154dcea14c98d41be214700a7, type: 3}
 --- !u!114 &88328683821991488
 MonoBehaviour:
@@ -38900,7 +38949,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4827452207342176940}
+      - m_Target: {fileID: 611595513}
         m_TargetAssemblyTypeName: SliderManager, Assembly-CSharp
         m_MethodName: ActivateSlider
         m_Mode: 2
@@ -39852,7 +39901,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 535.5, y: 298.82693}
+  m_AnchoredPosition: {x: 535.5, y: 518}
   m_SizeDelta: {x: 487.5, y: 325.15875}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &896957488917246077 stripped
@@ -40401,7 +40450,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3653661416576605768}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00021374003}
   m_LocalScale: {x: 1.0024533, y: 1.0024533, z: 1.0024533}
   m_Children: []
   m_Father: {fileID: 1191103279201857575}
@@ -40409,7 +40458,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 465.67303, y: 51}
+  m_AnchoredPosition: {x: 465.67303, y: 270.17313}
   m_SizeDelta: {x: 472.8, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2060756635122781461
@@ -48613,11 +48662,6 @@ MonoBehaviour:
   levelExhaleHoldTarget: 0
   levelHeartTarget: 73
   breathsPerMinute: 0
-  levelTotalTimeText: {fileID: 88328684233131653}
-  levelInhaleText: {fileID: 1171681722}
-  levelExhaleText: {fileID: 88328684476693475}
-  levelInhaleHoldText: {fileID: 275201454}
-  levelExhaleHoldText: {fileID: 194948944}
   postEffects: {fileID: 1970218700}
 --- !u!1 &4827452207342176939
 GameObject:
@@ -48630,7 +48674,6 @@ GameObject:
   - component: {fileID: 4827452207342176937}
   - component: {fileID: 4827452207342176938}
   - component: {fileID: 4827452207258925865}
-  - component: {fileID: 4827452207342176940}
   - component: {fileID: 4827452207342176941}
   m_Layer: 0
   m_Name: GameManager
@@ -48639,22 +48682,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &4827452207342176940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4827452207342176939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8788091330020348921e8d4814ca3bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 1091851701}
-  minValueUI: {fileID: 1016061157}
-  MaxValueUI: {fileID: 157957137}
-  ValueNameUI: {fileID: 602702143}
 --- !u!82 &4827452207342176941
 AudioSource:
   m_ObjectHideFlags: 0
@@ -50360,7 +50387,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 8
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -50389,7 +50416,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -11.7034, w: -7.7159576}
+  m_margin: {x: 0, y: 0, z: -179.82898, w: -450.72806}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -50456,7 +50483,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7676706710332417670}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00021374003}
   m_LocalScale: {x: 0.72300994, y: 0.72300994, z: 0.72300994}
   m_Children: []
   m_Father: {fileID: 1191103279201857575}
@@ -50464,7 +50491,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 470.17303, y: -161}
+  m_AnchoredPosition: {x: 470.17303, y: 58.173126}
   m_SizeDelta: {x: 662.3, y: 468.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7968334159909230585
