@@ -9,3 +9,4 @@
 *0.bundle filter=lfs diff=lfs merge=lfs -text
 *MirageMetaDemo_Main.apk filter=lfs diff=lfs merge=lfs -text
 *production.apk filter=lfs diff=lfs merge=lfs -text
+*.apk filter=lfs diff=lfs merge=lfs -text

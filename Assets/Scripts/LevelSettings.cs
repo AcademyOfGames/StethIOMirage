@@ -21,12 +21,7 @@ public class LevelSettings : MonoBehaviour
     public float breathsPerMinute;
     private static LevelSettings _instance;
 
-    public TextMeshProUGUI levelTotalTimeText;
-    public TextMeshProUGUI levelInhaleText;
-    public TextMeshProUGUI levelExhaleText;
-    public TextMeshProUGUI levelInhaleHoldText;
-    public TextMeshProUGUI levelExhaleHoldText;
-    
+    private LevelStatsUIManager uIManager;
     //effects
     public Volume postEffects;
     private Bloom b;
@@ -42,11 +37,16 @@ public class LevelSettings : MonoBehaviour
         {
             Destroy(gameObject);
         } else {
-            DontDestroyOnLoad(gameObject);
+            
             _instance = this;
         }
-
+        DontDestroyOnLoad(gameObject);
         //Invoke("LoadSceneAuto",3f);
+    }
+
+    private void Start()
+    {
+        uIManager = FindObjectOfType<LevelStatsUIManager>();
     }
 
     public void SetTargetHeartRate(float target )
@@ -61,7 +61,7 @@ public class LevelSettings : MonoBehaviour
     }
     private void OnDisable()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
     
     
@@ -78,8 +78,9 @@ public class LevelSettings : MonoBehaviour
 
         print(" Volume: " + postEffects.name);
 
-        if (scene.name == "futuristicExamRoom")
+        if (scene.name == "futuristicExamRoom" && _instance != null)
         {
+            uIManager = FindObjectOfType<LevelStatsUIManager>();
             StartCoroutine("EndGlow");
         }
     }
@@ -100,21 +101,21 @@ public class LevelSettings : MonoBehaviour
     }
     public void ApplyLevelSettings()
     {
-        if (levelTotalTimeText != null)
+        if (uIManager.levelTotalTimeText != null)
         {
-            levelTotalTime = float.Parse(levelTotalTimeText.text.Split(' ')[0]);
+            levelTotalTime = float.Parse(uIManager.levelTotalTimeText.text.Split(' ')[0]);
         }
 
-        if (levelInhaleText != null && levelExhaleText != null)
+        if (uIManager.levelInhaleText != null && uIManager.levelExhaleText != null)
         {
-            levelInhaleTarget = float.Parse(levelInhaleText.text);
-            levelExhaleTarget = float.Parse(levelExhaleText.text);
+            levelInhaleTarget = float.Parse(uIManager.levelInhaleText.text);
+            levelExhaleTarget = float.Parse(uIManager.levelExhaleText.text);
         }
 
-        if (levelInhaleHoldText != null && levelExhaleHoldText != null)
+        if (uIManager.levelInhaleHoldText != null && uIManager.levelExhaleHoldText != null)
         {
-            levelInhaleHoldTarget = float.Parse(levelInhaleHoldText.text);
-            levelExhaleHoldTarget = float.Parse(levelExhaleHoldText.text);
+            levelInhaleHoldTarget = float.Parse(uIManager.levelInhaleHoldText.text);
+            levelExhaleHoldTarget = float.Parse(uIManager.levelExhaleHoldText.text);
         }
 
         
