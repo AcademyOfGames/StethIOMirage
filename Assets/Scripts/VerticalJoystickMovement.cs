@@ -66,7 +66,7 @@ public class VerticalJoystickMovement : MonoBehaviour
         bool ceiling = transform.localPosition.y > .9f;
         bool movingUp = joystickY > 0;
         
-        bool floor = transform.localPosition.y < 0.1f;
+        bool floor = transform.localPosition.y < -.6f;
         bool movingDown = joystickY < 0;
 
         if (ceiling &&  movingUp || floor && movingDown) return;

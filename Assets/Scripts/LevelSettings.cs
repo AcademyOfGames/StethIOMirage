@@ -91,11 +91,11 @@ public class LevelSettings : MonoBehaviour
         
         while (timeLeft >= 0)
         {
-            timeLeft -= Time.deltaTime*.2f;
+            timeLeft -= Time.deltaTime*.25f;
             //swanMaterial.sharedMaterial.SetColor("_EmissionColor", Color.Lerp(Color.white,Color.black, timeLeft));
-            b.intensity.value = Mathf.Lerp(startIntensity,90, timeLeft);
+            b.intensity.value = Mathf.Lerp(startIntensity,80, timeLeft);
             b.scatter.value = Mathf.Lerp(startScatter,1, timeLeft);
-            b.threshold.value = Mathf.Lerp(startThreshold,.2f, timeLeft);
+            b.threshold.value = Mathf.Lerp(startThreshold,.3f, timeLeft);
             yield return new WaitForFixedUpdate();
         }
     }

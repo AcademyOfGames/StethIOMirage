@@ -20,6 +20,7 @@ public class BreathStatsTracker : MonoBehaviour
     private float initialBreathVolume;
 
     public TMP_Text breathPerMinuteUI;
+    public TMP_Text breathIndicatorUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +42,8 @@ public class BreathStatsTracker : MonoBehaviour
         float holdTime = LevelSettings.Instance.levelInhaleHoldTarget;
         float taperTime = 3;
         float breathTime = LevelSettings.Instance.levelInhaleTarget - taperTime;
+        breathIndicatorUI.text = "Breath In";
+
         yield return new WaitForSeconds(breathTime);
 
         while (taperTime >= 0)
@@ -50,7 +53,11 @@ public class BreathStatsTracker : MonoBehaviour
             yield return null;
 
         }
+        
+        breathIndicatorUI.text = "Hold";
         yield return new WaitForSeconds(holdTime);
+        breathIndicatorUI.text = "Breath Out";
+
         breathSound.clip = exhaleClip;
         breathSound.Play();
         breathSound.volume = initialBreathVolume;

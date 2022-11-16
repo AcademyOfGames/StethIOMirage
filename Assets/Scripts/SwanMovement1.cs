@@ -165,11 +165,11 @@ public class SwanMovement1 : MonoBehaviour
         
         while (timeLeft >= 0)
         {
-            timeLeft -= Time.deltaTime*.08f;
+            timeLeft -= Time.deltaTime*.11f;
             
-            b.intensity.value = Mathf.Lerp(90,initialIntensity, timeLeft);
+            b.intensity.value = Mathf.Lerp(80,initialIntensity, timeLeft);
             b.scatter.value = Mathf.Lerp(1,initialScatter, timeLeft);
-            b.threshold.value = Mathf.Lerp(.2f,initialThreshold, timeLeft);
+            b.threshold.value = Mathf.Lerp(.25f,initialThreshold, timeLeft);
             
             yield return new WaitForFixedUpdate();
         }
