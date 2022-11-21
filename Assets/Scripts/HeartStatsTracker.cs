@@ -23,6 +23,7 @@ public class HeartStatsTracker : MonoBehaviour
     private LevelManager lvl;
     
     public TextMeshProUGUI heartRateText;
+    public float currentHeartRate;
 
     private void Awake()
     {
@@ -37,7 +38,6 @@ public class HeartStatsTracker : MonoBehaviour
         lvl = FindObjectOfType<LevelManager>();
         swan = FindObjectOfType<SwanMovement1>();
     }
-    float currentHeartRate;
 
     private void Start()
     {
@@ -98,14 +98,13 @@ public class HeartStatsTracker : MonoBehaviour
             
             timeSinceLastBeat =  60f/currentHeartRate ;
 
-            swan.AdjustHeartRateInfluence(currentHeartRate);
             print(currentHeartRate + " < " + initialHeartRate * LevelSettings.Instance.levelHeartTarget);
             if (currentHeartRate < initialHeartRate * LevelSettings.Instance.levelHeartTarget)
             {
                 if (!softGlowing)
                 {
                     softGlowing = true;
-                    IEnumerator coroutine = FindObjectOfType<SwanMovement1>().SoftGlow();
+                    IEnumerator coroutine = FindObjectOfType<EnvironmentControls>().SoftGlow();
                     StartCoroutine(coroutine);
                 }
             }
@@ -115,7 +114,7 @@ public class HeartStatsTracker : MonoBehaviour
                 {
 
                     softGlowing = false;
-                    IEnumerator coroutine = FindObjectOfType<SwanMovement1>().BackToNormalGlow();
+                    IEnumerator coroutine = FindObjectOfType<EnvironmentControls>().BackToNormalGlow();
                     StartCoroutine(coroutine);
 
                 }

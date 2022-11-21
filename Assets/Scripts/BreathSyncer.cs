@@ -85,7 +85,6 @@ public class BreathSyncer : MonoBehaviour
 
         transform.localScale = Vector3.Lerp(transform.localScale, targetScale,m_timer*.1f);
         terrain.wavingGrassStrength = m_audioValue * grassMovementStrength;
-        //transform.localScale += Vector3.one * m_audioValue * _breathDirection * breathScaleSpeed;
     }
 
     private void SwitchBreath()

@@ -48,32 +48,25 @@ public class SwanMovement1 : MonoBehaviour
 
     public Animator anim;
 
-    //effects
-    public Volume postEffects;
-    private float initialScatter;
-    private float initialIntensity;
-    private float initialThreshold;
+    //Data
+    private HeartStatsTracker heart;
 
     void Start()
     {
+        heart = FindObjectOfType<HeartStatsTracker>();
         anim = GetComponent<Animator>();
         //birdAudio = GetComponent<BirdAudioManager>();
         birdState = GetComponent<BirdStateChanger>();
         t = transform;
-        
+        InvokeRepeating(nameof(AdjustHeartRateInfluence),2,3);
 
     }
-
-
 
     void SwitchAnimation(string triggerName)
     {
         if (birdState.currentState == BirdStateChanger.BirdState.Landing && !triggerName.Equals("TakeOff")) return;
         anim.SetTrigger(triggerName);
-
     }
-
-   
     
     private void OnTriggerEnter(Collider other)
     {
@@ -139,93 +132,10 @@ public class SwanMovement1 : MonoBehaviour
         anim.SetTrigger(("Flap"));
     }
 
-    public void AdjustHeartRateInfluence(float heartRate)
+    public void AdjustHeartRateInfluence()
     {
-        anim.speed = (heartRate / 90f )*1.5f;
-        FlapWings();
-
+        anim.speed = heart.currentHeartRate / 90f *1.5f;
         //flyingRange = Mathf.Lerp(_initialFlyRange, closeFlyRange,heartRateProgress);
     }
-
-    public void SetLandingSpot()
-    {
-        StartCoroutine("StartGlow");
-    }
-
-    IEnumerator StartGlow()
-    {
-        Bloom b;
-        postEffects.gameObject.SetActive(true);
-        float timeLeft = 1f;
-        postEffects.profile.TryGet(out b);
-        
-        initialIntensity = b.intensity.value ;
-        initialScatter = b.scatter.value;
-        initialThreshold = b.threshold.value;
-        
-        while (timeLeft >= 0)
-        {
-            timeLeft -= Time.deltaTime*.11f;
-            
-            b.intensity.value = Mathf.Lerp(80,initialIntensity, timeLeft);
-            b.scatter.value = Mathf.Lerp(1,initialScatter, timeLeft);
-            b.threshold.value = Mathf.Lerp(.25f,initialThreshold, timeLeft);
-            
-            yield return new WaitForFixedUpdate();
-        }
-        
-        FindObjectOfType<SceneControls>().BackToLobby();
-    }
-    
-    public IEnumerator SoftGlow()
-    {
-        Bloom b;
-        postEffects.gameObject.SetActive(true);
-        float timeLeft = 1f;
-        postEffects.profile.TryGet(out b);
-        
-        initialIntensity = b.intensity.value ;
-        initialScatter = b.scatter.value;
-        initialThreshold = b.threshold.value;
-
-        while (timeLeft >= 0)
-        {
-            timeLeft -= Time.deltaTime*.3f;
-            print(            b.intensity.value);
-
-            b.intensity.value = Mathf.Lerp(2.5f,initialIntensity, timeLeft);
-            b.scatter.value = Mathf.Lerp(.45f,initialScatter, timeLeft);
-            b.threshold.value = Mathf.Lerp(.7f,initialThreshold, timeLeft);
-            
-            yield return new WaitForFixedUpdate();
-        }
-    }
-
-    public IEnumerator BackToNormalGlow()
-    {
-        Bloom b;
-        postEffects.gameObject.SetActive(true);
-        float timeLeft = 1f;
-        postEffects.profile.TryGet(out b);
-        
-        initialIntensity = b.intensity.value ;
-        initialScatter = b.scatter.value;
-        initialThreshold = b.threshold.value;
-
-        while (timeLeft >= 0)
-        {
-            timeLeft -= Time.deltaTime*.24f;
-            
-            b.intensity.value = Mathf.Lerp(0,initialIntensity, timeLeft);
-            print(            b.intensity.value);
-            b.scatter.value = Mathf.Lerp(0,initialScatter, timeLeft);
-            b.threshold.value = Mathf.Lerp(0,initialThreshold, timeLeft);
-            
-            yield return new WaitForFixedUpdate();
-        }    
-        postEffects.gameObject.SetActive(false);
-
-    }
-    
 }
 
