@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class EnvironmentControls : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class EnvironmentControls : MonoBehaviour
     private float initialScatter;
     private float initialIntensity;
     private float initialThreshold;
+
+    private AsyncOperation loadOperation;
     
     // Start is called before the first frame update
     void Start()
@@ -24,8 +27,10 @@ public class EnvironmentControls : MonoBehaviour
         
     }
     
-    IEnumerator StartGlow()
+    public IEnumerator StartGlow()
     {
+        loadOperation = SceneManager.LoadSceneAsync("futuristicExamRoom");
+        loadOperation.allowSceneActivation = false;
         Bloom b;
         postEffects.gameObject.SetActive(true);
         float timeLeft = 1f;
@@ -45,8 +50,8 @@ public class EnvironmentControls : MonoBehaviour
             
             yield return new WaitForFixedUpdate();
         }
-        
-        FindObjectOfType<SceneControls>().BackToLobby();
+
+        loadOperation.allowSceneActivation = true;
     }
     
     

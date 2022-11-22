@@ -22,14 +22,14 @@ public class LevelManager : MonoBehaviour
     private void OnEnable()
     {
         //grip
-        gripAction.action.performed += Gripping;
+        gripAction.action.started += Gripping;
         gripAction.action.canceled += GripRelease;
     }
 
     private void OnDisable()
     {
         //grip
-        gripAction.action.performed -= Gripping;
+        gripAction.action.started -= Gripping;
         gripAction.action.canceled -= GripRelease;
     }
 
@@ -37,6 +37,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         UISounds = GetComponent<AudioSource>();
+        sessionEnded = false;
     }
 
     public void ShowEndUI()
@@ -55,11 +56,15 @@ public class LevelManager : MonoBehaviour
     public void EndSession(string message)
     {
         if (sessionEnded) return;
+
         sessionEnded = true;
+        IEnumerator coroutine = FindObjectOfType<EnvironmentControls>().StartGlow();
+        StartCoroutine(coroutine);
     }
 
     private void Gripping(InputAction.CallbackContext obj)
     {
+        Debug.Log("Gripping clicked");
         rHand.GetComponent<XRInteractorLineVisual>().enabled = true;
         rHand.GetComponent<LineRenderer>().enabled = true;
     }

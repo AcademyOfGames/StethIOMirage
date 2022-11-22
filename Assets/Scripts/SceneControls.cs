@@ -86,9 +86,4 @@ public class SceneControls : MonoBehaviour
         SceneManager.LoadSceneAsync("futuristicExamRoom");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
