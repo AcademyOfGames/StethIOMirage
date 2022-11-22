@@ -28,15 +28,18 @@ public class HeartButterflyMovement : MonoBehaviour
     public Color shiningColor;
 
     public float timeTilShine;
-
-    private float timer = 0;
-
+    
     private bool shining;
 
     public GameObject particles;
+
+    private TimePassedTracker timer;
+
+    private Transform t;
     // Start is called before the first frame update
     void Start()
     {
+        t = transform;
         rb = GetComponent<Rigidbody>();
         adjustedStrength = Mathf.InverseLerp( 25,20, transform.position.y);
 
@@ -50,41 +53,43 @@ public class HeartButterflyMovement : MonoBehaviour
             Random.Range(-butterflyHeight, butterflyHeight),
             Random.Range(-rangeFromPlayer.y, rangeFromPlayer.y));
 
-        currentWaypoint = player.position + RandomPos;
+        currentWaypoint = player.position + RandomPos + player.forward *10f;
        //cube = Instantiate(testCube, currentWaypoint, Quaternion.identity);
     }
     
     // Update is called once per frame
     void FixedUpdate()
     {
-         adjustedGravity = Mathf.InverseLerp( 20  + Random.Range(-1,3),33 + Random.Range(0,3), transform.position.y);
+        adjustedGravity = Mathf.InverseLerp( 20  + Random.Range(-1,3),33 + Random.Range(0,3), t.position.y);
 
-        rb.velocity -= Vector3.up * floatDown * adjustedGravity;
+        var velocity = rb.velocity;
+        velocity -= Vector3.up * floatDown * adjustedGravity;
+        rb.velocity = velocity;
 
-        Vector3 flatVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        transform.rotation = Quaternion.LookRotation(flatVelocity);
+        Vector3 flatVelocity = new Vector3(velocity.x, 0f, velocity.z);
+        t.rotation = Quaternion.LookRotation(flatVelocity);
 
-        Vector3 movementDir =   currentWaypoint - transform.position;
+        Vector3 movementDir =   currentWaypoint - t.position;
         
         rb.AddForce(movementDir.normalized * speed * Time.deltaTime);
         
-        if (Vector3.Distance(currentWaypoint, transform.position) < distanceFromWaypoint)
+        if (Vector3.Distance(currentWaypoint, t.position) < distanceFromWaypoint)
         {
             FindWaypoint();
         }
 
-        timer += Time.deltaTime;
-        if (timer > timeTilShine && !shining)
+        if (timer.timeLeft < timeTilShine && !shining)
         {
-            shining = true;
             StartCoroutine("ShiningLerp");
-            particles.SetActive(true);
         }
     }
 
     IEnumerator ShiningLerp()
     {
         float lerpTime = 0;
+        shining = true;
+
+        particles.SetActive(true);
         while (lerpTime<= 1)
         {
             Color currentColor = butterflyRender.material.GetColor("_EmissionColor");
@@ -96,15 +101,9 @@ public class HeartButterflyMovement : MonoBehaviour
     }
     public void HeartBeatFly()
     {
-        transform.GetChild(0).GetComponent<Animation>().Play();
-        adjustedStrength = Mathf.InverseLerp(38+ Random.Range(-2,3),21, transform.position.y);
+        t.GetChild(0).GetComponent<Animation>().Play();
+        adjustedStrength = Mathf.InverseLerp(38+ Random.Range(-2,3),21, t.position.y);
         rb.AddForce(Vector3.up * flapStrength * adjustedStrength* adjustedStrength);
         
-    }
-
-    IEnumerator OffsetFlap()
-    {
-        yield return new WaitForSeconds(Random.Range(0, .04f));
-
     }
 }

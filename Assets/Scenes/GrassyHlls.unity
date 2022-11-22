@@ -146,7 +146,7 @@ MonoBehaviour:
   adjustedGravity: 0
   butterflyRender: {fileID: 182714525}
   shiningColor: {r: 12.844469, g: 9.213049, b: 6.0523677, a: 1}
-  timeTilShine: 45
+  timeTilShine: 0.5
   particles: {fileID: 577116476}
 --- !u!1 &14462322
 GameObject:
@@ -7876,7 +7876,7 @@ MonoBehaviour:
   adjustedGravity: 0
   butterflyRender: {fileID: 2047193986}
   shiningColor: {r: 12.844469, g: 9.213049, b: 6.0523677, a: 1}
-  timeTilShine: 45
+  timeTilShine: 0.5
   particles: {fileID: 371634470}
 --- !u!1 &273887438
 GameObject:
@@ -8187,7 +8187,7 @@ MonoBehaviour:
   adjustedGravity: 0
   butterflyRender: {fileID: 73503688}
   shiningColor: {r: 12.844469, g: 9.213049, b: 6.0523677, a: 1}
-  timeTilShine: 45
+  timeTilShine: 0.5
   particles: {fileID: 1092516983}
 --- !u!1 &317481927
 GameObject:
@@ -24681,7 +24681,7 @@ MonoBehaviour:
   adjustedGravity: 0
   butterflyRender: {fileID: 741447883}
   shiningColor: {r: 12.844469, g: 9.213049, b: 6.0523677, a: 1}
-  timeTilShine: 45
+  timeTilShine: 0.5
   particles: {fileID: 1974518849}
 --- !u!1 &597115730
 GameObject:
@@ -50975,7 +50975,7 @@ MonoBehaviour:
   adjustedGravity: 0
   butterflyRender: {fileID: 723671263}
   shiningColor: {r: 12.844469, g: 9.213049, b: 6.0523677, a: 1}
-  timeTilShine: 45
+  timeTilShine: 0.5
   particles: {fileID: 1841333360}
 --- !u!1 &1706873764
 GameObject:
@@ -66852,7 +66852,7 @@ MonoBehaviour:
   adjustedGravity: 0
   butterflyRender: {fileID: 357454329}
   shiningColor: {r: 12.844469, g: 9.213049, b: 6.0523677, a: 1}
-  timeTilShine: 45
+  timeTilShine: 0.5
   particles: {fileID: 500532537}
 --- !u!1 &1995774824
 GameObject:
@@ -67643,7 +67643,7 @@ MonoBehaviour:
   adjustedGravity: 0
   butterflyRender: {fileID: 1334914447}
   shiningColor: {r: 12.844469, g: 9.213049, b: 6.0523677, a: 1}
-  timeTilShine: 45
+  timeTilShine: 0.5
   particles: {fileID: 1784563198}
 --- !u!1 &2099739874
 GameObject:
