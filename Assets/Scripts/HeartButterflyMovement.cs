@@ -42,7 +42,7 @@ public class HeartButterflyMovement : MonoBehaviour
         t = transform;
         rb = GetComponent<Rigidbody>();
         adjustedStrength = Mathf.InverseLerp( 25,20, transform.position.y);
-
+        timer = FindObjectOfType<TimePassedTracker>();
         FindWaypoint();
     }
 

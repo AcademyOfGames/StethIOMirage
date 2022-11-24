@@ -10248,15 +10248,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1155252379, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.81
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1155252379, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.71
+      value: -1.4
       objectReference: {fileID: 0}
     - target: {fileID: 1155252379, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
       propertyPath: m_LocalPosition.z
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155252380, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155252381, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526227565, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
+      propertyPath: m_fontSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526227565, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 2581741016792515307, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
