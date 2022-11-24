@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 489327548}
-  rangeFromPlayer: {x: 5, y: 5}
+  rangeFromPlayer: {x: 5, y: 4}
   butterflyHeight: 1.5
   speed: 6
   distanceFromWaypoint: 3.2
@@ -5757,7 +5757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 489327548}
-  rangeFromPlayer: {x: 5, y: 5}
+  rangeFromPlayer: {x: 5, y: 4}
   butterflyHeight: 1.5
   speed: 6
   distanceFromWaypoint: 3.2
@@ -7683,7 +7683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 489327548}
-  rangeFromPlayer: {x: 5, y: 5}
+  rangeFromPlayer: {x: 5, y: 4}
   butterflyHeight: 1.5
   speed: 6
   distanceFromWaypoint: 3.2
@@ -7866,7 +7866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 489327548}
-  rangeFromPlayer: {x: 5, y: 5}
+  rangeFromPlayer: {x: 5, y: 4}
   butterflyHeight: 1.5
   speed: 6
   distanceFromWaypoint: 3.2
@@ -8177,7 +8177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 489327548}
-  rangeFromPlayer: {x: 5, y: 5}
+  rangeFromPlayer: {x: 5, y: 4}
   butterflyHeight: 1.5
   speed: 6
   distanceFromWaypoint: 3.2
@@ -8360,7 +8360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 489327548}
-  rangeFromPlayer: {x: 5, y: 5}
+  rangeFromPlayer: {x: 5, y: 4}
   butterflyHeight: 1.5
   speed: 6
   distanceFromWaypoint: 3.2
@@ -24671,7 +24671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 489327548}
-  rangeFromPlayer: {x: 5, y: 5}
+  rangeFromPlayer: {x: 5, y: 4}
   butterflyHeight: 1.5
   speed: 6
   distanceFromWaypoint: 3.2
@@ -35966,7 +35966,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4740462760746180970, guid: 91ca5167ab9548840ac20ed66b1aa6c9, type: 3}
       propertyPath: levelTotalTime
-      value: 0.1
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4740462760746180971, guid: 91ca5167ab9548840ac20ed66b1aa6c9, type: 3}
       propertyPath: m_RootOrder
@@ -50122,7 +50122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 489327548}
-  rangeFromPlayer: {x: 5, y: 5}
+  rangeFromPlayer: {x: 5, y: 4}
   butterflyHeight: 1.5
   speed: 6
   distanceFromWaypoint: 3.2
@@ -50159,15 +50159,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1835249296022214513, guid: 27c845eee9d09524fa5b89e7f7272b44, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.998
       objectReference: {fileID: 0}
     - target: {fileID: 1835249296022214513, guid: 27c845eee9d09524fa5b89e7f7272b44, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.4
+      value: -0.634
       objectReference: {fileID: 0}
     - target: {fileID: 1835249296022214513, guid: 27c845eee9d09524fa5b89e7f7272b44, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3
+      value: 2.983
       objectReference: {fileID: 0}
     - target: {fileID: 1835249296022214513, guid: 27c845eee9d09524fa5b89e7f7272b44, type: 3}
       propertyPath: m_LocalRotation.w
@@ -50981,7 +50981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 489327548}
-  rangeFromPlayer: {x: 5, y: 5}
+  rangeFromPlayer: {x: 5, y: 4}
   butterflyHeight: 1.5
   speed: 6
   distanceFromWaypoint: 3.2
@@ -51242,6 +51242,10 @@ PrefabInstance:
       propertyPath: heartRateText
       value: 
       objectReference: {fileID: 553602061}
+    - target: {fileID: 8811413974658901693, guid: 3fa63506ec1bf4240ada3430ca337aa4, type: 3}
+      propertyPath: placeholderHeartRate
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 8811413974658901694, guid: 3fa63506ec1bf4240ada3430ca337aa4, type: 3}
       propertyPath: breathIndicatorUI
       value: 
@@ -66858,7 +66862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 489327548}
-  rangeFromPlayer: {x: 5, y: 5}
+  rangeFromPlayer: {x: 5, y: 4}
   butterflyHeight: 1.5
   speed: 6
   distanceFromWaypoint: 3.2
@@ -67649,7 +67653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 489327548}
-  rangeFromPlayer: {x: 5, y: 5}
+  rangeFromPlayer: {x: 5, y: 4}
   butterflyHeight: 1.5
   speed: 6
   distanceFromWaypoint: 3.2
@@ -68033,18 +68037,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4125444585710267239, guid: c447b7bddaf54dd4c834277664682e32, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6922009087896237674, guid: c447b7bddaf54dd4c834277664682e32, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6922009087896237674, guid: c447b7bddaf54dd4c834277664682e32, type: 3}
-      propertyPath: grassMovementStrength
-      value: 0.01
-      objectReference: {fileID: 0}
     - target: {fileID: 7509937530692079218, guid: c447b7bddaf54dd4c834277664682e32, type: 3}
       propertyPath: m_Name
       value: AudioSystems

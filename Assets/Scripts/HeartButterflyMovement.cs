@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -36,13 +37,28 @@ public class HeartButterflyMovement : MonoBehaviour
     private TimePassedTracker timer;
 
     private Transform t;
+
+    private void Awake()
+    {
+        t = transform;
+        timer = FindObjectOfType<TimePassedTracker>();
+        rb = GetComponent<Rigidbody>();
+    }
+
+    private void OnEnable()
+    {
+        HeartSoundControls.OnBeat += HeartBeatFly;
+    }    
+    
+    private void OnDisable()
+    {
+        HeartSoundControls.OnBeat -= HeartBeatFly;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        t = transform;
-        rb = GetComponent<Rigidbody>();
         adjustedStrength = Mathf.InverseLerp( 25,20, transform.position.y);
-        timer = FindObjectOfType<TimePassedTracker>();
         FindWaypoint();
     }
 

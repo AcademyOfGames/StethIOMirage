@@ -62,6 +62,16 @@ public class SwanMovement1 : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        HeartSoundControls.OnBeat += FlapWings;
+    }
+
+    private void OnDisable()
+    {
+        HeartSoundControls.OnBeat -= FlapWings;
+    }
+
     void SwitchAnimation(string triggerName)
     {
         if (birdState.currentState == BirdStateChanger.BirdState.Landing && !triggerName.Equals("TakeOff")) return;
@@ -129,6 +139,8 @@ public class SwanMovement1 : MonoBehaviour
 
     public void FlapWings()
     {
+        float heartSpeed =  Mathf.Lerp(1f, 2.8f, (heart.currentHeartRate - 50) / 50) ;
+        anim.SetFloat("FlapSpeed", heartSpeed);
         anim.SetTrigger(("Flap"));
     }
 

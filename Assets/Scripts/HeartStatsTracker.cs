@@ -25,6 +25,7 @@ public class HeartStatsTracker : MonoBehaviour
     public TextMeshProUGUI heartRateText;
     public float currentHeartRate;
 
+    public float placeholderHeartRate;
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -37,19 +38,14 @@ public class HeartStatsTracker : MonoBehaviour
 
         lvl = FindObjectOfType<LevelManager>();
         swan = FindObjectOfType<SwanMovement1>();
-    }
-
-    private void Start()
-    {
         stats = FindObjectOfType<OnlineStats>();
-        float placeholderHeartRate = 90;
+
         initialHeartRate = stats == null ? placeholderHeartRate : stats.currentHeartRate;
-        
 
     }
 
     private bool tempSwitch;
-    void changeHeart()
+    void ChangeHeart()
     {
         if (tempSwitch)
         {
@@ -70,7 +66,7 @@ public class HeartStatsTracker : MonoBehaviour
     {
         if (stats == null)
         {
-            currentHeartRate = 90;
+            currentHeartRate = placeholderHeartRate;
 
             heartRateText.text =currentHeartRate.ToString("F1");  
 
@@ -98,7 +94,6 @@ public class HeartStatsTracker : MonoBehaviour
             
             timeSinceLastBeat =  60f/currentHeartRate ;
 
-            print(currentHeartRate + " < " + initialHeartRate * LevelSettings.Instance.levelHeartTarget);
             if (currentHeartRate < initialHeartRate * LevelSettings.Instance.levelHeartTarget)
             {
                 if (!softGlowing)

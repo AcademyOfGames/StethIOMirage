@@ -1474,21 +1474,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 457989516134313436, guid: c447b7bddaf54dd4c834277664682e32, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6922009087896237674, guid: c447b7bddaf54dd4c834277664682e32, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7509937530692079218, guid: c447b7bddaf54dd4c834277664682e32, type: 3}
       propertyPath: m_Name
       value: AudioSystems
-      objectReference: {fileID: 0}
-    - target: {fileID: 7509937530692079218, guid: c447b7bddaf54dd4c834277664682e32, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7509937530692079219, guid: c447b7bddaf54dd4c834277664682e32, type: 3}
       propertyPath: m_RootOrder
@@ -1534,8 +1522,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 457989516134313436, guid: c447b7bddaf54dd4c834277664682e32, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c447b7bddaf54dd4c834277664682e32, type: 3}
 --- !u!1001 &205611439
 PrefabInstance:
@@ -10248,15 +10235,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1155252379, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.472
       objectReference: {fileID: 0}
     - target: {fileID: 1155252379, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.4
+      value: -0.394
       objectReference: {fileID: 0}
     - target: {fileID: 1155252379, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3
+      value: 2.979
       objectReference: {fileID: 0}
     - target: {fileID: 1155252380, guid: 80a8492ed4402db4e85076845b4e7f86, type: 3}
       propertyPath: m_Enabled
@@ -12009,32 +11996,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 592ed76651b700341888c26dd87d2809, type: 3}
   m_PrefabInstance: {fileID: 690318454}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1172783060 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 457989516134313439, guid: c447b7bddaf54dd4c834277664682e32, type: 3}
-  m_PrefabInstance: {fileID: 194858207}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1172783062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1172783060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38d641dbbda4d1f48a2d759a26bf2f25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bias: 0
-  timeStep: 0
-  smoothTime: 0
-  m_audioValue: 0
-  m_timer: 0
-  _currentBeat: 2
-  breathScaleSpeed: 0
-  topScale: {x: 0, y: 0, z: 0}
-  lowerScale: {x: 0, y: 0, z: 0}
 --- !u!1001 &1176300241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21614,6 +21575,10 @@ PrefabInstance:
       propertyPath: heartRateText
       value: 
       objectReference: {fileID: 79950889}
+    - target: {fileID: 8811413974658901693, guid: 3fa63506ec1bf4240ada3430ca337aa4, type: 3}
+      propertyPath: placeholderHeartRate
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 8811413974658901694, guid: 3fa63506ec1bf4240ada3430ca337aa4, type: 3}
       propertyPath: breathIndicatorUI
       value: 
