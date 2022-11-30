@@ -73,6 +73,7 @@ public class BreathStatsTracker : MonoBehaviour
             taperTime -= Time.deltaTime;
             yield return null;
         }
+        breathIndicatorUI.text = "Hold";
         yield return new WaitForSeconds(holdTime);
 
         breathSound.volume = initialBreathVolume;
