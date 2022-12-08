@@ -57,6 +57,8 @@ public class LevelManager : MonoBehaviour
     {
         if (sessionEnded) return;
 
+        SessionDataManager.Instance.CreateSessionData();
+
         sessionEnded = true;
         IEnumerator coroutine = FindObjectOfType<EnvironmentControls>().StartGlow();
         StartCoroutine(coroutine);
