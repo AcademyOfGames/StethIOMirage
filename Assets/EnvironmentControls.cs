@@ -69,7 +69,7 @@ public class EnvironmentControls : MonoBehaviour
         while (timeLeft >= 0)
         {
             timeLeft -= Time.deltaTime*.3f;
-            print(            b.intensity.value);
+            //print(            b.intensity.value);
 
             b.intensity.value = Mathf.Lerp(2.5f,initialIntensity, timeLeft);
             b.scatter.value = Mathf.Lerp(.45f,initialScatter, timeLeft);
@@ -95,7 +95,7 @@ public class EnvironmentControls : MonoBehaviour
             timeLeft -= Time.deltaTime*.24f;
             
             b.intensity.value = Mathf.Lerp(0,initialIntensity, timeLeft);
-            print(            b.intensity.value);
+            //print(            b.intensity.value);
             b.scatter.value = Mathf.Lerp(0,initialScatter, timeLeft);
             b.threshold.value = Mathf.Lerp(0,initialThreshold, timeLeft);
             

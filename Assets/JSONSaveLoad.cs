@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Linq;
 
 public class JSONSaveLoad
 {
@@ -14,7 +15,7 @@ public class JSONSaveLoad
         //File.WriteAllText(path  + newSession.TimeCompleted + ".json", json);
 
         string newFile = JsonUtility.ToJson(newSession);
-        FileInfo file = new FileInfo(path + newSession.TimeCompleted + ".json");
+        FileInfo file = new FileInfo(path + newSession.FileName + ".json");
         file.Directory.Create();
         File.WriteAllText(file.FullName, newFile);
     }
@@ -24,10 +25,14 @@ public class JSONSaveLoad
         List<SessionData> sessionList = new List<SessionData>();
         string path = Application.persistentDataPath + "/MirageSaves/";
 
-        foreach(var file in Directory.EnumerateFiles(path, "*.json"))
+        var info = new DirectoryInfo(path);
+        var files = info.GetFiles("*.json").OrderBy(f => f.CreationTime);
+        
+
+        foreach(var file in files)
         {
             SessionData session = new SessionData();
-            string json = File.ReadAllText(file);
+            string json = File.ReadAllText(file.FullName);
             JsonUtility.FromJsonOverwrite(json, session);
             sessionList.Add(session);
 

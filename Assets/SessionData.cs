@@ -22,13 +22,15 @@ public class SessionData
     public int NumBreathsTaken;
 
     public string TimeCompleted;
+    public string DateCompleted;
+    public string FileName;
 
     public SessionData()
     {
 
     }
 
-    public SessionData(string timeCompleted, List<int> heartRateValues,float sessionLength, int inhaleTime, int inhaleHoldTime, int exhaleTime, int exhaleHoldTime)
+    public SessionData(string dateCompleted, string timeCompleted, List<int> heartRateValues,float sessionLength, int inhaleTime, int inhaleHoldTime, int exhaleTime, int exhaleHoldTime)
     {
         this.HeartRateValues = heartRateValues;
         MinHeartRate = heartRateValues.Min();
@@ -39,10 +41,18 @@ public class SessionData
         this.InhaleHoldTime = inhaleHoldTime;
         this.ExhaleTime = exhaleTime;
         this.ExhaleHoldTime = exhaleHoldTime;
-        BreathRate = 60.0f/(inhaleTime + inhaleHoldTime + exhaleHoldTime + exhaleHoldTime);
+        BreathRate = 60.0f/(inhaleTime + inhaleHoldTime + exhaleTime + exhaleHoldTime);
         NumBreathsTaken = Mathf.RoundToInt(sessionLength / BreathRate) ;
 
         this.TimeCompleted = timeCompleted;
+        this.DateCompleted = dateCompleted;
+        FileName = dateCompleted.ToString().Replace("/", "x") + timeCompleted.ToString().Replace(":", "x");
         
+        
+    }
+
+    public System.DateTime GetDateTime()
+    {
+        return System.DateTime.Parse(DateCompleted);
     }
 }
