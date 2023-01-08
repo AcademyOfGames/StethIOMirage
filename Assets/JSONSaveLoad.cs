@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
+using ChartUtil;
+
 
 public class JSONSaveLoad
 {
+    private string saveFilePath = Application.persistentDataPath + "/MirageSaves/sessionData.json";
     public void SaveData(ref SessionData newSession)
     {
         string path = Application.persistentDataPath + "/MirageSaves/";
@@ -18,6 +22,33 @@ public class JSONSaveLoad
         FileInfo file = new FileInfo(path + newSession.FileName + ".json");
         file.Directory.Create();
         File.WriteAllText(file.FullName, newFile);
+    }
+
+    public void SaveSessionData(SessionData data)
+    {
+        // Check if the save data file exists
+        if (File.Exists(saveFilePath))
+        {
+            // Read the existing save data from the file
+            string saveDataJson = File.ReadAllText(saveFilePath);
+            List<SessionData> saveData = JsonConvert.DeserializeObject<List<SessionData>>(saveDataJson);
+
+            // Add the new data to the save data
+            saveData.Add(data);
+
+            // Write the updated save data to the file
+            string updatedSaveDataJson = JsonConvert.SerializeObject(saveData);
+            File.WriteAllText(saveFilePath, updatedSaveDataJson);
+        }
+        else
+        {
+            // Create a new list with the new data
+            List<SessionData> saveData = new List<SessionData> { data };
+
+            // Write the new save data to the file
+            string saveDataJson = JsonConvert.SerializeObject(saveData);
+            File.WriteAllText(saveFilePath, saveDataJson);
+        }
     }
 
     public List<SessionData> LoadAllSessions()
@@ -40,5 +71,38 @@ public class JSONSaveLoad
 
         return sessionList;
 
+    }
+
+    public List<SessionData> LoadSessionData()
+    {
+        List<SessionData> loadData;
+        // Check if the save data file exists
+        if (File.Exists(saveFilePath))
+        {
+            // Read the existing save data from the file
+            string saveDataJson = File.ReadAllText(saveFilePath);
+            loadData = JsonConvert.DeserializeObject<List<SessionData>>(saveDataJson);
+
+
+        }
+        else
+        {
+            // Create a new list with the new data
+            loadData = new List<SessionData>();
+
+            Debug.Log("There is no save file!!");
+        }
+
+        return loadData;
+    }
+
+    public void DeleteSaveFile()
+    {
+        // Check if the save file exists
+        if (File.Exists(saveFilePath))
+        {
+            // Delete the save file
+            File.Delete(saveFilePath);
+        }
     }
 }

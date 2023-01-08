@@ -53,6 +53,8 @@ public class SessionDataManager : MonoBehaviour
 
     public void CreateSessionData()
     {
+        Debug.Log("Creating Session Data!");
+
         string dateCompleted = System.DateTime.UtcNow.ToLocalTime().ToString("d");
         string timeCompleted = System.DateTime.UtcNow.ToLocalTime().ToString("t");
         int sessionLength = Mathf.RoundToInt(LevelSettings.Instance.levelTotalTime- timeTracker.timeLeft);
@@ -62,7 +64,8 @@ public class SessionDataManager : MonoBehaviour
         int exHoldTime= Mathf.RoundToInt(LevelSettings.Instance.levelExhaleHoldTarget);
         sessionData = new SessionData(dateCompleted, timeCompleted, heartRatePoints,sessionLength,inTime, inHoldTime, exTime, exHoldTime);
 
-        saveLoad.SaveData(ref sessionData);
+        //saveLoad.SaveData(ref sessionData);
+        saveLoad.SaveSessionData(sessionData);
     }
 
     

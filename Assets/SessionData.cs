@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+[System.Serializable]
 public class SessionData
 {
     public List<int> HeartRateValues = new List<int>();

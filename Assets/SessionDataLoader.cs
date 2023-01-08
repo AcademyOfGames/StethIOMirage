@@ -7,6 +7,7 @@ using System.Linq;
 using System.Globalization;
 using System;
 
+
 public enum DataTimescale
 {
     BySession,
@@ -20,7 +21,8 @@ public enum DataTimescale
 public enum DataType
 {
     AverageHeartRate,
-    BreathsPerMinute
+    BreathsPerMinute,
+    SessionLength
 }
 
 public class SessionDataLoader : MonoBehaviour
@@ -41,8 +43,15 @@ public class SessionDataLoader : MonoBehaviour
 
     Series avgHeartRate;
     Series breathsPerMin;
+    Series sessionLength;
+
 
     List<string> currentDateTimes = new List<string>();
+
+    private DateTime startDate;
+    private DateTime endDate;
+
+    private bool timeframeChanged = false;
 
     
     //private List<SessionData> avgBySessionList;
@@ -53,6 +62,9 @@ public class SessionDataLoader : MonoBehaviour
 
     List<string>[] dateTimesArray;
     List<SessionData>[] avgValueByTimescaleArray;
+
+    public DateTime StartDate { get => startDate; set => startDate = value; }
+    public DateTime EndDate { get => endDate; set => endDate = value; }
 
     private void Start()
     {
@@ -75,7 +87,7 @@ public class SessionDataLoader : MonoBehaviour
 
         saveLoad = new JSONSaveLoad();
         myChart = chartObject.GetComponent<Chart>();
-        sessionDatas = saveLoad.LoadAllSessions();
+        sessionDatas = saveLoad.LoadSessionData();
         CreateAllSeries();
 
     }
@@ -171,19 +183,15 @@ public class SessionDataLoader : MonoBehaviour
         seriesList.Add(avgHeartRate);
         seriesList.Add(breathsPerMin);
 
-        //FillSeriesWithData(DataTimescale.ByMonth);
+        
 
-        DateTime start = new DateTime(2022, 1, 1); // Specify the start of the time frame here
-        DateTime end = start.AddMonths(11); // Specify the end of the time frame here
+        startDate = new DateTime(2022, 1, 1); // Specify the start of the time frame here
+        endDate = startDate.AddMonths(22); // Specify the end of the time frame here
 
 
-        avgValueByTimescaleArray[(int)DataTimescale.BySession] = CalculateAverages(sessionDatas, start, end, DataTimescale.BySession);
-        avgValueByTimescaleArray[(int)DataTimescale.ByDay] = CalculateAverages(sessionDatas, start, end, DataTimescale.ByDay);
-        avgValueByTimescaleArray[(int)DataTimescale.ByWeek] = CalculateAverages(sessionDatas, start, end, DataTimescale.ByWeek);
-        avgValueByTimescaleArray[(int)DataTimescale.ByMonth] = CalculateAverages(sessionDatas, start, end, DataTimescale.ByMonth);
-        avgValueByTimescaleArray[(int)DataTimescale.ByYear] = CalculateAverages(sessionDatas, start, end, DataTimescale.ByYear);
+        CalculateAllAverages(startDate, endDate);
 
-        SetTimespanWithList(avgValueByTimescaleArray[0]);
+        SetTimespanWithList(avgValueByTimescaleArray[0]); // By default show the data BySession
 
     }
 
@@ -198,107 +206,22 @@ public class SessionDataLoader : MonoBehaviour
         }
     }
 
-    //private void FillSeriesWithData(DataTimescale dataTimescale = DataTimescale.BySession)
-    //{
-    //    myChart.chartData.categories.Clear();
-    //    string date;
-    //    string time;
-    //    System.DateTime dateTime;
-    //    switch (dataTimescale)
-    //    {
-    //        case DataTimescale.BySession:
-    //            foreach (var session in sessionDatas)
-    //            {
-    //                avgHeartRate.data.Add(new Data(session.AvgHeartRate));
+    
+    private void CalculateAllAverages(DateTime start, DateTime end)
+    {
+        avgValueByTimescaleArray[(int)DataTimescale.BySession] = CalculateAverages(sessionDatas, start, end, DataTimescale.BySession);
+        avgValueByTimescaleArray[(int)DataTimescale.ByDay] = CalculateAverages(sessionDatas, start, end, DataTimescale.ByDay);
+        avgValueByTimescaleArray[(int)DataTimescale.ByWeek] = CalculateAverages(sessionDatas, start, end, DataTimescale.ByWeek);
+        avgValueByTimescaleArray[(int)DataTimescale.ByMonth] = CalculateAverages(sessionDatas, start, end, DataTimescale.ByMonth);
+        avgValueByTimescaleArray[(int)DataTimescale.ByYear] = CalculateAverages(sessionDatas, start, end, DataTimescale.ByYear);
+    }
 
-    //                breathsPerMin.data.Add(new Data(session.BreathRate));
-
-    //                date = session.DateCompleted;
-    //                time = session.TimeCompleted;
-    //                dateTime = System.DateTime.Parse(date);
-
-    //                Debug.Log("Day of Month Session Was Made" + dateTime.Day);
-    //                Debug.Log("Day of Week Session Was Made" + dateTime.DayOfWeek);
-    //                Debug.Log("Month and Year Session Was Made" + dateTime.Month + " " + dateTime.Year);
-    //                Debug.Log("Time session was made" + System.DateTime.Parse(time).TimeOfDay);
-
-    //            }
-    //            break;
-    //        case DataTimescale.ByDay:
-    //            break;
-    //        case DataTimescale.ByWeek:
-    //            break;
-    //        case DataTimescale.ByMonth:
-
-    //            int prevMonth = -1;
-    //            System.DateTime prevDate = System.DateTime.MinValue;
-    //            float totalAvgHR = 0;
-    //            float totalBreathPM = 0;
-    //            int sameMonthCount = 0;
-    //            int sessionCount = 0;
-
-
-    //            foreach (var session in sessionDatas)
-    //            {
-    //                date = session.DateCompleted;
-    //                dateTime = System.DateTime.Parse(date);
-
-
-    //                if (dateTime.Month == prevMonth || sameMonthCount == 0)
-    //                {
-    //                    sameMonthCount++;
-    //                    totalAvgHR += session.AvgHeartRate;
-    //                    totalBreathPM += session.BreathRate;
-
-    //                }
-    //                else
-    //                {                      
-    //                    totalAvgHR = totalAvgHR / sameMonthCount;
-    //                    totalBreathPM = totalBreathPM / sameMonthCount;
-
-    //                    avgHeartRate.data.Add(new Data(totalAvgHR));
-    //                    breathsPerMin.data.Add(new Data(totalBreathPM));
-    //                    dateTimes.Add(prevDate);
-
-    //                    //WHAT YOU WILL DO WHEN YOU NEED TO LOOP THIS STUFF
-    //                    //foreach (var series in seriesList)
-    //                    //{
-    //                    //    series.data.Add(new Data(totalAvgHR));
-    //                    //}
-
-    //                    totalAvgHR = session.AvgHeartRate;
-    //                    totalBreathPM = session.BreathRate;
-
-    //                    sameMonthCount = 1;
-    //                }
-                    
-
-    //                if (sessionCount+1 == sessionDatas.Count)
-    //                {
-    //                    totalAvgHR = totalAvgHR / sameMonthCount;
-    //                    totalBreathPM = totalBreathPM / sameMonthCount;
-
-    //                    avgHeartRate.data.Add(new Data(totalAvgHR));
-    //                    breathsPerMin.data.Add(new Data(totalBreathPM));
-    //                    dateTimes.Add(prevDate);
-    //                }
-
-    //                prevDate = dateTime;
-    //                prevMonth = dateTime.Month;
-
-    //                sessionCount++;
-    //            }
-    //            break;
-    //        default:
-    //            break;
-    //    }     
-    //}
-
-    //With help from OpenAI Chatbot
 
     public List<SessionData> CalculateAverages(List<SessionData> dataObjects, DateTime start, DateTime end, DataTimescale timeScale)
     {
         var averages = new List<SessionData>();
+
+        dateTimesArray[(int)timeScale].Clear();
 
         switch (timeScale)
         {
@@ -309,8 +232,8 @@ public class SessionDataLoader : MonoBehaviour
                     if (dataObject.GetDateTime() >= start && dataObject.GetDateTime() < end)
                     {
                         averages.Add(dataObject);
+                        dateTimesArray[(int)timeScale].Add(dataObject.GetDateTime().ToString());
                     }
-                    dateTimesArray[(int)timeScale].Add(dataObject.GetDateTime().ToString());
                 }
                 break;
             case DataTimescale.ByDay:
@@ -328,14 +251,18 @@ public class SessionDataLoader : MonoBehaviour
                         SessionLength = (int)group.Average(dataObject => dataObject.SessionLength)
                     };
                     averages.Add(averageDataObject);
-                    dateTimesArray[(int)timeScale].Add(group.Key.ToString("M"));
+                    dateTimesArray[(int)timeScale].Add(group.Key.ToString("d"));
                 }
                 break;
             case DataTimescale.ByWeek:
                 // Group the data objects by week and average the values in each group
+                //var dataByWeek = dataObjects
+                //    .Where(dataObject => dataObject.GetDateTime() >= start && dataObject.GetDateTime() < end)
+                //    .GroupBy(dataObject => GetWeekOfYear(dataObject.GetDateTime()));
+
                 var dataByWeek = dataObjects
                     .Where(dataObject => dataObject.GetDateTime() >= start && dataObject.GetDateTime() < end)
-                    .GroupBy(dataObject => GetWeekOfYear(dataObject.GetDateTime()));
+                    .GroupBy(dataObject => new { Week = GetWeekOfYear(dataObject.GetDateTime()), Year = dataObject.GetDateTime().Year });
 
                 foreach (var group in dataByWeek)
                 {
@@ -346,7 +273,7 @@ public class SessionDataLoader : MonoBehaviour
                         SessionLength = (int)group.Average(dataObject => dataObject.SessionLength)
                     };
                     averages.Add(averageDataObject);
-                    dateTimesArray[(int)timeScale].Add(group.Key.ToString());
+                    dateTimesArray[(int)timeScale].Add($"Week {group.Key.Week} of {group.Key.Year}");
                 }
                 break;
             case DataTimescale.ByMonth:
@@ -366,7 +293,7 @@ public class SessionDataLoader : MonoBehaviour
                     if (averageDataObject.AvgHeartRate != 0)
                     {
                         averages.Add(averageDataObject);
-                        dateTimesArray[(int)timeScale].Add(group.Key.ToString());
+                        dateTimesArray[(int)timeScale].Add(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(group.Key.Month) + " " +group.Key.Year.ToString());
                     }
                     
                 }
@@ -409,9 +336,62 @@ public class SessionDataLoader : MonoBehaviour
 
     public void ChangeTimeScale(int newScale)
     {
-        myChart.chartData.categories = dateTimesArray[newScale];
+        currentTimeScale = (DataTimescale)newScale;
 
-        SetTimespanWithList(avgValueByTimescaleArray[newScale]);
+        myChart.chartData.categories = dateTimesArray[(int)currentTimeScale];
+
+        SetTimespanWithList(avgValueByTimescaleArray[(int)currentTimeScale]);
+
+        myChart.UpdateChart();
+    }
+
+    public void ChangeStartDate(DateTime newStartDate)
+    {
+        if (!newStartDate.Equals(startDate))
+        {
+            startDate = newStartDate;
+            timeframeChanged= true;
+        }
+    }
+
+    public void ChangeStartDate(CalendarUI calendarUI)
+    {
+        if (!calendarUI.GetSelectedDate().Equals(startDate))
+        {
+            startDate = calendarUI.GetSelectedDate();
+            timeframeChanged = true;
+        }
+    }
+
+    public void ChangeEndDate(DateTime newEndDate)
+    {
+        if (!newEndDate.Equals(endDate))
+        {
+            endDate = newEndDate;   
+            timeframeChanged= true;
+        }
+    }
+
+    public void ChangeEndDate(CalendarUI calendarUI)
+    {
+        if (!calendarUI.GetSelectedDate().Equals(endDate))
+        {
+            endDate = calendarUI.GetSelectedDate();
+            timeframeChanged = true;
+        }
+    }
+
+    public void RefreshChart()
+    {
+        if (timeframeChanged)
+        {
+            CalculateAllAverages(startDate, endDate);
+            timeframeChanged = false;
+        }
+
+        myChart.chartData.categories = dateTimesArray[(int)currentTimeScale];
+
+        SetTimespanWithList(avgValueByTimescaleArray[(int)currentTimeScale]);
 
         myChart.UpdateChart();
     }
@@ -447,6 +427,126 @@ public class SessionDataLoader : MonoBehaviour
     }
     public void ToggleAvgHeartRate() => ToggleDataType(DataType.AverageHeartRate);
     public void ToggleBreathsPerMin() => ToggleDataType(DataType.BreathsPerMinute);
+
+    public void ToggleSessionLength() => ToggleDataType(DataType.SessionLength);
+
+
+
+    public void MakeRandomData()
+    {
+        saveLoad.DeleteSaveFile();
+        DateTime prevDate = new DateTime(2022,1,1);
+        for (int i = 0; i < 250; i++)
+        {
+
+            SessionData newData = new SessionData()
+            {
+                AvgHeartRate = UnityEngine.Random.Range(30, 80),
+                BreathRate = UnityEngine.Random.Range(2, 8),
+                SessionLength = UnityEngine.Random.Range(1, 40),
+                DateCompleted = prevDate.AddHours(120).ToString("yyyy-MM-dd")
+            };
+
+            prevDate = DateTime.ParseExact(newData.DateCompleted, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            saveLoad.SaveSessionData(newData);
+        }
+    }
+
 }
 
 
+//private void FillSeriesWithData(DataTimescale dataTimescale = DataTimescale.BySession)
+//{
+//    myChart.chartData.categories.Clear();
+//    string date;
+//    string time;
+//    System.DateTime dateTime;
+//    switch (dataTimescale)
+//    {
+//        case DataTimescale.BySession:
+//            foreach (var session in sessionDatas)
+//            {
+//                avgHeartRate.data.Add(new Data(session.AvgHeartRate));
+
+//                breathsPerMin.data.Add(new Data(session.BreathRate));
+
+//                date = session.DateCompleted;
+//                time = session.TimeCompleted;
+//                dateTime = System.DateTime.Parse(date);
+
+//                Debug.Log("Day of Month Session Was Made" + dateTime.Day);
+//                Debug.Log("Day of Week Session Was Made" + dateTime.DayOfWeek);
+//                Debug.Log("Month and Year Session Was Made" + dateTime.Month + " " + dateTime.Year);
+//                Debug.Log("Time session was made" + System.DateTime.Parse(time).TimeOfDay);
+
+//            }
+//            break;
+//        case DataTimescale.ByDay:
+//            break;
+//        case DataTimescale.ByWeek:
+//            break;
+//        case DataTimescale.ByMonth:
+
+//            int prevMonth = -1;
+//            System.DateTime prevDate = System.DateTime.MinValue;
+//            float totalAvgHR = 0;
+//            float totalBreathPM = 0;
+//            int sameMonthCount = 0;
+//            int sessionCount = 0;
+
+
+//            foreach (var session in sessionDatas)
+//            {
+//                date = session.DateCompleted;
+//                dateTime = System.DateTime.Parse(date);
+
+
+//                if (dateTime.Month == prevMonth || sameMonthCount == 0)
+//                {
+//                    sameMonthCount++;
+//                    totalAvgHR += session.AvgHeartRate;
+//                    totalBreathPM += session.BreathRate;
+
+//                }
+//                else
+//                {                      
+//                    totalAvgHR = totalAvgHR / sameMonthCount;
+//                    totalBreathPM = totalBreathPM / sameMonthCount;
+
+//                    avgHeartRate.data.Add(new Data(totalAvgHR));
+//                    breathsPerMin.data.Add(new Data(totalBreathPM));
+//                    dateTimes.Add(prevDate);
+
+//                    //WHAT YOU WILL DO WHEN YOU NEED TO LOOP THIS STUFF
+//                    //foreach (var series in seriesList)
+//                    //{
+//                    //    series.data.Add(new Data(totalAvgHR));
+//                    //}
+
+//                    totalAvgHR = session.AvgHeartRate;
+//                    totalBreathPM = session.BreathRate;
+
+//                    sameMonthCount = 1;
+//                }
+
+
+//                if (sessionCount+1 == sessionDatas.Count)
+//                {
+//                    totalAvgHR = totalAvgHR / sameMonthCount;
+//                    totalBreathPM = totalBreathPM / sameMonthCount;
+
+//                    avgHeartRate.data.Add(new Data(totalAvgHR));
+//                    breathsPerMin.data.Add(new Data(totalBreathPM));
+//                    dateTimes.Add(prevDate);
+//                }
+
+//                prevDate = dateTime;
+//                prevMonth = dateTime.Month;
+
+//                sessionCount++;
+//            }
+//            break;
+//        default:
+//            break;
+//    }     
+//}
