@@ -51,6 +51,8 @@ public class SessionDataLoader : MonoBehaviour
     private DateTime startDate;
     private DateTime endDate;
 
+    
+
     private bool timeframeChanged = false;
 
     
@@ -66,6 +68,12 @@ public class SessionDataLoader : MonoBehaviour
     public DateTime StartDate { get => startDate; set => startDate = value; }
     public DateTime EndDate { get => endDate; set => endDate = value; }
 
+
+    private void Awake()
+    {
+        startDate = new DateTime(2022, 1, 1); // Specify the start of the time frame here
+        endDate = startDate.AddMonths(22); // Specify the end of the time frame here
+    }
     private void Start()
     {
         dateTimesArray = new List<string>[5].Select(item => new List<string>()).ToArray();
@@ -180,13 +188,16 @@ public class SessionDataLoader : MonoBehaviour
         breathsPerMin = new Series();
         breathsPerMin.name = "Breaths Per Minute";
 
+        sessionLength = new Series();
+        sessionLength.name = "Session Length";
+
         seriesList.Add(avgHeartRate);
         seriesList.Add(breathsPerMin);
+        seriesList.Add(sessionLength);
 
         
 
-        startDate = new DateTime(2022, 1, 1); // Specify the start of the time frame here
-        endDate = startDate.AddMonths(22); // Specify the end of the time frame here
+        
 
 
         CalculateAllAverages(startDate, endDate);
@@ -199,10 +210,12 @@ public class SessionDataLoader : MonoBehaviour
     {
         avgHeartRate.data.Clear();
         breathsPerMin.data.Clear();
+        sessionLength.data.Clear();
         foreach (SessionData session in sessions)
         {
             avgHeartRate.data.Add(new Data(session.AvgHeartRate));
             breathsPerMin.data.Add(new Data(session.BreathRate));
+            sessionLength.data.Add(new Data(session.SessionLength));
         }
     }
 
@@ -389,6 +402,8 @@ public class SessionDataLoader : MonoBehaviour
             timeframeChanged = false;
         }
 
+        
+
         myChart.chartData.categories = dateTimesArray[(int)currentTimeScale];
 
         SetTimespanWithList(avgValueByTimescaleArray[(int)currentTimeScale]);
@@ -409,6 +424,9 @@ public class SessionDataLoader : MonoBehaviour
                 break;
             case DataType.BreathsPerMinute:
                 currentSeries = breathsPerMin;
+                break;
+            case DataType.SessionLength: 
+                currentSeries = sessionLength; 
                 break;
             default:
                 break;

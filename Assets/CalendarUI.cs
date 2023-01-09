@@ -9,6 +9,8 @@ using TMPro;
 
 public class CalendarUI : MonoBehaviour
 {
+    public bool isStartCalendar;
+
     public TMP_Dropdown monthDropdown;
     public TMP_Text yearText;
     public GameObject dayButtonPrefab;
@@ -25,6 +27,12 @@ public class CalendarUI : MonoBehaviour
 
     void Start()
     {
+        
+    }
+
+    public void SetupCalendar()
+    {
+        this.gameObject.SetActive(true);
         // Populate the month dropdown with the names of the months
         monthDropdown.ClearOptions();
         monthDropdown.AddOptions(DateTimeFormatInfo.CurrentInfo.MonthNames.ToList());
@@ -33,6 +41,25 @@ public class CalendarUI : MonoBehaviour
 
         // Set the year text to the current year
         yearText.text = year.ToString();
+
+        //Set month option to the current start and end months.
+        if (isStartCalendar)
+        {
+            monthDropdown.value = sessionDataLoader.StartDate.Month - 1;
+            year = sessionDataLoader.StartDate.Year;
+            yearText.text = year.ToString();
+            month = sessionDataLoader.StartDate.Month;
+        }
+        else
+        {
+            monthDropdown.value = sessionDataLoader.EndDate.Month - 1;
+            year = sessionDataLoader.EndDate.Year;
+            yearText.text = year.ToString();
+            month = sessionDataLoader.EndDate.Month;
+        }
+
+
+
 
         // Generate the calendar day buttons for the current month
         GenerateCalendar();
@@ -45,7 +72,21 @@ public class CalendarUI : MonoBehaviour
         GenerateCalendar();
     }
 
-    void GenerateCalendar()
+    public void IncreaseYear()
+    {
+        year++;
+        yearText.text = year.ToString();
+        GenerateCalendar();
+    }
+
+    public void DecreaseYear()
+    {
+        year--;
+        yearText.text = year.ToString();
+        GenerateCalendar();
+    }
+
+    public void GenerateCalendar()
     {
         // Clear the current calendar day buttons
         foreach (Transform child in dayGrid.transform)
@@ -80,12 +121,12 @@ public class CalendarUI : MonoBehaviour
             int day = i;
             dayButton.GetComponent<Button>().onClick.AddListener(() => OnDaySelected(day));
 
-            if (day == sessionDataLoader.StartDate.Day && month == sessionDataLoader.StartDate.Month && year == sessionDataLoader.StartDate.Year)
+            if (isStartCalendar && day == sessionDataLoader.StartDate.Day && month == sessionDataLoader.StartDate.Month && year == sessionDataLoader.StartDate.Year)
             {
                 dayButton.GetComponent<Image>().color= Color.blue;
             }
 
-            if (day == sessionDataLoader.EndDate.Day && month == sessionDataLoader.EndDate.Month && year == sessionDataLoader.EndDate.Year)
+            if (!isStartCalendar && day == sessionDataLoader.EndDate.Day && month == sessionDataLoader.EndDate.Month && year == sessionDataLoader.EndDate.Year)
             {
                 dayButton.GetComponent<Image>().color = Color.red;
             }
@@ -96,6 +137,7 @@ public class CalendarUI : MonoBehaviour
     {
         // Save the selected day to a variable or save file
         this.day = day;
+        
     }
 
     public DateTime GetSelectedDate()
