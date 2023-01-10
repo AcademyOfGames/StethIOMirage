@@ -10,7 +10,7 @@ public class PetalIconMovement : MonoBehaviour
 
     private Material petalMaterial;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         petalMaterial = petalGLow.material;
     }
@@ -30,7 +30,7 @@ public class PetalIconMovement : MonoBehaviour
         StartCoroutine(nameof(BreathOut));
     }
 
-    IEnumerator BreathOut()
+    IEnumerator BreathIn()
     {
         float timePassed = 0;
         newCol = petalMaterial.color;
@@ -44,7 +44,7 @@ public class PetalIconMovement : MonoBehaviour
         }
     }
     
-    IEnumerator BreathIn()
+    IEnumerator BreathOut()
     {
         float timePassed = 0;
         newCol = petalMaterial.color;
