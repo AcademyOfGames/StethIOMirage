@@ -21,10 +21,12 @@ public class BreathStatsTracker : MonoBehaviour
 
     public TMP_Text breathPerMinuteUI;
     public TMP_Text breathIndicatorUI;
+
+    private PetalIconMovement petals;
     // Start is called before the first frame update
     void Start()
     {
-        
+        petals = FindObjectOfType<PetalIconMovement>();
 
         breathSound = GetComponent<AudioSource>();
         initialBreathVolume = breathSound.volume;
@@ -43,6 +45,7 @@ public class BreathStatsTracker : MonoBehaviour
         float taperTime = 3;
         float breathTime = LevelSettings.Instance.levelInhaleTarget - taperTime;
         breathIndicatorUI.text = "Breath In";
+        petals.BreathingIn();
 
         yield return new WaitForSeconds(breathTime);
 
@@ -57,6 +60,8 @@ public class BreathStatsTracker : MonoBehaviour
         breathIndicatorUI.text = "Hold";
         yield return new WaitForSeconds(holdTime);
         breathIndicatorUI.text = "Breath Out";
+        petals.BreathingOut();
+
 
         breathSound.clip = exhaleClip;
         breathSound.Play();
