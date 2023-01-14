@@ -9,6 +9,7 @@ using ChartUtil;
 
 public class JSONSaveLoad
 {
+    private string saveFolder = Application.persistentDataPath + "/MirageSaves";
     private string saveFilePath = Application.persistentDataPath + "/MirageSaves/sessionData.json";
     public void SaveData(ref SessionData newSession)
     {
@@ -47,6 +48,7 @@ public class JSONSaveLoad
 
             // Write the new save data to the file
             string saveDataJson = JsonConvert.SerializeObject(saveData);
+            Directory.CreateDirectory(saveFolder);
             File.WriteAllText(saveFilePath, saveDataJson);
         }
     }

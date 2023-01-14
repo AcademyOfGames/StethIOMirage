@@ -55,7 +55,8 @@ public class FirebaseData : MonoBehaviour
 
     private void Start()
     {   
-        if (FindObjectOfType<OnlineStats>().userLoggedIn) GoToLevelSelect();
+        if (FindObjectOfType<OnlineStats>().userLoggedIn)        GoToLevelSelect();
+
     }
 
     void InitializeFirebase()
@@ -78,7 +79,24 @@ public class FirebaseData : MonoBehaviour
     {
         
     }
-    
+
+    private void FixedUpdate()
+    {
+        if (user != null)
+        {
+            if (user.UserId != null)
+            {
+
+                print("user " + user.UserId);
+            }
+            else print(("userID is null"));
+        }
+        else
+        {
+            print("User is null");
+        }
+    }
+
     private IEnumerator Login(string _email, string _password)
     {
         var LoginTask = auth.SignInWithEmailAndPasswordAsync(_email, _password);
@@ -95,7 +113,7 @@ public class FirebaseData : MonoBehaviour
         {
             user = LoginTask.Result;
 
-            Invoke("GoToLevelSelect",2.5f);
+            Invoke("EnterLoggedInUI",2.5f);
             StartCoroutine(ShowMessage(warningLoginText, "Success!"));
 
         }
@@ -131,13 +149,20 @@ public class FirebaseData : MonoBehaviour
                 else
                 {
                     StartCoroutine(ShowMessage(warningRegisterText, "Registration Complete!"));
-                    Invoke("GoToLevelSelect",2.5f);
+                    Invoke("EnterLoggedInUI",2.5f);
                 }
             }
         }      
     }
 
-    void GoToLevelSelect()
+    void EnterLoggedInUI()
+    {
+        GoToLevelSelect();
+
+        FindObjectOfType<OnlineStats>().GetHeartData(user);
+    }
+
+    private void GoToLevelSelect()
     {
         FindObjectOfType<OnlineStats>().userLoggedIn = true;
         levelSelectUI.SetActive(true);
@@ -148,9 +173,8 @@ public class FirebaseData : MonoBehaviour
                 v.gameObject.SetActive(false);
             }
         }
-
-        FindObjectOfType<OnlineStats>().GetHeartData(user);
     }
+
     IEnumerator ShowMessage(TMP_Text text,string message){
         
         text.transform.gameObject.SetActive(true);
