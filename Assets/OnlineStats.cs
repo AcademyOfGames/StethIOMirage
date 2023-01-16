@@ -11,6 +11,15 @@ public class OnlineStats : MonoBehaviour
     public FirebaseUser user;
     private DatabaseReference db;
     public int currentHeartRate = -1;
+    public int currentAtrialFibBurden = -1;
+    public int currentBloodPressureDiastolic = -1;
+    public int currentBloodPressureSystolic = -1;
+    public int currentBodyTemp = -1;
+    public int currentHeartRateRecovery = -1;
+    public int currentHeartRateVariability = -1;
+    public int currentOxygenSaturation = -1;
+    public int currentRespiratoryRate = -1;
+    public int currentRestingHeartRate = -1;
     public bool userLoggedIn;
     public bool missingHeartData;
     private long previousEarlyTimeStamp = 0;
@@ -62,6 +71,15 @@ public class OnlineStats : MonoBehaviour
                     {
                         string rate = child.Child("heartRate").Value.ToString();
                         currentHeartRate = int.Parse(rate);
+                        currentAtrialFibBurden = int.Parse(child.Child("atrialFibrillationBurden").Value.ToString());
+                        currentBloodPressureDiastolic = int.Parse(child.Child("bloodPressureDiastolic").Value.ToString());
+                        currentBloodPressureSystolic = int.Parse(child.Child("bloodPressureSystolic").Value.ToString());
+                        currentBodyTemp = int.Parse(child.Child("bodyTemperature").Value.ToString());
+                        currentHeartRateRecovery = int.Parse(child.Child("heartRateRecoveryOneMinute").Value.ToString());
+                        currentHeartRateVariability = int.Parse(child.Child("heartRateVariabilitySDNN").Value.ToString());
+                        currentOxygenSaturation = int.Parse(child.Child("oxygenSaturation").Value.ToString());
+                        currentRespiratoryRate = int.Parse(child.Child("respiratoryRate").Value.ToString());
+                        currentRestingHeartRate = int.Parse(child.Child("restingHeartRate").Value.ToString());
                     }
 
                     if (earliestTimeStamp > timestamp)

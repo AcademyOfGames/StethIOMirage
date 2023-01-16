@@ -26,6 +26,16 @@ public class SessionData
     public string DateCompleted;
     public string FileName;
 
+    public float AtrialFibBurden;
+    public float BloodPressureDiastolic;
+    public float BloodPressureSystolic;
+    public float BodyTemperature;
+    public float HeartRateRecovery;
+    public float HeartRateVariability;
+    public float OxygenSaturation;
+    public float RespiratoryRate;
+    public float RestingHeartRate;
+
     public SessionData()
     {
 

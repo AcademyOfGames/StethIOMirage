@@ -12,6 +12,9 @@ public class HeartStatsTracker : MonoBehaviour
     private static HeartStatsTracker _instance;
 
     public static HeartStatsTracker Instance { get { return _instance; } }
+
+    public OnlineStats Stats { get => stats; set => stats = value; }
+
     private OnlineStats stats;
     public float initialHeartRate;
     

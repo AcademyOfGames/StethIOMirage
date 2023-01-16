@@ -20,6 +20,7 @@ public class TimePassedTracker : MonoBehaviour
     {
         if (timeLeft <= 0.05)
         {
+            timeLeft = 0;
             FindObjectOfType<LevelManager>().EndSession("You've completed the session time");
         }
         else

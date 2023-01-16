@@ -22,7 +22,16 @@ public enum DataType
 {
     AverageHeartRate,
     BreathsPerMinute,
-    SessionLength
+    SessionLength,
+    AtrialFibBurden,
+    BloodPressureDiastolic,
+    BloodPressureSystolic,
+    BodyTemperature,
+    HeartRateRecovery,
+    HeartRateVariability,
+    OxygenSaturation,
+    RespiratoryRate,
+    RestingHeartRate
 }
 
 public class SessionDataLoader : MonoBehaviour
@@ -41,9 +50,22 @@ public class SessionDataLoader : MonoBehaviour
 
     private JSONSaveLoad saveLoad;
 
-    Series avgHeartRate;
-    Series breathsPerMin;
-    Series sessionLength;
+    Series series_AvgHeartRate;
+    Series series_BreathsPerMin;
+    Series series_SessionLength;
+
+
+    //Blood pressure is made of Diastolic and Systolic
+    Series series_AtrialFibBurden;
+    Series series_BloodPressureDiastolic; 
+    Series series_BloodPressureSystolic; 
+    Series series_BodyTemperature;
+    Series series_HeartRateRecovery;
+    Series series_HeartRateVariability;
+    Series series_OxygenSaturation;
+    Series series_RespiratoryRate;
+    Series series_RestingHeartRate;
+
 
 
     List<string> currentDateTimes = new List<string>();
@@ -169,8 +191,8 @@ public class SessionDataLoader : MonoBehaviour
         //}
 
         //add series into series list
-        myChart.chartData.series.Add(avgHeartRate);
-        myChart.chartData.series.Add(breathsPerMin);
+        myChart.chartData.series.Add(series_AvgHeartRate);
+        myChart.chartData.series.Add(series_BreathsPerMin);
 
         //update chart
         myChart.UpdateChart();
@@ -182,18 +204,46 @@ public class SessionDataLoader : MonoBehaviour
     {
         //Add more series here when we finalise what data we want to show.
 
-        avgHeartRate = new Series();
-        avgHeartRate.name = "Average Heart Rate";
+        series_AvgHeartRate = new Series();
+        series_AvgHeartRate.name = "Average Heart Rate";
 
-        breathsPerMin = new Series();
-        breathsPerMin.name = "Breaths Per Minute";
+        series_BreathsPerMin = new Series();
+        series_BreathsPerMin.name = "Breaths Per Minute";
 
-        sessionLength = new Series();
-        sessionLength.name = "Session Length";
+        series_SessionLength = new Series();
+        series_SessionLength.name = "Session Length";
 
-        seriesList.Add(avgHeartRate);
-        seriesList.Add(breathsPerMin);
-        seriesList.Add(sessionLength);
+        series_AtrialFibBurden = new Series();
+        series_AtrialFibBurden.name = "Atrial Fibrillation Burden";
+
+        series_BloodPressureDiastolic = new Series();
+        series_BloodPressureDiastolic.name = "Diastolic Blood Pressure";
+
+        series_BloodPressureSystolic = new Series();
+        series_BloodPressureSystolic.name = "Systolic Blood Pressure";
+
+        series_BodyTemperature = new Series();
+        series_BodyTemperature.name = "Body Temperature";
+
+        series_HeartRateRecovery = new Series();
+        series_HeartRateRecovery.name = "Heart Rate Recovery";
+
+        series_HeartRateVariability = new Series();
+        series_HeartRateVariability.name = "Heart Rate Variability";
+
+        series_OxygenSaturation = new Series();
+        series_OxygenSaturation.name = "Oxygen Saturation";
+
+        series_RespiratoryRate = new Series();
+        series_RespiratoryRate.name = "Respiration Rate";
+
+        series_RestingHeartRate = new Series();
+        series_RestingHeartRate.name = "Resting Heart Rate";
+
+
+        //seriesList.Add(series_AvgHeartRate);
+        //seriesList.Add(series_BreathsPerMin);
+        //seriesList.Add(series_SessionLength);
 
         
 
@@ -206,16 +256,37 @@ public class SessionDataLoader : MonoBehaviour
 
     }
 
-    private void SetTimespanWithList(List<SessionData> sessions)
+    private void SetTimespanWithList(List<SessionData> currentTimescaleData)
     {
-        avgHeartRate.data.Clear();
-        breathsPerMin.data.Clear();
-        sessionLength.data.Clear();
-        foreach (SessionData session in sessions)
+        series_AvgHeartRate.data.Clear();
+        series_BreathsPerMin.data.Clear();
+        series_SessionLength.data.Clear();
+
+        series_AtrialFibBurden.data.Clear();
+        series_BloodPressureDiastolic.data.Clear();
+        series_BloodPressureSystolic.data.Clear();
+        series_BodyTemperature.data.Clear();
+        series_HeartRateRecovery.data.Clear();
+        series_HeartRateVariability.data.Clear();
+        series_OxygenSaturation.data.Clear();
+        series_RespiratoryRate.data.Clear();
+        series_RestingHeartRate.data.Clear();
+
+        foreach (SessionData session in currentTimescaleData)
         {
-            avgHeartRate.data.Add(new Data(session.AvgHeartRate));
-            breathsPerMin.data.Add(new Data(session.BreathRate));
-            sessionLength.data.Add(new Data(session.SessionLength));
+            series_AvgHeartRate.data.Add(new Data(session.AvgHeartRate));
+            series_BreathsPerMin.data.Add(new Data(session.BreathRate));
+            series_SessionLength.data.Add(new Data(session.SessionLength));
+
+            series_AtrialFibBurden.data.Add(new Data(session.AtrialFibBurden));
+            series_BloodPressureDiastolic.data.Add(new Data(session.BloodPressureDiastolic));
+            series_BloodPressureSystolic.data.Add(new Data(session.BloodPressureSystolic));
+            series_BodyTemperature.data.Add(new Data(session.BodyTemperature));
+            series_HeartRateRecovery.data.Add(new Data(session.HeartRateRecovery));
+            series_HeartRateVariability.data.Add(new Data(session.HeartRateVariability));
+            series_OxygenSaturation.data.Add(new Data(session.OxygenSaturation));
+            series_RespiratoryRate.data.Add(new Data(session.RespiratoryRate));
+            series_RestingHeartRate.data.Add(new Data(session.RestingHeartRate));
         }
     }
 
@@ -239,9 +310,16 @@ public class SessionDataLoader : MonoBehaviour
         switch (timeScale)
         {
             case DataTimescale.BySession:
+
+                //var dataBySession = dataObjects
+                //        .Where(dataObject => dataObject.GetDateTime() >= start && dataObject.GetDateTime() < end)
+                //        .OrderBy(dataObject => dataObject.GetDateTime());
+
                 // Average the data objects individually
                 foreach (var dataObject in dataObjects)
                 {
+
+                    
                     if (dataObject.GetDateTime() >= start && dataObject.GetDateTime() < end)
                     {
                         averages.Add(dataObject);
@@ -253,6 +331,7 @@ public class SessionDataLoader : MonoBehaviour
                 // Group the data objects by day and average the values in each group
                 var dataByDay = dataObjects
                     .Where(dataObject => dataObject.GetDateTime() >= start && dataObject.GetDateTime() < end)
+                    .OrderBy(dataObject => dataObject.GetDateTime())
                     .GroupBy(dataObject => dataObject.GetDateTime().Date);
 
                 foreach (var group in dataByDay)
@@ -261,8 +340,18 @@ public class SessionDataLoader : MonoBehaviour
                     {
                         AvgHeartRate = (int)group.Average(dataObject => dataObject.AvgHeartRate),
                         BreathRate = (int)group.Average(dataObject => dataObject.BreathRate),
-                        SessionLength = (int)group.Average(dataObject => dataObject.SessionLength)
+                        SessionLength = (int)group.Average(dataObject => dataObject.SessionLength),
+                        AtrialFibBurden = (int)group.Average(dataObject => dataObject.AtrialFibBurden),
+                        BloodPressureDiastolic = (int)group.Average(dataObject => dataObject.BloodPressureDiastolic),
+                        BloodPressureSystolic = (int)group.Average(dataObject => dataObject.BloodPressureSystolic),
+                        BodyTemperature = (int)group.Average(dataObject => dataObject.BodyTemperature),
+                        HeartRateRecovery = (int)group.Average(dataObject => dataObject.HeartRateRecovery),
+                        HeartRateVariability = (int)group.Average(dataObject => dataObject.HeartRateVariability),
+                        OxygenSaturation = (int)group.Average(dataObject => dataObject.OxygenSaturation),
+                        RespiratoryRate = (int)group.Average(dataObject => dataObject.RespiratoryRate),
+                        RestingHeartRate = (int)group.Average(dataObject => dataObject.RestingHeartRate)
                     };
+
                     averages.Add(averageDataObject);
                     dateTimesArray[(int)timeScale].Add(group.Key.ToString("d"));
                 }
@@ -275,6 +364,8 @@ public class SessionDataLoader : MonoBehaviour
 
                 var dataByWeek = dataObjects
                     .Where(dataObject => dataObject.GetDateTime() >= start && dataObject.GetDateTime() < end)
+                    .OrderBy(dataObject => dataObject.GetDateTime().Year)
+                    .ThenBy(dataObject => GetWeekOfYear(dataObject.GetDateTime()))
                     .GroupBy(dataObject => new { Week = GetWeekOfYear(dataObject.GetDateTime()), Year = dataObject.GetDateTime().Year });
 
                 foreach (var group in dataByWeek)
@@ -283,7 +374,16 @@ public class SessionDataLoader : MonoBehaviour
                     {
                         AvgHeartRate = (int)group.Average(dataObject => dataObject.AvgHeartRate),
                         BreathRate = (int)group.Average(dataObject => dataObject.BreathRate),
-                        SessionLength = (int)group.Average(dataObject => dataObject.SessionLength)
+                        SessionLength = (int)group.Average(dataObject => dataObject.SessionLength),
+                        AtrialFibBurden = (int)group.Average(dataObject => dataObject.AtrialFibBurden),
+                        BloodPressureDiastolic = (int)group.Average(dataObject => dataObject.BloodPressureDiastolic),
+                        BloodPressureSystolic = (int)group.Average(dataObject => dataObject.BloodPressureSystolic),
+                        BodyTemperature = (int)group.Average(dataObject => dataObject.BodyTemperature),
+                        HeartRateRecovery = (int)group.Average(dataObject => dataObject.HeartRateRecovery),
+                        HeartRateVariability = (int)group.Average(dataObject => dataObject.HeartRateVariability),
+                        OxygenSaturation = (int)group.Average(dataObject => dataObject.OxygenSaturation),
+                        RespiratoryRate = (int)group.Average(dataObject => dataObject.RespiratoryRate),
+                        RestingHeartRate = (int)group.Average(dataObject => dataObject.RestingHeartRate)
                     };
                     averages.Add(averageDataObject);
                     dateTimesArray[(int)timeScale].Add($"Week {group.Key.Week} of {group.Key.Year}");
@@ -293,6 +393,8 @@ public class SessionDataLoader : MonoBehaviour
                 // Group the data objects by month and year and average the values in each group
                 var dataByMonth = dataObjects
                     .Where(dataObject => dataObject.GetDateTime() >= start && dataObject.GetDateTime() < end)
+                    .OrderBy(dataObject => dataObject.GetDateTime().Year)
+                    .ThenBy(dataObject => dataObject.GetDateTime().Month)
                     .GroupBy(dataObject => new { dataObject.GetDateTime().Year, dataObject.GetDateTime().Month });
 
                 foreach (var group in dataByMonth)
@@ -301,7 +403,16 @@ public class SessionDataLoader : MonoBehaviour
                     {
                         AvgHeartRate = (int)group.Average(dataObject => dataObject.AvgHeartRate),
                         BreathRate = (int)group.Average(dataObject => dataObject.BreathRate),
-                        SessionLength = (int)group.Average(dataObject => dataObject.SessionLength)
+                        SessionLength = (int)group.Average(dataObject => dataObject.SessionLength),
+                        AtrialFibBurden = (int)group.Average(dataObject => dataObject.AtrialFibBurden),
+                        BloodPressureDiastolic = (int)group.Average(dataObject => dataObject.BloodPressureDiastolic),
+                        BloodPressureSystolic = (int)group.Average(dataObject => dataObject.BloodPressureSystolic),
+                        BodyTemperature = (int)group.Average(dataObject => dataObject.BodyTemperature),
+                        HeartRateRecovery = (int)group.Average(dataObject => dataObject.HeartRateRecovery),
+                        HeartRateVariability = (int)group.Average(dataObject => dataObject.HeartRateVariability),
+                        OxygenSaturation = (int)group.Average(dataObject => dataObject.OxygenSaturation),
+                        RespiratoryRate = (int)group.Average(dataObject => dataObject.RespiratoryRate),
+                        RestingHeartRate = (int)group.Average(dataObject => dataObject.RestingHeartRate)
                     };
                     if (averageDataObject.AvgHeartRate != 0)
                     {
@@ -315,6 +426,7 @@ public class SessionDataLoader : MonoBehaviour
                 // Group the data objects by year and average the values in each group
                 var dataByYear = dataObjects
                     .Where(dataObject => dataObject.GetDateTime() >= start && dataObject.GetDateTime() < end)
+                    .OrderBy(dataObject => dataObject.GetDateTime().Year)
                     .GroupBy(dataObject => dataObject.GetDateTime().Year);
 
                 foreach (var group in dataByYear)
@@ -323,7 +435,16 @@ public class SessionDataLoader : MonoBehaviour
                     {
                         AvgHeartRate = (int)group.Average(dataObject => dataObject.AvgHeartRate),
                         BreathRate = (int)group.Average(dataObject => dataObject.BreathRate),
-                        SessionLength = (int)group.Average(dataObject => dataObject.SessionLength)
+                        SessionLength = (int)group.Average(dataObject => dataObject.SessionLength),
+                        AtrialFibBurden = (int)group.Average(dataObject => dataObject.AtrialFibBurden),
+                        BloodPressureDiastolic = (int)group.Average(dataObject => dataObject.BloodPressureDiastolic),
+                        BloodPressureSystolic = (int)group.Average(dataObject => dataObject.BloodPressureSystolic),
+                        BodyTemperature = (int)group.Average(dataObject => dataObject.BodyTemperature),
+                        HeartRateRecovery = (int)group.Average(dataObject => dataObject.HeartRateRecovery),
+                        HeartRateVariability = (int)group.Average(dataObject => dataObject.HeartRateVariability),
+                        OxygenSaturation = (int)group.Average(dataObject => dataObject.OxygenSaturation),
+                        RespiratoryRate = (int)group.Average(dataObject => dataObject.RespiratoryRate),
+                        RestingHeartRate = (int)group.Average(dataObject => dataObject.RestingHeartRate)
                     };
                     averages.Add(averageDataObject);
                     dateTimesArray[(int)timeScale].Add(group.Key.ToString());
@@ -420,17 +541,46 @@ public class SessionDataLoader : MonoBehaviour
         switch (dataType)
         {
             case DataType.AverageHeartRate:
-                currentSeries = avgHeartRate;
+                currentSeries = series_AvgHeartRate;
                 break;
             case DataType.BreathsPerMinute:
-                currentSeries = breathsPerMin;
+                currentSeries = series_BreathsPerMin;
                 break;
             case DataType.SessionLength: 
-                currentSeries = sessionLength; 
+                currentSeries = series_SessionLength; 
                 break;
+            case DataType.AtrialFibBurden:
+                currentSeries = series_AtrialFibBurden;
+                break;
+            case DataType.BloodPressureDiastolic:
+                currentSeries = series_BloodPressureDiastolic;
+                break;
+            case DataType.BloodPressureSystolic:
+                currentSeries = series_BloodPressureSystolic;
+                break;
+            case DataType.BodyTemperature:
+                currentSeries = series_BodyTemperature;
+                break;
+            case DataType.HeartRateRecovery:
+                currentSeries = series_HeartRateRecovery;
+                break;
+            case DataType.HeartRateVariability:
+                currentSeries = series_HeartRateVariability;
+                break;
+            case DataType.OxygenSaturation:
+                currentSeries = series_OxygenSaturation;
+                break;
+            case DataType.RespiratoryRate:
+                currentSeries = series_RespiratoryRate;
+                break;
+            case DataType.RestingHeartRate:
+                currentSeries = series_RestingHeartRate;
+                break;
+
             default:
                 break;
         }
+
 
         if (myChart.chartData.series.Contains(currentSeries))
         {
@@ -448,13 +598,23 @@ public class SessionDataLoader : MonoBehaviour
 
     public void ToggleSessionLength() => ToggleDataType(DataType.SessionLength);
 
+    public void ToggleAtrialFibBurden() => ToggleDataType(DataType.AtrialFibBurden);
+    public void ToggleBloodPressureDiastolic() => ToggleDataType(DataType.BloodPressureDiastolic);
+    public void ToggleBloodPressureSystolic() => ToggleDataType(DataType.BloodPressureSystolic);
+    public void ToggleBodyTemperature() => ToggleDataType(DataType.BodyTemperature);
+    public void ToggleHeartRateRecovery() => ToggleDataType(DataType.HeartRateRecovery);
+    public void ToggleHeartRateVariability() => ToggleDataType(DataType.HeartRateVariability);
+    public void ToggleOxygenSaturation() => ToggleDataType(DataType.OxygenSaturation);
+    public void ToggleRespiratoryRate() => ToggleDataType(DataType.RespiratoryRate);
+    public void ToggleRestingHeartRate() => ToggleDataType(DataType.RestingHeartRate);
+
 
 
     public void MakeRandomData()
     {
         saveLoad.DeleteSaveFile();
-        DateTime prevDate = new DateTime(2022,1,1);
-        for (int i = 0; i < 250; i++)
+        DateTime prevDate = new DateTime(2021,1,1);
+        for (int i = 0; i < 100; i++)
         {
 
             SessionData newData = new SessionData()
@@ -462,12 +622,26 @@ public class SessionDataLoader : MonoBehaviour
                 AvgHeartRate = UnityEngine.Random.Range(30, 80),
                 BreathRate = UnityEngine.Random.Range(2, 8),
                 SessionLength = UnityEngine.Random.Range(1, 40),
-                DateCompleted = prevDate.AddHours(120).ToString("yyyy-MM-dd")
+                DateCompleted = prevDate.AddHours(120).ToString("yyyy-MM-dd"),
+                AtrialFibBurden = UnityEngine.Random.Range(1, 20),
+                BloodPressureDiastolic = UnityEngine.Random.Range(1, 20),
+                BloodPressureSystolic = UnityEngine.Random.Range(20, 30),
+                BodyTemperature = UnityEngine.Random.Range(30, 40),
+                HeartRateRecovery = UnityEngine.Random.Range(40, 50),
+                HeartRateVariability = UnityEngine.Random.Range(50, 60),
+                OxygenSaturation = UnityEngine.Random.Range(60, 70),
+                RespiratoryRate = UnityEngine.Random.Range(70, 80),
+                RestingHeartRate = UnityEngine.Random.Range(80, 90)
             };
 
             prevDate = DateTime.ParseExact(newData.DateCompleted, "yyyy-MM-dd", CultureInfo.InvariantCulture);
             saveLoad.SaveSessionData(newData);
         }
+    }
+
+    public void ClearSavedData()
+    {
+        saveLoad.DeleteSaveFile();
     }
 
 }
