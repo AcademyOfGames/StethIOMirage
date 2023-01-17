@@ -34,8 +34,10 @@ public class FirebaseData : MonoBehaviour
     
     
     public TextMeshProUGUI heartRateText;
-    public GameObject levelSelectUI;    
-    
+    public GameObject levelSelectUI;
+
+    private string GenericLoginText = "t@t.com";
+    private string GenericPasswordText = "123456";
     void Awake()
     {
         if (FindObjectOfType<OnlineStats>().userLoggedIn) return;
@@ -64,7 +66,12 @@ public class FirebaseData : MonoBehaviour
        auth = FirebaseAuth.DefaultInstance;
        db = FirebaseDatabase.DefaultInstance.RootReference;
     }
-
+    
+    public void GenericLogin()
+    {
+        StartCoroutine(Login(GenericLoginText, GenericPasswordText));
+    }
+    
     public void LoginButton()
     {
        StartCoroutine(Login(emailLoginField.text, passwordLoginField.text));
@@ -74,12 +81,7 @@ public class FirebaseData : MonoBehaviour
     {
         StartCoroutine(Register(emailRegisterField.text, passwordRegisterField.text, usernameRegisterField.text));
     }
-
-    public void ClearLoginFields()
-    {
-        
-    }
-
+    
     private void FixedUpdate()
     {
         if (user != null)
@@ -107,8 +109,8 @@ public class FirebaseData : MonoBehaviour
         else
         {
             user = LoginTask.Result;
-
-            Invoke("EnterLoggedInUI",2.5f);
+            
+            Invoke(nameof(EnterLoggedInUI),2f);
             StartCoroutine(ShowMessage(warningLoginText, "Success!"));
 
         }

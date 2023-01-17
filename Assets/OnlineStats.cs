@@ -29,7 +29,9 @@ public class OnlineStats : MonoBehaviour
     }
     public void GetHeartData(FirebaseUser _user)
     {
-        if(user != null ) user = _user;
+        print("getting heart rate for user " + _user);
+        print("getting heart rate for userID " + _user.UserId);
+        user ??= _user;
         StartCoroutine("GetHeartRate");
     }
     
@@ -106,6 +108,13 @@ public class OnlineStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (user != null)
+        {
+            if (user.UserId == null) print(("userID is null"));
+        }
+        else
+        {
+            print("User is null");
+        }
     }
 }

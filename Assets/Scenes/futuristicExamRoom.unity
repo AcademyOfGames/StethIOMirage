@@ -56000,7 +56000,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2431728752418255547}
   m_Layer: 5
-  m_Name: login
+  m_Name: SigIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56381,7 +56381,7 @@ GameObject:
   - component: {fileID: 2431728752495768537}
   - component: {fileID: 2431728752495768536}
   m_Layer: 5
-  m_Name: 'Create Account '
+  m_Name: Btn_CreateAccount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58115,7 +58115,7 @@ GameObject:
   - component: {fileID: 2431728752935352050}
   - component: {fileID: 2431728752935352049}
   m_Layer: 5
-  m_Name: Login
+  m_Name: Btn_signIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58232,45 +58232,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2431728752418255524}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 2431728753725922511}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1331502038}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 611595512}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 8636248189052296386}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
+        m_MethodName: ActivateSignIn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -61513,7 +61477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2431728753725922510}
   m_Layer: 5
-  m_Name: start
+  m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64925,12 +64889,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8636248189052296398}
   - component: {fileID: 8636248189052296396}
+  - component: {fileID: 8636248189052296387}
+  - component: {fileID: 8636248189052296386}
+  - component: {fileID: 8566923467061381489}
   - component: {fileID: 8636248189052296399}
   - component: {fileID: 8636248189052296397}
   - component: {fileID: 8636248189052296394}
   - component: {fileID: 8566923465846686360}
   - component: {fileID: 5646839856266575685}
-  - component: {fileID: 8566923467061381489}
   m_Layer: 5
   m_Name: MainUI
   m_TagString: Untagged
@@ -64938,6 +64904,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8636248189052296386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8636248189052296385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc6eaa7feba794f9f8999a9308b57a27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signInUI: {fileID: 2431728752418255524}
+  startUI: {fileID: 2431728753725922511}
+  VRKeys: {fileID: 1331502038}
+  buttonSound: {fileID: 611595512}
+--- !u!114 &8636248189052296387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8636248189052296385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f45d992025ae448b302fc2b78727c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8636248189052296394
 MonoBehaviour:
   m_ObjectHideFlags: 0
