@@ -45,7 +45,6 @@ public class JSONSaveLoad
         {
             // Create a new list with the new data
             List<SessionData> saveData = new List<SessionData> { data };
-
             // Write the new save data to the file
             string saveDataJson = JsonConvert.SerializeObject(saveData);
             Directory.CreateDirectory(saveFolder);

@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,13 +14,14 @@ public class StatsScreenToggle : MonoBehaviour
         if (isOn)
         {
             isOn = false;
-            statsScreen.SetActive(false);
+            statsScreen.GetComponent<Animator>().SetTrigger("Close");
             buttonText.text = "Show Statistics";
         }
         else
         {
             isOn = true;
             statsScreen.SetActive(true);
+            statsScreen.GetComponent<Animator>().SetTrigger("Open");
             buttonText.text = "Hide Statistics";
         }
     }

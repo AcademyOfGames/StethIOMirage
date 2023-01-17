@@ -84,12 +84,7 @@ public class FirebaseData : MonoBehaviour
     {
         if (user != null)
         {
-            if (user.UserId != null)
-            {
-
-                print("user " + user.UserId);
-            }
-            else print(("userID is null"));
+            if (user.UserId == null) print(("userID is null"));
         }
         else
         {
