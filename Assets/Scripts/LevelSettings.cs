@@ -21,6 +21,8 @@ public class LevelSettings : MonoBehaviour
     public float breathsPerMinute;
     private static LevelSettings _instance;
 
+    public string SelectedEnvironment = "";
+
     private LevelStatsUIManager uIManager;
     //effects
     public Volume postEffects;

@@ -36,6 +36,8 @@ public class SessionData
     public float RespiratoryRate;
     public float RestingHeartRate;
 
+    public string EnvironmentName;
+
     public SessionData()
     {
 

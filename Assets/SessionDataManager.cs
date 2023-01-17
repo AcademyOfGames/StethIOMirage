@@ -25,7 +25,7 @@ public class SessionDataManager : MonoBehaviour
 
     private SessionData sessionData;
 
-    float dataCollectionRate = 10f;
+    float dataCollectionRate = 30f;
     float timeCount = 0f;
 
     JSONSaveLoad saveLoad;
@@ -112,6 +112,11 @@ public class SessionDataManager : MonoBehaviour
         sessionData.BodyTemperature = (int)currentBodyTemp.Average();
         sessionData.HeartRateRecovery = (int)currentHeartRateRecovery.Average();
         sessionData.HeartRateVariability = (int)currentHeartRateVariability.Average();
+        sessionData.OxygenSaturation = (int)currentOxygenSaturation.Average();
+        sessionData.RespiratoryRate = (int)currentRespiratoryRate.Average();
+        sessionData.RestingHeartRate = (int)currentRestingHeartRate.Average();
+
+        sessionData.EnvironmentName = LevelSettings.Instance.SelectedEnvironment;
 
         //saveLoad.SaveData(ref sessionData);
         saveLoad.SaveSessionData(sessionData);

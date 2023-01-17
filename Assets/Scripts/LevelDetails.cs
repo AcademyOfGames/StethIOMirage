@@ -20,5 +20,7 @@ public class LevelDetails : MonoBehaviour
         levelTextUI.text = bodyText;
         levelTitleUI.text = titleText;
         scene = sceneName;
+
+        LevelSettings.Instance.SelectedEnvironment = scene;
     }
 }
