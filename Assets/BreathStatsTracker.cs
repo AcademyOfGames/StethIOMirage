@@ -56,9 +56,12 @@ public class BreathStatsTracker : MonoBehaviour
             yield return null;
 
         }
-        
-        breathIndicatorUI.text = "Hold";
-        yield return new WaitForSeconds(holdTime);
+
+        if (holdTime >= 1)
+        {
+            breathIndicatorUI.text = "Hold";
+            yield return new WaitForSeconds(holdTime);
+        }
         breathIndicatorUI.text = "Breath Out";
         petals.BreathingOut();
 
@@ -78,8 +81,13 @@ public class BreathStatsTracker : MonoBehaviour
             taperTime -= Time.deltaTime;
             yield return null;
         }
-        breathIndicatorUI.text = "Hold";
-        yield return new WaitForSeconds(holdTime);
+
+        if (holdTime >= 1)
+        {
+            breathIndicatorUI.text = "Hold";
+            yield return new WaitForSeconds(holdTime);
+        }
+        
 
         breathSound.volume = initialBreathVolume;
         breathSound.clip = inhaleClip;

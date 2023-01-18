@@ -144,7 +144,15 @@ namespace VRKeys {
 			infoNotice.SetActive (false);
 			successNotice.SetActive (false);
 
-			UpdateDisplayText ();
+			if (displayText.text == "")
+            {
+				UpdateDisplayText();
+            }
+            else
+            {
+				text = displayText.text;
+            }
+			
 			PlaceholderVisibility ();
 
 			initialized = true;

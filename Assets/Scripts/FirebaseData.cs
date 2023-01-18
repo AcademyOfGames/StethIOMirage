@@ -108,6 +108,7 @@ public class FirebaseData : MonoBehaviour
         }
         else
         {
+            LoginDetailsManager.Instance.SaveLoginDetails();
             user = LoginTask.Result;
             
             Invoke(nameof(EnterLoggedInUI),2f);
@@ -260,10 +261,12 @@ public class FirebaseData : MonoBehaviour
         }
         text.GetComponent<Image>().color = Color.white;
 
+        //keys.displayText = null;
+        keys.text = "";
         keys.displayText = text;
-        keys.Clear();
+        //keys.Clear();
         //keys.displayText.placeholder.text = "";
-        keys.displayText.text = "";
+        //keys.displayText.text = "";
     }
     
     public void GetHeartData()

@@ -100,6 +100,8 @@ public class SessionDataManager : MonoBehaviour
         sessionData.DateCompleted = dateCompleted;
         sessionData.TimeCompleted = timeCompleted;
         sessionData.SessionLength = sessionLength;
+        sessionData.BreathRate = 60.0f / (inTime + inHoldTime + exTime + exHoldTime);
+        sessionData.NumBreathsTaken = Mathf.RoundToInt( sessionData.BreathRate * sessionLength);
         sessionData.InhaleTime = inTime;
         sessionData.InhaleHoldTime = inHoldTime;
         sessionData.ExhaleTime = exTime;
