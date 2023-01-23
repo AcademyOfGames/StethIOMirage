@@ -107,16 +107,29 @@ public class SessionDataManager : MonoBehaviour
         sessionData.ExhaleTime = exTime;
         sessionData.ExhaleHoldTime = exHoldTime;
 
-        sessionData.AtrialFibBurden = (int)currentAtrialFibBurden.Average();
-        sessionData.AvgHeartRate = (int)heartRatePoints.Average();
-        sessionData.BloodPressureDiastolic = (int)currentBloodPressureDiastolic.Average();
-        sessionData.BloodPressureSystolic = (int)currentBloodPressureSystolic.Average();
-        sessionData.BodyTemperature = (int)currentBodyTemp.Average();
-        sessionData.HeartRateRecovery = (int)currentHeartRateRecovery.Average();
-        sessionData.HeartRateVariability = (int)currentHeartRateVariability.Average();
-        sessionData.OxygenSaturation = (int)currentOxygenSaturation.Average();
-        sessionData.RespiratoryRate = (int)currentRespiratoryRate.Average();
-        sessionData.RestingHeartRate = (int)currentRestingHeartRate.Average();
+
+
+        sessionData.AtrialFibBurden = currentAtrialFibBurden.Count > 0 ? (int)currentAtrialFibBurden.Average() : -1;
+        sessionData.AvgHeartRate = heartRatePoints.Count > 0 ? (int)heartRatePoints.Average() : -1;
+        sessionData.BloodPressureDiastolic = currentBloodPressureDiastolic.Count > 0 ? (int)currentBloodPressureDiastolic.Average() : -1;
+        sessionData.BloodPressureSystolic = currentBloodPressureSystolic.Count > 0 ? (int)currentBloodPressureSystolic.Average() : -1;
+        sessionData.BodyTemperature = currentBodyTemp.Count > 0 ? (int)currentBodyTemp.Average() : -1;
+        sessionData.HeartRateRecovery = currentHeartRateRecovery.Count > 0 ? (int)currentHeartRateRecovery.Average() : -1;
+        sessionData.HeartRateVariability = currentHeartRateVariability.Count > 0 ? (int)currentHeartRateVariability.Average() : -1;
+        sessionData.OxygenSaturation = currentOxygenSaturation.Count > 0 ? (int)currentOxygenSaturation.Average() : -1;
+        sessionData.RespiratoryRate = currentRespiratoryRate.Count > 0 ? (int)currentRespiratoryRate.Average() : -1;
+        sessionData.RestingHeartRate = currentRestingHeartRate.Count > 0 ? (int)currentRestingHeartRate.Average() : -1;
+
+        //sessionData.AtrialFibBurden = (int)currentAtrialFibBurden.Average();
+        //sessionData.AvgHeartRate = (int)heartRatePoints.Average();
+        //sessionData.BloodPressureDiastolic = (int)currentBloodPressureDiastolic.Average();
+        //sessionData.BloodPressureSystolic = (int)currentBloodPressureSystolic.Average();
+        //sessionData.BodyTemperature = (int)currentBodyTemp.Average();
+        //sessionData.HeartRateRecovery = (int)currentHeartRateRecovery.Average();
+        //sessionData.HeartRateVariability = (int)currentHeartRateVariability.Average();
+        //sessionData.OxygenSaturation = (int)currentOxygenSaturation.Average();
+        //sessionData.RespiratoryRate = (int)currentRespiratoryRate.Average();
+        //sessionData.RestingHeartRate = (int)currentRestingHeartRate.Average();
 
         sessionData.EnvironmentName = LevelSettings.Instance.SelectedEnvironment;
 
