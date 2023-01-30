@@ -18246,6 +18246,9 @@ GameObject:
   - component: {fileID: 611595512}
   - component: {fileID: 611595513}
   - component: {fileID: 611595514}
+  - component: {fileID: 611595517}
+  - component: {fileID: 611595516}
+  - component: {fileID: 611595515}
   m_Layer: 5
   m_Name: curvedUI
   m_TagString: Untagged
@@ -18513,6 +18516,52 @@ MonoBehaviour:
   levelExhaleText: {fileID: 88328684476693475}
   levelInhaleHoldText: {fileID: 275201454}
   levelExhaleHoldText: {fileID: 194948944}
+--- !u!114 &611595515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611595505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 938c04efea92705428a9fab2dc342dc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingBG: {fileID: 1527961334}
+  loadingText: {fileID: 1215826466}
+  progressBar: {fileID: 0}
+  progressAnimationMultiplier: 0.25
+--- !u!114 &611595516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611595505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc6eaa7feba794f9f8999a9308b57a27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signInUI: {fileID: 2431728752418255524}
+  startUI: {fileID: 2431728753725922511}
+  levelSelectUI: {fileID: 680813095}
+  levelDetailsUI: {fileID: 6466012266675711611}
+  VRKeys: {fileID: 1331502038}
+  buttonSound: {fileID: 611595512}
+--- !u!114 &611595517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611595505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f45d992025ae448b302fc2b78727c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &614914115 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8065188552600285332, guid: 927232924abbe7749aba0b85a30aa1db, type: 3}
@@ -59010,7 +59059,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8636248189052296386}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: ActivateSignIn
         m_Mode: 1
@@ -65005,51 +65054,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7676706710332417670}
   m_CullTransparentMesh: 1
---- !u!114 &5646839856266575685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8636248189052296385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 13
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: ScrollRectSnap, Assembly-CSharp
-          m_MethodName: StartDrag
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 14
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: ScrollRectSnap, Assembly-CSharp
-          m_MethodName: EndDrag
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &5905468565236077339
 GameObject:
   m_ObjectHideFlags: 0
@@ -65642,22 +65646,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &8566923467061381489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8636248189052296385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 938c04efea92705428a9fab2dc342dc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loadingBG: {fileID: 1527961334}
-  loadingText: {fileID: 1215826466}
-  progressBar: {fileID: 0}
-  progressAnimationMultiplier: 0.25
 --- !u!1 &8636248189052296385
 GameObject:
   m_ObjectHideFlags: 0
@@ -65668,14 +65656,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8636248189052296398}
   - component: {fileID: 8636248189052296396}
-  - component: {fileID: 8636248189052296387}
-  - component: {fileID: 8636248189052296386}
-  - component: {fileID: 8566923467061381489}
   - component: {fileID: 8636248189052296399}
   - component: {fileID: 8636248189052296397}
   - component: {fileID: 8636248189052296394}
   - component: {fileID: 8566923465846686360}
-  - component: {fileID: 5646839856266575685}
   - component: {fileID: 8636248189052296388}
   m_Layer: 5
   m_Name: MainUI
@@ -65684,34 +65668,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8636248189052296386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8636248189052296385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc6eaa7feba794f9f8999a9308b57a27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  signInUI: {fileID: 2431728752418255524}
-  startUI: {fileID: 2431728753725922511}
-  VRKeys: {fileID: 1331502038}
-  buttonSound: {fileID: 611595512}
---- !u!114 &8636248189052296387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8636248189052296385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0f45d992025ae448b302fc2b78727c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8636248189052296388
 MonoBehaviour:
   m_ObjectHideFlags: 0

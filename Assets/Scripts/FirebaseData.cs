@@ -84,14 +84,7 @@ public class FirebaseData : MonoBehaviour
     
     private void FixedUpdate()
     {
-        if (user != null)
-        {
-            if (user.UserId == null) print(("userID is null"));
-        }
-        else
-        {
-            print("User is null");
-        }
+        if (user is {UserId: null}) print(("userID is null"));
     }
 
     private IEnumerator Login(string _email, string _password)
@@ -236,7 +229,6 @@ public class FirebaseData : MonoBehaviour
     {
         var DBTask = db.Child("Users").Child(user.UserId).Child("Test").SetValueAsync(rate);
 
-        print("Getting data from " + user.UserId);
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
         if (DBTask.Exception != null)

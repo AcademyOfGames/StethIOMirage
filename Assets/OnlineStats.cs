@@ -29,8 +29,7 @@ public class OnlineStats : MonoBehaviour
     }
     public void GetHeartData(FirebaseUser _user)
     {
-        print("getting heart rate for user " + _user);
-        print("getting heart rate for userID " + _user.UserId);
+
         user ??= _user;
         StartCoroutine("GetHeartRate");
     }
@@ -42,14 +41,6 @@ public class OnlineStats : MonoBehaviour
     }
     IEnumerator GetHeartRate()
     {
-        print("Trying to get ");
-        print("db " + db);
-        print("db.Child(Users) " + db.Child("Users"));
-        print("user " + user);
-        print("user.UserId " + user.UserId);
-        print("db.Child(Users).Child(user.UserId) " + db.Child("Users").Child(user.UserId));
-        print("db.Child(Users).Child(user.UserId).GetValueAsync(); " + db.Child("Users").Child(user.UserId).GetValueAsync());
-
         var DBTask = db.Child("Users").Child(user.UserId).GetValueAsync();
 
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
@@ -111,10 +102,6 @@ public class OnlineStats : MonoBehaviour
         if (user != null)
         {
             if (user.UserId == null) print(("userID is null"));
-        }
-        else
-        {
-            print("User is null");
         }
     }
 }

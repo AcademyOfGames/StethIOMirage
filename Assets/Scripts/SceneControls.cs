@@ -53,7 +53,7 @@ public class SceneControls : MonoBehaviour
     IEnumerator FadeLoadingIn()
     {
         loadOperation = SceneManager.LoadSceneAsync(FindObjectOfType<LevelDetails>().scene);
-        loadOperation.allowSceneActivation = false;
+       //loadOperation.allowSceneActivation = false;
 
         float timePassed = 0;
         Color visible = Color.white;
@@ -66,7 +66,7 @@ public class SceneControls : MonoBehaviour
             timePassed += Time.deltaTime *.3f;
             yield return new WaitForEndOfFrame();
         }
-
+/*
         while (!Mathf.Approximately(currentValue, 1))
         {
             // Assign current load progress, divide by 0.9f to stretch it to values between 0 and 1.
@@ -77,7 +77,7 @@ public class SceneControls : MonoBehaviour
             progressBar.value = currentValue;
         }
 
-        loadOperation.allowSceneActivation = true;
+        loadOperation.allowSceneActivation = true;*/
         
     }
     

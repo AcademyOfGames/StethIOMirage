@@ -10,6 +10,8 @@ public class MenuButtons : MonoBehaviour
 {
     public GameObject signInUI;
     public GameObject startUI;
+    public GameObject levelSelectUI;
+    public GameObject levelDetailsUI;
     public GameObject VRKeys;
     public AudioSource buttonSound;
     
@@ -30,10 +32,22 @@ public class MenuButtons : MonoBehaviour
     }
 
     void EnterPressed()
-    {
+    {print("enter pressed");
         if (startUI.activeSelf)
         {
             ActivateSignIn();
+        }
+        else if (levelDetailsUI.activeSelf)
+        {
+            print("loadingWorld");
+            FindObjectOfType<SceneControls>().LoadWorld();
+
+        }
+        else if (levelSelectUI.activeSelf)
+        {
+            print("show level details");
+
+            FindObjectsOfType<LevelButtonBehavior>()[1].ShowLevelDetails();
         }
         else if (signInUI.activeSelf)
         {

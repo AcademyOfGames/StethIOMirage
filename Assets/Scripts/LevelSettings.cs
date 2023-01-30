@@ -71,15 +71,12 @@ public class LevelSettings : MonoBehaviour
     {
         postEffects = FindObjectOfType<Volume>();
         
-        //print("Loaded " + scene.name + " called by " + name);
         if (postEffects == null) return;
         postEffects.profile.TryGet(out b);
         startScatter = b.scatter.value;
         startIntensity = b.intensity.value;
         startThreshold = b.threshold.value;
-
-        print(" Volume: " + postEffects.name);
-
+        
         if (scene.name == "futuristicExamRoom" && _instance != null)
         {
             uIManager = FindObjectOfType<LevelStatsUIManager>();
