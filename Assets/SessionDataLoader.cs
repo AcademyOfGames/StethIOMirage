@@ -126,7 +126,8 @@ public class SessionDataLoader : MonoBehaviour
 
     public void LoadData()
     {
-        
+        sessionDatas = saveLoad.LoadSessionData();
+        CreateAllSeries();
 
         CreateChart();
     }
