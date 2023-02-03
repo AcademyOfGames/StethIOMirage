@@ -29903,7 +29903,7 @@ MonoBehaviour:
   m_OriginBaseGameObject: {fileID: 1102534822}
   m_CameraFloorOffsetObject: {fileID: 558946615}
   m_RequestedTrackingOriginMode: 1
-  m_CameraYOffset: 1200
+  m_CameraYOffset: 6
   m_CameraGameObject: {fileID: 239380999}
 --- !u!4 &1102534824
 Transform:
@@ -51412,6 +51412,10 @@ PrefabInstance:
     - target: {fileID: 114397642427736120, guid: 545a89a83bfd3a745aebebcd0edbfa09, type: 3}
       propertyPath: yAxis.maxPadding
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114397642427736120, guid: 545a89a83bfd3a745aebebcd0edbfa09, type: 3}
+      propertyPath: plotOptions.mouseTracking
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114720741266098470, guid: 545a89a83bfd3a745aebebcd0edbfa09, type: 3}
       propertyPath: chartType

@@ -95,12 +95,15 @@ public class FirebaseData : MonoBehaviour
 
         if (LoginTask.Exception != null)
         {
+            Debug.Log("Failed login");
             FirebaseException ex = LoginTask.Exception.GetBaseException() as FirebaseException;
 
             StartCoroutine(ShowMessage(warningLoginText, "Error " +  ex.Message));
+            
         }
         else
         {
+            Debug.Log("Win login");
             LoginDetailsManager.Instance.SaveLoginDetails();
             user = LoginTask.Result;
             
