@@ -29,9 +29,12 @@ public class OnlineStats : MonoBehaviour
     }
     public void GetHeartData(FirebaseUser _user)
     {
-
-        user ??= _user;
-        StartCoroutine("GetHeartRate");
+        if (user != null)
+        {
+            user = _user;
+            //user ??= _user;
+            StartCoroutine("GetHeartRate");
+        }
     }
     
     void InitializeFirebase()
