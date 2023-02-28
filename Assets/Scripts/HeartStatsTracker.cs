@@ -71,8 +71,9 @@ public class HeartStatsTracker : MonoBehaviour
         {
             currentHeartRate = placeholderHeartRate;
 
-            heartRateText.text =currentHeartRate.ToString("F1");  
+            heartRateText.text =currentHeartRate.ToString("F1");
 
+            Debug.Log("ONLINE STATS IS NULL");
 
             return;
         }

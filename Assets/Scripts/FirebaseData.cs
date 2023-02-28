@@ -153,6 +153,7 @@ public class FirebaseData : MonoBehaviour
     {
         GoToLevelSelect();
 
+        
         FindObjectOfType<OnlineStats>().GetHeartData(user);
     }
 

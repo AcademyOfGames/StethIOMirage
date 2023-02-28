@@ -9481,7 +9481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.11764707, g: 0.33333334, b: 0.42352945, a: 1}
+  m_Color: {r: 0.05882353, g: 0.31764707, b: 0.41960785, a: 0.90588236}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -18310,7 +18310,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1.25, y: 3.07}
-  m_SizeDelta: {x: 17434, y: 6453}
+  m_SizeDelta: {x: 17434, y: 7565}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &611595511
 MonoBehaviour:
@@ -19379,7 +19379,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -274, y: 213}
-  m_SizeDelta: {x: 9156, y: 2319}
+  m_SizeDelta: {x: 10993, y: 5076}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &680813098
 CanvasRenderer:
@@ -21951,7 +21951,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1085.9999, y: 534}
-  m_SizeDelta: {x: 234.96, y: 75.6}
+  m_SizeDelta: {x: 250, y: 75.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &849807955
 MonoBehaviour:
@@ -22502,8 +22502,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283124555
-  m_fontColor: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 1}
+    rgba: 4283848535
+  m_fontColor: {r: 0.34117648, g: 0.34117648, b: 0.3372549, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -32677,7 +32677,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1086, y: 267}
-  m_SizeDelta: {x: 251.7, y: 107.83}
+  m_SizeDelta: {x: 250, y: 107.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1276824437
 MonoBehaviour:
@@ -50390,8 +50390,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -242, y: 231}
-  m_SizeDelta: {x: 1122, y: 750.2}
+  m_AnchoredPosition: {x: -144, y: 231}
+  m_SizeDelta: {x: 1299, y: 750.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1987749472
 MonoBehaviour:
@@ -54934,14 +54934,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3797215503212797863}
-  m_LocalRotation: {x: 0.0016545204, y: 0.0001350956, z: 0.0077345856, w: 0.9999687}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 811680311}
   m_Father: {fileID: 680813096}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0.189, y: 0.017, z: 0.886}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -55007,7 +55007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 0.50980395}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.50980395}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -55413,8 +55413,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283124555
-  m_fontColor: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 1}
+    rgba: 4283848535
+  m_fontColor: {r: 0.34117648, g: 0.34117648, b: 0.3372549, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -63481,7 +63481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e81ec3f57cbe3f41aa2f5bc2c033014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHeartRate: 60
+  currentHeartRate: 44.44
   currentAtrialFibBurden: -1
   currentBloodPressureDiastolic: -1
   currentBloodPressureSystolic: -1
