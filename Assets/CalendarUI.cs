@@ -137,7 +137,21 @@ public class CalendarUI : MonoBehaviour
     {
         // Save the selected day to a variable or save file
         this.day = day;
-        
+
+        if (isStartCalendar)
+        {
+            sessionDataLoader.ChangeStartDate(this);
+            
+        }
+        else
+        {
+            sessionDataLoader.ChangeEndDate(this);
+        }
+
+        sessionDataLoader.RefreshChart();
+        GenerateCalendar();
+
+
     }
 
     public DateTime GetSelectedDate()

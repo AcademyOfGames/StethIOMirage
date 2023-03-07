@@ -42,7 +42,7 @@ public class SessionDataLoader : MonoBehaviour
 
     private Chart myChart;
 
-    private DataTimescale currentTimeScale = DataTimescale.BySession;
+    private DataTimescale currentTimeScale = DataTimescale.ByDay;
 
     private List<Series> seriesList = new List<Series>();
 
@@ -253,7 +253,7 @@ public class SessionDataLoader : MonoBehaviour
 
         CalculateAllAverages(startDate, endDate);
 
-        SetTimespanWithList(avgValueByTimescaleArray[0]); // By default show the data BySession
+        SetTimespanWithList(avgValueByTimescaleArray[1]); // By default show the data ByDay
 
     }
 
