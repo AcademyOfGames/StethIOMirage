@@ -131,7 +131,7 @@ namespace CurvedUI {
             if (target == null) return;
             GUI.changed = false;
             EditorGUIUtility.labelWidth = 150;
-            inPrefabMode = (UnityEditor.Experimental.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage() != null);
+            inPrefabMode = (UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage() != null);
 
 
             //Version----------------------------------------------//
