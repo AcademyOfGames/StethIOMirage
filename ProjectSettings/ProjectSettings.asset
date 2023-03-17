@@ -148,6 +148,8 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 11400000, guid: 6e49a864e32ff1e4788ca89d7154f24b, type: 2}
+  - {fileID: -2846942187233710080, guid: 0945f5378fbcaac4cb0e255e88460782, type: 2}
+  - {fileID: 1566029980679979988, guid: 8ef7800ded526b247a0e4da49f063476, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -703,7 +705,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    Android: UNITY_POST_PROCESSING_STACK_V2;UNITY_CCU;CURVEDUI_UNITY_XR;CURVEDUI_TMP
+    Android: UNITY_POST_PROCESSING_STACK_V2;UNITY_CCU;CURVEDUI_UNITY_XR;CURVEDUI_TMP;GAIA_2_PRESENT;GAIA_MESH_PRESENT;CROSS_PLATFORM_INPUT;MOBILE_INPUT;UPPipeline
     EmbeddedLinux: UNITY_POST_PROCESSING_STACK_V2
     GameCoreXboxOne: UNITY_POST_PROCESSING_STACK_V2
     LinuxHeadlessSimulation: UNITY_POST_PROCESSING_STACK_V2
@@ -712,11 +714,11 @@ PlayerSettings:
     PS4: UNITY_POST_PROCESSING_STACK_V2
     PS5: UNITY_POST_PROCESSING_STACK_V2
     Stadia: UNITY_POST_PROCESSING_STACK_V2
-    Standalone: UNITY_POST_PROCESSING_STACK_V2;UNITY_CCU;CURVEDUI_UNITY_XR;CURVEDUI_TMP;UIKIT_TMP;UIKIT_OCULUS
+    Standalone: UNITY_POST_PROCESSING_STACK_V2;UNITY_CCU;CURVEDUI_UNITY_XR;CURVEDUI_TMP;UIKIT_TMP;UIKIT_OCULUS;CROSS_PLATFORM_INPUT
     WebGL: UNITY_POST_PROCESSING_STACK_V2
-    Windows Store Apps: UNITY_POST_PROCESSING_STACK_V2
+    Windows Store Apps: UNITY_POST_PROCESSING_STACK_V2;MOBILE_INPUT
     XboxOne: UNITY_POST_PROCESSING_STACK_V2;UNITY_CCU;CURVEDUI_UNITY_XR;CURVEDUI_TMP
-    iPhone: UNITY_CCU;CURVEDUI_UNITY_XR;CURVEDUI_TMP
+    iPhone: UNITY_CCU;CURVEDUI_UNITY_XR;CURVEDUI_TMP;CROSS_PLATFORM_INPUT;MOBILE_INPUT
     tvOS: UNITY_POST_PROCESSING_STACK_V2
   additionalCompilerArguments: {}
   platformArchitecture: {}
@@ -808,11 +810,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 2
-  cloudProjectId: 5b9b8e45-cb5a-403e-b55d-c4750da6a490
+  cloudProjectId: a80c1448-584b-4cde-85c4-5e4228aca9ee
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: Mirage
+  organizationId: jose-contreras-582279
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
