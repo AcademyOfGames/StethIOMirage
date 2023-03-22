@@ -19,19 +19,19 @@ public class LevelManager : MonoBehaviour
 
     public AudioClip endChime;
 
-    private void OnEnable()
-    {
-        //grip
-        gripAction.action.started += Gripping;
-        gripAction.action.canceled += GripRelease;
-    }
+    //private void OnEnable()
+    //{
+    //    //grip
+    //    gripAction.action.started += Gripping;
+    //    gripAction.action.canceled += GripRelease;
+    //}
 
-    private void OnDisable()
-    {
-        //grip
-        gripAction.action.started -= Gripping;
-        gripAction.action.canceled -= GripRelease;
-    }
+    //private void OnDisable()
+    //{
+    //    //grip
+    //    gripAction.action.started -= Gripping;
+    //    gripAction.action.canceled -= GripRelease;
+    //}
 
     // Start is called before the first frame update
     void Start()

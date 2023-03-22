@@ -75,6 +75,7 @@ public class OnlineStats : MonoBehaviour
                         Debug.Log("Getting Data");
                         string rate = child.Child("heartRate").Value.ToString();
                         currentHeartRate = float.Parse(rate);
+                        
                         currentAtrialFibBurden = float.Parse(child.Child("atrialFibrillationBurden").Value.ToString());
                         currentBloodPressureDiastolic = float.Parse(child.Child("bloodPressureDiastolic").Value.ToString());
                         currentBloodPressureSystolic = float.Parse(child.Child("bloodPressureSystolic").Value.ToString());
