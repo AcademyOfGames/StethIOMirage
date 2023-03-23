@@ -59781,7 +59781,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1327951017
 GameObject:
@@ -61434,8 +61434,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 7, z: 1}
-  m_Center: {x: 0, y: -3, z: 0}
+  m_Size: {x: 1, y: 8, z: 1}
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!33 &1380815785
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -61479,7 +61479,7 @@ MonoBehaviour:
   m_PokeConfiguration:
     m_UseConstant: 1
     m_ConstantValue:
-      m_PokeDirection: 3
+      m_PokeDirection: 5
       m_InteractionDepthOffset: 0
       m_EnablePokeAngleThreshold: 1
       m_PokeAngleThreshold: 45
@@ -97287,14 +97287,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900467491691313401}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!33 &867412132816321421
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 900467489458127561}
-  m_Mesh: {fileID: 0}
 --- !u!33 &867412133544626913
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -97367,14 +97359,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900467492114745997}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!33 &867412140297048037
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 900467492222782945}
-  m_Mesh: {fileID: 0}
 --- !u!33 &867412140403528147
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -98267,8 +98251,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900467491400815985}
   m_LocalRotation: {x: -0.25825793, y: -0, z: -0, w: 0.966076}
-  m_LocalPosition: {x: 30, y: -180, z: -232}
-  m_LocalScale: {x: 210, y: 210, z: 180}
+  m_LocalPosition: {x: 30, y: -180, z: 0}
+  m_LocalScale: {x: 210, y: 210, z: 210}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1109953940263366507}
@@ -98492,7 +98476,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1109953938884059977}
-  - component: {fileID: 867412132816321421}
   - component: {fileID: 877394384289789633}
   - component: {fileID: 1002496835188063089}
   - component: {fileID: 2134595263}
@@ -98942,7 +98925,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1109953939113893371}
-  - component: {fileID: 867412140297048037}
   - component: {fileID: 877394386539991645}
   - component: {fileID: 1002496769910675881}
   - component: {fileID: 1008035797}
@@ -99281,8 +99263,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 7, z: 1}
-  m_Center: {x: 0, y: -3, z: 0}
+  m_Size: {x: 1, y: 8, z: 1}
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!65 &908173248775719811
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -99294,8 +99276,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 7, z: 1}
-  m_Center: {x: 0, y: -3, z: 0}
+  m_Size: {x: 1, y: 8, z: 1}
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!65 &908173248888925649
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -99320,8 +99302,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 7, z: 1}
-  m_Center: {x: 0, y: -3, z: 0}
+  m_Size: {x: 1, y: 8, z: 1}
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!65 &908173249488796581
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -99333,7 +99315,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 5, z: 1}
+  m_Size: {x: 1, y: 8, z: 1}
   m_Center: {x: 0, y: -2, z: 0}
 --- !u!65 &908173250494514975
 BoxCollider:
@@ -99359,8 +99341,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 7, z: 1}
-  m_Center: {x: 0, y: -3, z: 0}
+  m_Size: {x: 1, y: 8, z: 1}
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!65 &908173252572917193
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -99372,8 +99354,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 7, z: 1}
-  m_Center: {x: 0, y: -3, z: 0}
+  m_Size: {x: 1, y: 8, z: 1}
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!65 &908173255463292541
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -99385,8 +99367,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 7, z: 1}
-  m_Center: {x: 0, y: -3, z: 0}
+  m_Size: {x: 1, y: 8, z: 1}
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!65 &908173255471412749
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -99398,8 +99380,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 7, z: 1}
-  m_Center: {x: 0, y: -3, z: 0}
+  m_Size: {x: 1, y: 8, z: 1}
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!1 &919132147743157911
 GameObject:
   m_ObjectHideFlags: 0
@@ -100340,7 +100322,7 @@ MonoBehaviour:
   m_PokeConfiguration:
     m_UseConstant: 1
     m_ConstantValue:
-      m_PokeDirection: 3
+      m_PokeDirection: 5
       m_InteractionDepthOffset: 0
       m_EnablePokeAngleThreshold: 1
       m_PokeAngleThreshold: 45
@@ -100475,7 +100457,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4284900966
   m_fontColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -100488,7 +100470,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -100500,9 +100482,9 @@ MonoBehaviour:
   m_fontSizeMin: 0
   m_fontSizeMax: 0
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 514
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -100536,7 +100518,7 @@ MonoBehaviour:
   _SortingLayerID: 0
   _SortingOrder: 0
   m_hasFontAssetChanged: 1
-  m_renderer: {fileID: 0}
+  m_renderer: {fileID: 877394386539991645}
   m_maskType: 0
 --- !u!114 &1002496771236720739
 MonoBehaviour:
@@ -100788,7 +100770,7 @@ MonoBehaviour:
   m_PokeConfiguration:
     m_UseConstant: 1
     m_ConstantValue:
-      m_PokeDirection: 3
+      m_PokeDirection: 5
       m_InteractionDepthOffset: 0
       m_EnablePokeAngleThreshold: 1
       m_PokeAngleThreshold: 45
@@ -101146,7 +101128,7 @@ MonoBehaviour:
   m_PokeConfiguration:
     m_UseConstant: 1
     m_ConstantValue:
-      m_PokeDirection: 3
+      m_PokeDirection: 5
       m_InteractionDepthOffset: 0
       m_EnablePokeAngleThreshold: 1
       m_PokeAngleThreshold: 45
@@ -101264,7 +101246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb08f495a9bc93a46b97e507bf9be1b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positionRelativeToUser: {x: 30, y: -180, z: -232}
+  positionRelativeToUser: {x: 30, y: -160, z: -140}
   keyboardLayout: 0
   placeholder: {fileID: 1002496769276579275}
   placeholderMessage: Tap the keys to begin typing
@@ -101456,7 +101438,7 @@ MonoBehaviour:
   m_PokeConfiguration:
     m_UseConstant: 1
     m_ConstantValue:
-      m_PokeDirection: 3
+      m_PokeDirection: 5
       m_InteractionDepthOffset: 0
       m_EnablePokeAngleThreshold: 1
       m_PokeAngleThreshold: 45
@@ -101707,7 +101689,7 @@ MonoBehaviour:
   m_PokeConfiguration:
     m_UseConstant: 1
     m_ConstantValue:
-      m_PokeDirection: 3
+      m_PokeDirection: 5
       m_InteractionDepthOffset: 0
       m_EnablePokeAngleThreshold: 1
       m_PokeAngleThreshold: 45
@@ -101962,7 +101944,7 @@ MonoBehaviour:
   m_PokeConfiguration:
     m_UseConstant: 1
     m_ConstantValue:
-      m_PokeDirection: 3
+      m_PokeDirection: 5
       m_InteractionDepthOffset: 0
       m_EnablePokeAngleThreshold: 1
       m_PokeAngleThreshold: 45
@@ -102131,7 +102113,7 @@ MonoBehaviour:
       m_PokeDirection: 5
       m_InteractionDepthOffset: 0
       m_EnablePokeAngleThreshold: 1
-      m_PokeAngleThreshold: 45
+      m_PokeAngleThreshold: 89.9
     m_Variable: {fileID: 0}
 --- !u!114 &1002496773000202350
 MonoBehaviour:
@@ -102695,7 +102677,7 @@ MonoBehaviour:
   m_PokeConfiguration:
     m_UseConstant: 1
     m_ConstantValue:
-      m_PokeDirection: 3
+      m_PokeDirection: 5
       m_InteractionDepthOffset: 0
       m_EnablePokeAngleThreshold: 1
       m_PokeAngleThreshold: 45
@@ -102729,7 +102711,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4280558628
   m_fontColor: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -102742,7 +102724,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -102754,9 +102736,9 @@ MonoBehaviour:
   m_fontSizeMin: 0
   m_fontSizeMax: 0
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 514
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -102790,7 +102772,7 @@ MonoBehaviour:
   _SortingLayerID: 0
   _SortingOrder: 0
   m_hasFontAssetChanged: 1
-  m_renderer: {fileID: 0}
+  m_renderer: {fileID: 877394384289789633}
   m_maskType: 0
 --- !u!114 &1002496835324330641
 MonoBehaviour:
