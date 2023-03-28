@@ -126,6 +126,7 @@ public class SessionDataLoader : MonoBehaviour
 
     public void LoadData()
     {
+        print("LoadData() is running");
         sessionDatas = saveLoad.LoadSessionData();
         CreateAllSeries();
 
@@ -197,6 +198,7 @@ public class SessionDataLoader : MonoBehaviour
 
         //update chart
         myChart.UpdateChart();
+        print("Chart should update");
 
 
     }
