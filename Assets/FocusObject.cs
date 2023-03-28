@@ -44,10 +44,15 @@ public class FocusObject : MonoBehaviour
         float timePassed = 0;
         while (scalingUp)
         {
+            print("CHaging scale to " + Vector3.Slerp(t.localScale, ogScale *3f, timePassed));
             timePassed += Time.deltaTime;
-            t.localScale = Vector3.Slerp(transform.localScale, ogScale *1.5f, timePassed);
-            t.position = Vector3.up * floatSpeed;
-            if (timePassed > 1f) ShowSurprise();
+            t.localScale = Vector3.Slerp(t.localScale, ogScale *3f, timePassed);
+            //t.position = Vector3.up * floatSpeed;
+            if (timePassed > 1f)
+            {
+                ShowSurprise();
+                break;
+            }
             yield return new WaitForFixedUpdate();
         }
         
@@ -62,18 +67,18 @@ public class FocusObject : MonoBehaviour
 
     IEnumerator ScaleDown()
     {
-        while (t.localScale.x < .1f)
+        while (t.localScale.x > .1f)
         {
             t.localScale *= .9f;
             yield return new WaitForFixedUpdate();
 
         }
         surprise.SetActive(true);
-    
     }
+    
 
     void ShowSurprise()
-    {        StartCoroutine(nameof(ScaleDown));
-
+    {        
+        StartCoroutine(nameof(ScaleDown));
     }
 }

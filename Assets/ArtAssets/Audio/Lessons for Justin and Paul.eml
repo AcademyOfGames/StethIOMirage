@@ -1,0 +1,170 @@
+Delivered-To: contrejo27@gmail.com
+Received: by 2002:ab3:1d16:0:b0:1dc:8884:1383 with SMTP id e22csp632651ltd;
+        Thu, 15 Sep 2022 17:20:48 -0700 (PDT)
+X-Google-Smtp-Source: AMsMyM5qAQRBoMAYvsqDS7wTnpcFeBGdjAd8CUHcegMfM2HT5Gff5cYKjhGHXNLBv/NWTxMdLDv9
+X-Received: by 2002:a17:902:db12:b0:176:d6a4:53ab with SMTP id m18-20020a170902db1200b00176d6a453abmr2173758plx.113.1663287648336;
+        Thu, 15 Sep 2022 17:20:48 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1663287648; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=N/iDWbmhnQX5AI8g6bD3l5GgIwZ2wmcsbdQXcQHAmUSWN4OOdBSHAAxNtZXJtLZaQU
+         QqbAfQ87S7cxeDLgXh/PFHPhxOrnthw4KcYpIINF4oXDcKiSKXdgB6TjW3YWGdzqoqOn
+         EVyqBOABgqua1yCtqKCxgyS5ZGUWezFG3dgcWyJxyZzj+EQLbOUlD3DPus1UZ6INKd7v
+         xmzrxqgYqOvpllsiTm2q+6twrKURvcVxwanq0J9Bt2X4bht63yLaLJBIRCmw9WW89D6+
+         O57eiwIJ+rzUdaEEdBOXQaCkOy0TGkSiUSFs/h/+gmBM/Fdfccr9fTDIUzrw+9tqONbs
+         6zRg==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=references:to:date:message-id:subject:mime-version
+         :content-transfer-encoding:from:dkim-signature;
+        bh=0QdaJd5qFmgJuwigJINJbGxWSqJNoVsSJJuHi+qCktQ=;
+        b=PZc6TdieQ9buidKt5Aiua9AedbtoQJgs/g3DRrs3Beomn0Yic6SmafjG+vSqirLKXU
+         hg7tAEnKaF3NcRB9p/GSfdvT8YaJf6RJN8f7qtJUZBDKM/lQw4O2HpEICuSESF+yKTfC
+         z+HTwp+Z97fPbGsz3R/AunU8EqES+XpyOh6rwusKADYb2FHw/z7/a/RmYlNA+ujW77Jn
+         5w0HstaWhBjq7B8Xu4dA2gGh+hMWChfrf4RjWPDuGvWFlJjj4CX3AnzTlsT8FkjdzJEH
+         iXFQdxMYycSQbvvmuxbG/0j7c1Ue4H9ALGFikeQjFsloJIhfOm4ErV0cFPiVdysYLOzN
+         hWSw==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=kNVLvhyQ;
+       arc=pass (i=2);
+       spf=neutral (google.com: 23.83.212.26 is neither permitted nor denied by domain of caribnay123@yahoo.com) smtp.mailfrom=caribnay123@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+Return-Path: <caribnay123@yahoo.com>
+Received: from burlywood.elm.relay.mailchannels.net (burlywood.elm.relay.mailchannels.net. [23.83.212.26])
+        by mx.google.com with ESMTPS id fu14-20020a17090ad18e00b001fdfeac4cdesi3743700pjb.0.2022.09.15.17.20.47
+        for <contrejo27@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 15 Sep 2022 17:20:48 -0700 (PDT)
+Received-SPF: neutral (google.com: 23.83.212.26 is neither permitted nor denied by domain of caribnay123@yahoo.com) client-ip=23.83.212.26;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=kNVLvhyQ;
+       arc=pass (i=2);
+       spf=neutral (google.com: 23.83.212.26 is neither permitted nor denied by domain of caribnay123@yahoo.com) smtp.mailfrom=caribnay123@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+X-Sender-Id: _forwarded-from|74.6.129.125
+Received: from relay.mailchannels.net (localhost [127.0.0.1])
+	by relay.mailchannels.net (Postfix) with ESMTP id 66AD4E05C0
+	for <contrejo27@gmail.com>; Fri, 16 Sep 2022 00:20:47 +0000 (UTC)
+Received: from gcp-europe-west4-c-smtpin3.hostinger.io (unknown [127.0.0.6])
+	(Authenticated sender: hostingeremail)
+	by relay.mailchannels.net (Postfix) with ESMTPA id 7A38EE03D3
+	for <contrejo27@gmail.com>; Fri, 16 Sep 2022 00:20:46 +0000 (UTC)
+ARC-Seal: i=2; s=arc-2022; d=mailchannels.net; t=1663287647; a=rsa-sha256;
+	cv=pass;
+	b=bKm43hn3GAv9SIvXOZ51anLACrxcFf9xS4hkDyW3WXVOxxCjgsLOXucQK+8ei0ho98+aEy
+	ef3SPBZ2ckhUxA3Obodz071YvKiaY6+puZV10e3WKrxwVm1NenQYnrRbGY+lkZadZ1WrKr
+	m3xMnIDdhq0N9m3GXl7vyUp0sXmr1OoIaMN8VcaLwocP4o+v/UwGYxU2+7A3aVFEf5lOqT
+	ngUYVWxqesMchuAcYz1jDxITaOLeglGbUuU7/961l5ZIXsb51UOcfZqm1vCatJq7FfdpL3
+	UQVEvwjqxfw101Yd+nJQcVeqYCp2xht231sUOaFbKS7U0QYEW/Ztfdak0djagg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed;
+ d=mailchannels.net;
+	s=arc-2022; t=1663287647;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 references:references:dkim-signature;
+	bh=0QdaJd5qFmgJuwigJINJbGxWSqJNoVsSJJuHi+qCktQ=;
+	b=xb5Y3xRfPKrMReJzoEy0ul5dFg2uSk79bw0Fc12RICi4rZ9FXrSxpbooLGdRP2Lj/j6NEf
+	LEowkbWxNPbZ1f5f4mbNCTQEnhr0OgMiNXXCKpEkIlAwD+m9zoK62nPNu9VNcDgVUAqSq8
+	X4DsGjt5o2L9CIDO5BQBzUaW5apFPN0YXbpinUjQrwyOOel2+7c45MQwDw5orQWrDgMYFR
+	aSGp+ZumnKFtGlVURuMYLPfqkTl+zG3Hw8j3OL9RTkhcavOurlvCAETYuFdgY3EFJwvQ4c
+	LXmycQ0U3fyVl85UbWfbsy731obQMbPaX7UYMZ+vkPKRhBKd5hGaE9yN5jTT/g==
+ARC-Authentication-Results: i=2;
+	rspamd-686945db84-fts4t;
+	arc=pass ("academyofgames.org:s=hostingermail-a:i=1");
+	auth=pass smtp.auth=hostingeremail smtp.mailfrom=caribnay123@yahoo.com
+X-Sender-Id: _forwarded-from|74.6.129.125
+X-MC-Relay: Junk
+X-MailChannels-SenderId: _forwarded-from|74.6.129.125
+X-MailChannels-Auth-Id: hostingeremail
+X-Plucky-Average: 24da406d10c7ab60_1663287647270_191475822
+X-MC-Loop-Signature: 1663287647270:3069879370
+X-MC-Ingress-Time: 1663287647270
+Received: from gcp-europe-west4-c-smtpin3.hostinger.io
+ (gcp-europe-west4-c-smtpin3.hostinger.io [34.91.201.122])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
+	by 100.115.125.73 (trex/6.7.1);
+	Fri, 16 Sep 2022 00:20:47 +0000
+Received: from sonic309-15.consmr.mail.bf2.yahoo.com (sonic309-15.consmr.mail.bf2.yahoo.com [74.6.129.125])
+	by gcp-europe-west4-c-smtpin3.hostinger.io (mx.hostinger.com) with ESMTPS id 4MTF8r3CG4zBs9G
+	for <gabriel@academyofgames.org>; Fri, 16 Sep 2022 00:20:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1663287643; bh=0QdaJd5qFmgJuwigJINJbGxWSqJNoVsSJJuHi+qCktQ=; h=From:Subject:Date:To:References:From:Subject:Reply-To; b=kNVLvhyQeRbOACZM1VgP5Cj5SDaeiqp6XRt5C/So6mP3dZwV8f5ezpGIQY8HBY3SIRe9go6SRPDfD/9IWOa+piUX6uSCqHXBmEchbLT2lANnJtfhgtqm/cSEAIl9P92cMXuSP9Ms8VvmoL9Scn8sEbjFjuvBCwepfYQUxWK7sxE37fcm0SQ4EZTYelURzG1+YOyLplVkIMEZdrjjKLU9+PsGwKngCJ9FxCVDCw1T3Xm2naHL/XjD9CIL4MitVBoqDfpKqWu/Dr+UHXGT5p2rIUvKog49ZWTZQRwyw5Mh3rVTg0OxyS54CHDzqlfLhpUn9JLR8k0bomAtRwKMr3jfpQ==
+X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1663287643; bh=yyH/i+lzYnPLuWUrDIt0MYPyzfFUo58SvyP6ktT/AJp=; h=X-Sonic-MF:From:Subject:Date:To:From:Subject; b=kkPjBLkzxaTeg0Mr6gqhcZ4emVq6SYTLikbleGGpuZpB65k+2gZx4FnmckjqVgNOKTEndCvm1EaO9K628TIDyevmS4jyPps+llHc0jP0wBn7nsaFWcqdcXqgDaGoEfHgpiVm6Jm1fZUq1pXY58r7/nba1rZpvs22LYa6btMlPlhuZAkZfRFU6aTwLU6rAIuXqCy8i4YhGV7cqHE6BRxcfzYqhZy5/VATlvMgaFj5bf+c9nrpUjGya9jUzbBRLG9kmi+kdV2HTQP/HGFLJjnnyfz156Ry9ztV/Tlua/1bnG066YtgWG71Akdm+yv2XO5cFEjexsU9d22p+KSswKpFmQ==
+X-YMail-OSG: fcn1yKIVM1mDj3ixIc3nVUWAgAjaWQapTeO__f6a.MIC8XBQDO3gTjmv_ABqD9R
+ 7Dgkx6RtoldkbtZKvbLowhKvPXuHvfHywfTkoFLv_5YF4zr7Ea_rYU6I34KMAg61H9STh7U.P1Fp
+ P2ea3ID_8PNr.6nK5cYo11QDz3Bp2vVjEc4j3IMSnc7Iimf0QmX7F197UIRUjmaTSPhtSykRWdtT
+ mHRaxlgGPHBcMue.Fh5SGZhP5HEPdPSo1o3hbZdf5KMPm0oUvMCRuxG7UzukA_FLEg_ZMgB3Htd8
+ qKGUlOQWhqEVILNhcNdaL2oPiMORJOigX2UuAhevQBenfCNgQr_rDg_RE_l5jowWWGMIsplENTFP
+ 1IYDUPzvbXthYJHdMVqiHVlpuUel0DPYLyB_h.O.JjMri_qK4qZNCybvgoHzywfSKZt.U2l21D8x
+ AmnUuNxNbnsqSHrn6zJ_B9ScfVh9C.zTDHqLJ5vu.3wFr2i8h9.t.uLuqQ6yyPr3eyIsrPjjY8KV
+ EvgIY4YrBl2xR.ny4smTGx0mHrssiFZvTl7pCih2ezvn0CbmvFqKS3W5dyJfgCXH6bl_DR8GolxC
+ ri8.tzuDY9FVeYwhgKJmGCsbDWSDMFvXZcU13IqYs3MUV7CB_V6ac6e3olj57rrag7ouwKNJUFjg
+ lXUtdkZG7JP2FdlNL4VsQU2xhyIhMkZe8quppMP79kj9fqKvGu02QUoBu3rgBsWpQEx7AHZ9nHN0
+ _iOFKIY6GdQQ3FRset1zYxxn7TZgyRO.1LEYU6jmlgb7x.pyoRIDAQckUOGlP6ABLGceh8mLv6Mz
+ V5n31ufbJ9xmjeSJHgUA9kZmnbMxJr5GoOJcZVqTXMiCe4qzdmwijKdYCTryQKAepUQX7Ez3GKic
+ Rf4U1CuvYvCij3AeCnzag2rs3H7Opvcn_wteqD_Km6OVrTSMIakZbdD04lAQPKxDAQ3fbLkZRdXq
+ zDj5qp6Xq7xck4o.Zis2K_VORB0qn.UB6Q7AhRfU9B4IQEO6xNC46zD8WiKf1QBICgGAwvNVxLoW
+ 2zR1EL_87AHMUrfk4XkNoxbDHWXiPd83OpTWO_sR9Jp9c3rXv1_voO1kYQlC3Nc9_M7t5WfrrNYe
+ __4zqPIxiQzu7dOap4hF.hO9x3x_Q1GaH5Ry9hkaLTqLFY6eJvem0TUXNh3YjNMxOtQ5qwuFVjDv
+ njn18AXMet9wmys7z5sEK.plr1XXnzDUWX.OhgQUis3HGhQpYsMpLX9OIfU_kTBov8b9jbAsBAEC
+ U30ClCZNlj9eDWxFuALx45jxal5l0EC7p5KuIceVK8tDCodepTqCkhNyjHV9Y.8szbi0f8RSmCtU
+ GZWib7crCmI4NG5mmUrk6bP09Db85HOsHKYnQlvx3gbq0ZTh2Hc9iTtKlsBSn7PIVgOWjvnjF8PJ
+ 6QRwV59OTYb.9DqKSEHV3yGi6P8B30vKWdxzjuPlqk35VrmBRTinBqhd_ZuPY6Zj0DH8Fkhz9Ws2
+ PIVIj_rUJZ8vRrQqOfo38BEY9WpA1l6sjjgkiqAD7VYnlBQ3.kF1_z14U_vOWfNLaAOD6pb6Yc.J
+ ctuufBSRxxIjCsVvUQpcjhWzb6WMk1w37ZIjxrcVC689pVWEUMOKlFdQCepBolrgXFtbDpCHvwyU
+ 9oTyIxLVDE9RXmB.MkGhONault9Lzdo7Zcp1xykL9USKZ2IQkqw6RoUrpSbX4Sv9Fvvsmj7Uu6eL
+ GM7eTx1fR5dtLhUS_y6p9ARxvgJ9lZbmy13SldPl99vOlHHL006iPKdDWs7zH6HTgBWIur6eh18g
+ s5Lj6zvkghAFD.uUwKUZz68dimrVisDJ8JKPqWqRmqO9Jf9du43oHiulpZ3P8y4F5zJnNf87Zkp5
+ uQrAySPBD.AdWn.qa1BbhqiEo3HUbtMgVmU8O_vQao_lX1MA_Qe8CwT3SiSBV4fG7yLEGGbYAXST
+ lfu0g0QadHiHR0iY2i6AAZdjEqIAlGpeCnt9Xu6WL_huFLNe3ktfOYg--
+X-Sonic-MF: <caribnay123@yahoo.com>
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic309.consmr.mail.bf2.yahoo.com with HTTP; Fri, 16 Sep 2022 00:20:43 +0000
+Received: by hermes--production-gq1-5499fdd576-g4rmd (Yahoo Inc. Hermes SMTP Server) with ESMTPA ID fd6edb299e931802febf5183ce072daa;
+          Fri, 16 Sep 2022 00:20:40 +0000 (UTC)
+From: Nadine Smith <caribnay123@yahoo.com>
+Content-Type: text/plain;
+	charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.120.41.1.1\))
+Subject: Lessons for Justin and Paul
+Message-Id: <6953BAFA-19F8-4357-930E-07CEA53C0E72@yahoo.com>
+Date: Thu, 15 Sep 2022 20:20:38 -0400
+To: Gabriel Contreras <gabriel@academyofgames.org>
+X-Mailer: Apple Mail (2.3696.120.41.1.1)
+References: <6953BAFA-19F8-4357-930E-07CEA53C0E72.ref@yahoo.com>
+X-CM-Analysis: v=2.4 cv=bNsFndyZ c=1 sm=1 tr=0 ts=6323c15c a=/BY2MgExXgXzF8b6oEjblA==:117 a=IkcTkHD0fZMA:10 a=xOM3xZuef0cA:10 a=W8kTpYlesWQA:10 a=6FtoPiLiu88A:10 a=x7bEGLp0ZPQA:10 a=jLauUH170J4A:10 a=Ip5vtlyhzAScdyOcCIoA:9 a=QEXdDO2ut3YA:10 a=P68Il5PNfj4A:10 a=DlLjFdqI8ToA:10 a=QYH75iMubAgA:10
+X-CM-Envelope: MS4xfOz4x256RLdak832SwYxWrmfaMgzuNSdYEZJLEjUe6kV7lFFQ4OJ5oDVTRiQ4CkCZhtKOQzsSqSJwi49W8jrd3hZcgCvKo7J1REJ77P1V58wCw6Qf307 TAsStFzBJRwTo0f3oNu/kniAVY20qQoMEfvo5sWVD/6jhiouBjpqLuozMaplcb4jhr8mpv/qFAFc2xK7M5Vo4Cbxh8PCf36qunB9KG+BASVk3qlSVG9Ego1+
+ARC-Authentication-Results: i=1;
+	gcp-europe-west4-c-smtpin3.hostinger.io;
+	dkim=pass header.d=yahoo.com header.s=s2048 header.b=kNVLvhyQ;
+	spf=pass (gcp-europe-west4-c-smtpin3.hostinger.io: domain of caribnay123@yahoo.com designates 74.6.129.125 as permitted sender) smtp.mailfrom=caribnay123@yahoo.com;
+	dmarc=pass (policy=reject) header.from=yahoo.com
+ARC-Seal: i=1; s=hostingermail-a; d=academyofgames.org; t=1663287644;
+	a=rsa-sha256; cv=none;
+	b=AKqZzcqCrxfo130MRNeiwbMxvIfVBPmvgmOVuAOAQn9EHVvvTnlmya0HvbNGtkfcJTkWcz
+	GBJskgDX5oDypK7LQuvnOYRvzy1CYUgNLuMD2x+rkAAuUCW7y/je94mGqfI8RDRiw+R2kO
+	qfzUpGHbZ3QsfpeZqitsEiFxENaEH4s3Iel34qjaJ1ldHc/uoc6uBYfXHemYM4Ks/UUgIB
+	mZe4ByjIQehWyUyUopZlXdWynhRUhsr8Eb1tu4J4SEDrFqCt7XEh7++m6G+u3UBdEz+hh4
+	IOcvN2lkvSQUxG7sCjCJY37h23qv8vE+6L44TdoxTDTX+SYtMaDDV4OJ1SDBqQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=academyofgames.org; s=hostingermail-a; t=1663287644;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 references:references:dkim-signature;
+	bh=0QdaJd5qFmgJuwigJINJbGxWSqJNoVsSJJuHi+qCktQ=;
+	b=r7YaTku4SnjhpzPmxnngurTmFl4fIyvxq4+LXmuMluHLGr77g7JM2k8tCmespIGdi9Y66A
+	JwaFymlYsL6xw6iNWbNs5dZ/P7gEDEvSx5Q2X88flw8+vDu1J90MCH97XDJ3bMgyD/JItx
+	U2teRhzhRsuBy4APfZ+YYXj7GW/NHNV2Cx6cWjQsIa1cHA3J1/Ovzg+I3P0lojEoTXgWv8
+	oZ85198kosxWbEY+QP65pVbt7eUzq+dd7SYzK1vdzbhvI1fh/M/vJrMeIHLpXnc2qiDoFG
+	Ari7T7O/fERcyE4Y//Z35chy5Ff+d+nAkg6HSHYUsWjC/p7opUAYqyBpRpeBEQ==
+
+Hi Gabriel,
+
+How are you? Hope all is well. Sorry I have not been in touch, =
+unfortunately I lost some of the data from my phone so I have lost =
+access to some of my apps (including Discord), emails and text messages. =
+You might have sent me the link to book the lessons, but I don=E2=80=99t =
+have it. Can you please resend it to me when you get the chance?=20
+
+Thanks,
+Nadine
+(678) 860-1016=
