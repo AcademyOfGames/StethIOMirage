@@ -65,6 +65,7 @@ public class SessionDataManager : MonoBehaviour
     {
         if (timeCount >= dataCollectionRate)
         {
+            if (onlineStats == null) return;
             timeCount = 0;
             heartRatePoints.Add(Mathf.RoundToInt(heartStats.currentHeartRate));
             currentAtrialFibBurden.Add(Mathf.RoundToInt(onlineStats.currentAtrialFibBurden));
