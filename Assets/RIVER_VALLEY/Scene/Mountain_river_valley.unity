@@ -11267,6 +11267,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 049ed68b15bf11a45b60a1490a6d4117, type: 3}
+--- !u!4 &974189105 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7958564081406471156, guid: 9074c31d235dfbd498e176cb71966363, type: 3}
+  m_PrefabInstance: {fileID: 1630588409}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &976256620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26317,7 +26322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pingTime: 0.5
-  radius: 10
+  radius: 2
 --- !u!1 &2248029783750459112
 GameObject:
   m_ObjectHideFlags: 0
@@ -28932,35 +28937,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2581741017347614229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2581741017357224875}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71b931f8941854f42b4e3e135d4e28c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  swanAnimator: {fileID: 0}
-  swanSpeed: 1
-  isFlying: 0
-  rotateSpeed: 0.2
---- !u!114 &2581741017347615233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2581741017357224875}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 636ae756315c44b05b0edc844a1ec591, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  swanCharacter: {fileID: 0}
 --- !u!95 &2581741017349818445
 Animator:
   serializedVersion: 4
@@ -30207,19 +30183,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2581741017357107654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2581741017357224875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e7aacf294fc844bb1dd80a5c5f3e40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
 --- !u!114 &2581741017357107655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30232,16 +30195,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c27e5948476f9a242ab3bc98952c2282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  birdState: {fileID: 2581741017357107654}
-  turnSpeed: 0.1
-  speed: 1
-  target: {fileID: 7001586631870016322}
-  player: {fileID: 7001586631870016322}
-  turnAngleIntensity: -0.01
-  wayPointVolume: {fileID: 0}
-  landingSpot: {fileID: 0}
-  handLandingSpot: {fileID: 7001586631870016322}
-  currentWaypoint: {x: 0, y: 0, z: 0}
+  flightPath: {fileID: 974189105}
+  maxPathHeight: 160
+  sineAmplitude: 6
+  sineFrequency: 0.3
   anim: {fileID: 0}
 --- !u!1 &2581741017357189851
 GameObject:
@@ -31488,10 +31445,7 @@ GameObject:
   - component: {fileID: 2581741017362540001}
   - component: {fileID: 2581741017339943327}
   - component: {fileID: 2581741017353930499}
-  - component: {fileID: 2581741017347615233}
-  - component: {fileID: 2581741017347614229}
   - component: {fileID: 2581741017357107653}
-  - component: {fileID: 2581741017357107654}
   - component: {fileID: 2581741017357107655}
   m_Layer: 0
   m_Name: SwanModelThreeLODs (1)

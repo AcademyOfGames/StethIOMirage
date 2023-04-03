@@ -1,22 +1,21 @@
-using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
-using Random = UnityEngine.Random;
 
 public class SwanMovement1 : MonoBehaviour
 {
-    public BirdStateChanger birdState;
-    //Custom behavior
-
     // Flying
-    public float turnSpeed;
-    public float speed;
-    public Transform target;
-    public Transform player;
-    public float turnAngleIntensity;
     private Transform t;
+    private Vector3 lastPos;
+
+    public Transform flightPath;
+    private float minPathHeight;
+    public float maxPathHeight;
+    private float currentPathHeight;
+
+    private float initialFlightHeight;
+    Vector3 newPos;
+    public float sineAmplitude;
+    public float sineFrequency;
     
     //Rotation
     private Vector3 direction;
@@ -24,13 +23,6 @@ public class SwanMovement1 : MonoBehaviour
     private float currentTurnSpeed;
     
     private Vector3 previousPos;
-
-    // Waypoints
-    public Transform wayPointVolume;
-    public Transform landingSpot;
-    public Transform handLandingSpot;
-
-    public Vector3 currentWaypoint;
 
     // Animation
     private bool gliding;
@@ -41,25 +33,24 @@ public class SwanMovement1 : MonoBehaviour
     private float originalGlidingRate = 5;
     private float glidingRate = 5;
     
-    private bool goToPlayer;
     private bool foundLandingSpot;
 
     private bool _landing;
 
+    [HideInInspector]
     public Animator anim;
 
     //Data
     private HeartStatsTracker heart;
+    
+    
 
     void Start()
     {
         heart = FindObjectOfType<HeartStatsTracker>();
         anim = GetComponent<Animator>();
-        //birdAudio = GetComponent<BirdAudioManager>();
-        birdState = GetComponent<BirdStateChanger>();
         t = transform;
         InvokeRepeating(nameof(AdjustHeartRateInfluence),2,3);
-
     }
 
     private void OnEnable()
@@ -71,70 +62,18 @@ public class SwanMovement1 : MonoBehaviour
     {
         HeartSoundControls.OnBeat -= FlapWings;
     }
-
-    void SwitchAnimation(string triggerName)
-    {
-        if (birdState.currentState == BirdStateChanger.BirdState.Landing && !triggerName.Equals("TakeOff")) return;
-        anim.SetTrigger(triggerName);
-    }
     
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("LandingSpot"))
-        {
-            birdState.SwitchState(BirdStateChanger.BirdState.Landing);        }
-    }    
-    
-    public void BirdLanded( )
-    {
-            print("bird landed called");
-            FindObjectOfType<LevelManager>().ShowEndUI();
-            anim.SetTrigger("Landing");
-            _landing = true;
-            Vector3 newRot = transform.localEulerAngles;
-            newRot.x = 0;
-            transform.localEulerAngles = newRot;
-            //other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
-    }
-    
-
    private void FixedUpdate()
    {
+       CalculateFlightHeight();
        FaceTowardMovement();
    }
-   public void UpdateSettings(BirdStateChanger.BirdSettings newSettings)
-    {
-        //go through each bird movement variable and switch it to the new setting
-        turnAngleIntensity = newSettings.turnAngleIntensity;
-
-        speed = newSettings.speed;
-        turnSpeed = newSettings.turnSpeed;
-    }
-
-   private Vector3 lastPos;
+   
     void FaceTowardMovement()
     {
         Quaternion newDir = Quaternion.LookRotation(t.position - lastPos);;
         t.rotation = Quaternion.Lerp(t.rotation, newDir, .01f);
         lastPos = t.position;
-    }
-
-    private float TiltWithReturn()
-    {
-        // Compare the forward angle of the bird and the direction of the waypoint
-        float angle = Vector3.SignedAngle(transform.forward, direction, Vector3.up);
-        angle *= turnAngleIntensity;
-        float tempAngle = transform.eulerAngles.z;
-
-        if (tempAngle > 180)
-        {
-            tempAngle -= 360;
-        }
-        angle = Mathf.Lerp(tempAngle, angle, .004f);
-        if (Mathf.Abs(angle) > 20) SwitchAnimation("Flap");
-
-        return angle;
-
     }
 
     public void FlapWings()
@@ -147,7 +86,20 @@ public class SwanMovement1 : MonoBehaviour
     public void AdjustHeartRateInfluence()
     {
         anim.speed = heart.currentHeartRate / 90f *1.5f;
-        //flyingRange = Mathf.Lerp(_initialFlyRange, closeFlyRange,heartRateProgress);
     }
+
+    void CalculateFlightHeight()
+    {
+        newPos = flightPath.position;
+
+        float heartRateHeight = Mathf.Lerp(maxPathHeight,0,  (heart.currentHeartRate - 60) / 40);
+        float sineHeight = Mathf.Sin(Time.time * sineFrequency) * sineAmplitude;   
+        
+        newPos.y = initialFlightHeight + heartRateHeight + sineHeight;
+        print("heartRateHeight " + heartRateHeight + " sineHeight " + sineHeight);
+        flightPath.position = newPos;
+        
+    }
+
 }
 

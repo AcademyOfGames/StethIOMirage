@@ -44,7 +44,6 @@ public class FocusObject : MonoBehaviour
         float timePassed = 0;
         while (scalingUp)
         {
-            print("CHaging scale to " + Vector3.Slerp(t.localScale, ogScale *3f, timePassed));
             timePassed += Time.deltaTime;
             t.localScale = Vector3.Slerp(t.localScale, ogScale *3f, timePassed);
             //t.position = Vector3.up * floatSpeed;
