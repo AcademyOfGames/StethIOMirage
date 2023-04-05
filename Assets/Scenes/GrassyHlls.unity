@@ -7368,8 +7368,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2174591413286395604, guid: dae540a06f66e06469e054b44cc05e10, type: 3}
+      propertyPath: m_HandMeshMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 613690cd962241049a0ec289a6ff835e, type: 2}
+    - target: {fileID: 2174591413286395605, guid: dae540a06f66e06469e054b44cc05e10, type: 3}
+      propertyPath: handVisualizer
+      value: 
+      objectReference: {fileID: 196882591}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dae540a06f66e06469e054b44cc05e10, type: 3}
+--- !u!1 &196882591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2174591413286395607, guid: dae540a06f66e06469e054b44cc05e10, type: 3}
+  m_PrefabInstance: {fileID: 196882590}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &202101883
 GameObject:
   m_ObjectHideFlags: 0

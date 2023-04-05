@@ -1,0 +1,257 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &581228045698553733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 581228045698553731}
+  - component: {fileID: 581228045698553728}
+  m_Layer: 0
+  m_Name: GestureDector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &581228045698553731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581228045698553733}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.49745965, y: 1.0840966, z: 13.890408}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &581228045698553728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581228045698553733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b728b93f0e6f3914e886bf9fc7113a6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  threshhold: 0.05
+  jointCube: {fileID: 6507399986997092475, guid: 254b742d65a15d14b9df756ae77de868, type: 3}
+  RootPos: {fileID: 0}
+  prevGesture:
+    name: 
+    fingerDatas: []
+    onRecognized:
+      m_PersistentCalls:
+        m_Calls: []
+  gestures:
+  - name: ThumbDown
+    fingerDatas:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0.04394889, y: 0.0068609715, z: -0.021279857}
+    - {x: 0.023732498, y: 0.037623405, z: -0.022245347}
+    - {x: 0.03787817, y: 0.064178586, z: -0.03698881}
+    - {x: 0.055263862, y: 0.09296048, z: -0.046051353}
+    - {x: 0.062775955, y: 0.11702043, z: -0.04896587}
+    - {x: 0.028904647, y: 0.026129007, z: -0.019693345}
+    - {x: 0.08519201, y: 0.036586404, z: -0.04285331}
+    - {x: 0.08435266, y: 0.040986776, z: -0.081681415}
+    - {x: 0.05963424, y: 0.039649367, z: -0.07787223}
+    - {x: 0.050016597, y: 0.03660488, z: -0.057121843}
+    - {x: 0.028286517, y: 0.009225011, z: -0.020459488}
+    - {x: 0.08789779, y: 0.013722062, z: -0.042559713}
+    - {x: 0.08307244, y: 0.02047646, z: -0.08601199}
+    - {x: 0.055365413, y: 0.022211552, z: -0.0800657}
+    - {x: 0.045500413, y: 0.022550583, z: -0.056276202}
+    - {x: 0.030394062, y: -0.0100005865, z: -0.023187712}
+    - {x: 0.080495805, y: -0.005894661, z: -0.047003716}
+    - {x: 0.07567887, y: 0.0024012327, z: -0.08602908}
+    - {x: 0.049697146, y: 0.008357525, z: -0.07975127}
+    - {x: 0.041936934, y: 0.008568525, z: -0.055855423}
+    - {x: 0.0285898, y: -0.017643213, z: -0.027573943}
+    - {x: 0.06804983, y: -0.023854971, z: -0.052424133}
+    - {x: 0.06962253, y: -0.014102459, z: -0.08250214}
+    - {x: 0.050685838, y: -0.0059119463, z: -0.07897316}
+    - {x: 0.041733846, y: -0.0035179853, z: -0.058329478}
+    onRecognized:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: 'PeaceSign '
+    fingerDatas:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0.009484068, y: -0.042328537, z: -0.023446962}
+    - {x: 0.021047026, y: -0.018308818, z: -0.043596074}
+    - {x: 0.025458992, y: -0.029620469, z: -0.074824706}
+    - {x: 0.012158021, y: -0.05175668, z: -0.0981884}
+    - {x: -0.0061331987, y: -0.06713122, z: -0.10672426}
+    - {x: 0.018318146, y: -0.024493873, z: -0.03280936}
+    - {x: 0.038973197, y: -0.07669753, z: -0.055056646}
+    - {x: 0.053424105, y: -0.10849458, z: -0.07260105}
+    - {x: 0.06162706, y: -0.12789959, z: -0.08614567}
+    - {x: 0.068601154, y: -0.14776069, z: -0.09559256}
+    - {x: 0.0032267272, y: -0.028873086, z: -0.025460213}
+    - {x: 0.018968135, y: -0.08465701, z: -0.04689391}
+    - {x: 0.022124738, y: -0.12640828, z: -0.061172605}
+    - {x: 0.02251473, y: -0.15088338, z: -0.07555534}
+    - {x: 0.023055151, y: -0.17460638, z: -0.085570276}
+    - {x: -0.009737819, y: -0.033238232, z: -0.019022942}
+    - {x: -0.0021469295, y: -0.08233565, z: -0.04404427}
+    - {x: -0.005985424, y: -0.11024803, z: -0.07270034}
+    - {x: -0.0090880245, y: -0.101509154, z: -0.09846744}
+    - {x: -0.009104818, y: -0.08173162, z: -0.113963455}
+    - {x: -0.01861687, y: -0.033542216, z: -0.02042818}
+    - {x: -0.023306504, y: -0.07479137, z: -0.04255797}
+    - {x: -0.025078475, y: -0.08468002, z: -0.0725804}
+    - {x: -0.022947162, y: -0.067923605, z: -0.08494231}
+    - {x: -0.015961394, y: -0.04650408, z: -0.08283612}
+    onRecognized:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+  - name: ThumbUp
+    fingerDatas:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0.030844122, y: -0.012682676, z: -0.03632082}
+    - {x: 0.0256726, y: -0.04024422, z: -0.011933669}
+    - {x: 0.037534013, y: -0.06788576, z: -0.026694939}
+    - {x: 0.046627373, y: -0.0954566, z: -0.04592912}
+    - {x: 0.047248572, y: -0.11917853, z: -0.054911718}
+    - {x: 0.025149673, y: -0.02961862, z: -0.0192146}
+    - {x: 0.06156686, y: -0.04748261, z: -0.066238776}
+    - {x: 0.09813656, y: -0.04865992, z: -0.052492484}
+    - {x: 0.08422689, y: -0.044045568, z: -0.032181695}
+    - {x: 0.06132613, y: -0.04195714, z: -0.034062788}
+    - {x: 0.025890306, y: -0.012826562, z: -0.020970643}
+    - {x: 0.061688244, y: -0.025365353, z: -0.072641626}
+    - {x: 0.10125701, y: -0.028392673, z: -0.05309291}
+    - {x: 0.083933786, y: -0.026564121, z: -0.030673936}
+    - {x: 0.058309138, y: -0.027440071, z: -0.03312011}
+    - {x: 0.02943939, y: 0.006168306, z: -0.02562721}
+    - {x: 0.06413588, y: -0.0046448708, z: -0.06773983}
+    - {x: 0.09843172, y: -0.010159731, z: -0.047531262}
+    - {x: 0.0805113, y: -0.011319697, z: -0.026856393}
+    - {x: 0.055873275, y: -0.010966122, z: -0.031767443}
+    - {x: 0.033224404, y: 0.014194608, z: -0.024158493}
+    - {x: 0.06639394, y: 0.015278697, z: -0.057502434}
+    - {x: 0.09311041, y: 0.005352795, z: -0.043719247}
+    - {x: 0.08059582, y: 0.0026156306, z: -0.027165383}
+    - {x: 0.058060497, y: 0.0031030774, z: -0.029153422}
+    onRecognized:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
