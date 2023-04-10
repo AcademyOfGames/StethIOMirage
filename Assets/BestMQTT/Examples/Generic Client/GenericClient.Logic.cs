@@ -43,6 +43,8 @@ public partial class GenericClient
         options.Path = this.pathInput.GetValue("/mqtt");
         options.ProtocolVersion = (SupportedProtocolVersions)this.protocolVersionDropdown.value;
 
+        print("**Connecting to " + options.Host + " on port " + options.Port + " with path " + options.Path + " and transport " + options.Transport + " and TLS " + options.UseTLS + " and protocol version " + options.ProtocolVersion + "");
+        
         this.client = new MQTTClient(options);
 
         this.client.OnConnected += OnConnected;
@@ -139,8 +141,10 @@ public partial class GenericClient
             return;
         }
 
-        var qos = this.subscribe_QoSDropdown.GetQoS();
-        var topic = this.subscribe_TopicInput.GetValue("best_mqtt/#");
+        
+        
+        QoSLevels qos = this.subscribe_QoSDropdown.GetQoS();
+        string topic = this.subscribe_TopicInput.GetValue("best_mqtt/#");
 
         this.client?.CreateBulkSubscriptionBuilder()
                         .WithTopic(new SubscribeTopicBuilder(topic)
@@ -149,6 +153,7 @@ public partial class GenericClient
                             .WithMessageCallback(OnApplicationMessage))
                         .BeginSubscribe();
 
+        print("**Subscribing to " + topic + " with QoS " + qos + " and colorValue " + colorValue);
         AddText($"[{client.Options.Host}] Subscribe request for topic <color=#{colorValue}>{topic}</color> sent...");
 
         AddSubscriptionUI(topic, colorValue);
