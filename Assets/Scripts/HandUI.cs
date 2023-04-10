@@ -64,10 +64,14 @@ public class HandUI : MonoBehaviour
             case XRHandSubsystem.UpdateType.BeforeRender:
                 if (!HandUIIsSet)
                 {
-                    HandUIIsSet= true;
-                    GameObject leftHand = handVisualizer.GetNamedChild("L_Wrist");
-                    WristUI.transform.SetParent(leftHand.transform, false);
-                    PalmUI.transform.SetParent(leftHand.transform, false);
+                    if (handVisualizer.transform.childCount != 0)
+                    {
+                        HandUIIsSet = true;
+                        GameObject leftHand = handVisualizer.GetNamedChild("L_Wrist");
+                        WristUI.transform.SetParent(leftHand.transform, false);
+                        PalmUI.transform.SetParent(leftHand.transform, false);
+                    }
+                    
                 }
                 
                 break;

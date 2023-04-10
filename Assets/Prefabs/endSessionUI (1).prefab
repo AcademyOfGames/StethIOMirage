@@ -30,6 +30,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.014962557}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3274472895755637226}
   m_RootOrder: 0
@@ -199,6 +200,7 @@ RectTransform:
   m_LocalRotation: {x: -0.000000046511897, y: -0.8209668, z: 0.00000006687627, w: 0.570976}
   m_LocalPosition: {x: 0, y: 0, z: -0.0104}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.0030000014}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1055368956467965335}
   - {fileID: 1055368956676594610}
@@ -276,7 +278,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 2
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &1055368955038498819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,6 +344,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1055368955038498831}
   m_RootOrder: 0
@@ -438,6 +441,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.04, y: 0.04, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3274472895755637226}
   m_Father: {fileID: 1055368955038498831}
@@ -590,6 +594,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1055368954887242504}
   m_Father: {fileID: 1055368956676594610}

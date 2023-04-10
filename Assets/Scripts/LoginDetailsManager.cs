@@ -112,5 +112,6 @@ public class LoginDetailsManager : MonoBehaviour
         {
             File.Delete(saveFilePath);
         }
+        
     }
 }
