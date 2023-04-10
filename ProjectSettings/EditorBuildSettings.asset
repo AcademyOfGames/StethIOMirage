@@ -5,15 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/futuristicExamRoom.unity
     guid: d394aac9d1d74c6429bf3f518bd4adb9
   - enabled: 1
-    path: Assets/Scenes/GrassyHlls.unity
-    guid: 2b3284638643fd348b1582c9349e5d2c
-  - enabled: 1
     path: Assets/RIVER_VALLEY/Scene/Mountain_river_valley.unity
     guid: ed7be0dea78e6cc4d994c031d021d6ec
+  - enabled: 1
+    path: Assets/Scenes/GrassyHlls.unity
+    guid: 2b3284638643fd348b1582c9349e5d2c
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: d7260244175a2e840a701b08bf44bc28, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 6e49a864e32ff1e4788ca89d7154f24b, type: 2}
