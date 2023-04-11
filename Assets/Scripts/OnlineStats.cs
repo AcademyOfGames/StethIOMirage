@@ -7,8 +7,7 @@ using UnityEngine;
 
 public class OnlineStats : MonoBehaviour
 {
-    public FirebaseAuth auth;
-    public FirebaseUser user;
+    private FirebaseUser user;
     private DatabaseReference db;
     public float currentHeartRate = -1;
     public float currentAtrialFibBurden = -1;
@@ -23,11 +22,34 @@ public class OnlineStats : MonoBehaviour
     public bool userLoggedIn;
     public bool missingHeartData;
     private long previousEarlyTimeStamp = 0;
+
+    public bool ConnectMQTT;
+    private MQTT mqttClient;
+    
     void Awake()
     {
-        InitializeFirebase();
+        if (ConnectMQTT)
+        {
+            InitializeMQTT();
+        }
+        else
+        {
+            InitializeFirebase();
+        }
     }
+
+    private void InitializeMQTT()
+    {
+        mqttClient = FindObjectOfType<MQTT>();
+        mqttClient.Init();
+    }
+
     public void GetHeartData(FirebaseUser _user)
+    {
+        if(!ConnectMQTT) StartFirebaseHeartData(_user);
+    }
+
+    private void StartFirebaseHeartData(FirebaseUser _user)
     {
         if (_user != null)
         {
@@ -41,12 +63,12 @@ public class OnlineStats : MonoBehaviour
             print("USER IS NULL");
         }
     }
-    
+
     void InitializeFirebase()
     {
-        auth = FirebaseAuth.DefaultInstance;
         db = FirebaseDatabase.DefaultInstance.RootReference;
     }
+    
     IEnumerator GetHeartRate()
     {
         var DBTask = db.Child("Users").Child(user.UserId).GetValueAsync();

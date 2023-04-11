@@ -56,6 +56,7 @@ public class LoginDetailsManager : MonoBehaviour
 
     private void Start()
     {
+        if (FindObjectOfType<OnlineStats>().ConnectMQTT) return;
         if (!File.Exists(saveFilePath))
         {
             saveDetailsToggle.isOn = false;
