@@ -42,7 +42,7 @@ public class GestureDetector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (m_Subsystem == null) return;
+        //if (m_Subsystem == null) return;
         m_Subsystem =
             XRGeneralSettings.Instance?
                 .Manager?
@@ -53,11 +53,13 @@ public class GestureDetector : MonoBehaviour
         {
             m_Subsystem.updatedHands += OnHandUpdate;
             m_Subsystem.trackingAcquired += OnHandTracked;
+
+            RHand = m_Subsystem.rightHand;
+            LHand = m_Subsystem.leftHand;
         }
             
 
-        RHand = m_Subsystem.rightHand;
-        LHand = m_Subsystem.leftHand;
+        
 
         prevGesture = new Gesture();
         

@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/futuristicExamRoom.unity
     guid: d394aac9d1d74c6429bf3f518bd4adb9
   - enabled: 1

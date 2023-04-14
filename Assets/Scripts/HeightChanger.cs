@@ -67,12 +67,15 @@ public class HeightChanger : MonoBehaviour
                 Vector3 newPos = PlayerPos.transform.position;
                 newPos.y += yOffset * Time.deltaTime;
                 PlayerPos.transform.position = newPos;
+                Debug.Log("Moving Player Up");
             }
             else
             {
                 Vector3 newPos = PlayerPos.transform.position;
                 newPos.y -= yOffset * Time.deltaTime;
                 PlayerPos.transform.position = newPos;
+                Debug.Log("Moving Player Down");
+
             }
         }
     }
