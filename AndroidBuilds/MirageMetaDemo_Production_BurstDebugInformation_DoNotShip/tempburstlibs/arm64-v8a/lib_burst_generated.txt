@@ -171,9 +171,11 @@ Library: lib_burst_generated
 --output=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\tempburstlibs\arm64-v8a\lib_burst_generated
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\Unity.XR.Interaction.Toolkit.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\UnityEngine.UI.dll
+--root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\UnityEngine.Purchasing.Security.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\Oculus.Platform.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.Core.Runtime.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
+--root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\BestHTTP.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\Unity.Services.Core.Telemetry.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\Unity.InputSystem.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\UnityEngine.Purchasing.WinRTCore.dll
@@ -186,6 +188,7 @@ Library: lib_burst_generated
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\Unity.TextMeshPro.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\Unity.Burst.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\UnityEngine.Purchasing.Stores.dll
+--root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\BestMQTT.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\UnityEngine.Advertisements.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\Oculus.VR.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\Unity.RenderPipeline.Universal.ShaderLibrary.dll
@@ -214,7 +217,6 @@ Library: lib_burst_generated
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\Unity.Services.Core.Analytics.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\Unity.XR.Hands.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\UnityEngine.Purchasing.SecurityCore.dll
---root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\UnityEngine.Purchasing.Security.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\Unity.XR.Management.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\Unity.XR.Interaction.Toolkit.Samples.Hands.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\Unity.Analytics.DataPrivacy.dll
@@ -232,6 +234,7 @@ Library: lib_burst_generated
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\Unity.Subsystem.Registration.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\Unity.XR.OpenXR.Features.MetaQuestSupport.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\UnityEngine.Purchasing.AppleMacosStub.dll
+--root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\BestMQTT.Examples.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\UnityEngine.Purchasing.Codeless.dll
 --root-assembly=D:\G\Dev\Unity\StethIOMirage\Temp\StagingArea\Data\Managed\Unity.RenderPipelines.Core.ShaderLibrary.dll

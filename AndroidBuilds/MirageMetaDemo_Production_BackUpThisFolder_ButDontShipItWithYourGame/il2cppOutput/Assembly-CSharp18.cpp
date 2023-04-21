@@ -9664,7 +9664,7 @@ IL_00e1_1:
 				// s.Close();
 				Stream_tF844051B786E8F7F4244DBD218D74E8617B9A2DE* L_36 = V_0;
 				NullCheck(L_36);
-				VirtualActionInvoker0::Invoke(18 /* System.Void System.IO.Stream::Close() */, L_36);
+				VirtualActionInvoker0::Invoke(19 /* System.Void System.IO.Stream::Close() */, L_36);
 				// }
 				goto IL_00f3;
 			}

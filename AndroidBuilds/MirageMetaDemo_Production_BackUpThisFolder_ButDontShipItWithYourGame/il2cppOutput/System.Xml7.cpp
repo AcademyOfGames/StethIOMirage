@@ -2135,6 +2135,12 @@ struct DefaultValueAttribute_tD45612CBB8D83D43A266980AB11467557BF753CC  : public
 	RuntimeObject* ____value_0;
 };
 
+struct DefaultValueAttribute_tD45612CBB8D83D43A266980AB11467557BF753CC_StaticFields
+{
+	// System.Object System.ComponentModel.DefaultValueAttribute::s_convertFromInvariantString
+	RuntimeObject* ___s_convertFromInvariantString_1;
+};
+
 // System.Collections.DictionaryEntry
 struct DictionaryEntry_t171080F37B311C25AA9E75888F9C9D703FA721BB 
 {
@@ -19142,7 +19148,7 @@ IL_00d6:
 		L_61 = VirtualFuncInvoker0< Assembly_t* >::Invoke(27 /* System.Reflection.Assembly System.Type::get_Assembly() */, L_60);
 		NullCheck(L_61);
 		String_t* L_62;
-		L_62 = VirtualFuncInvoker0< String_t* >::Invoke(9 /* System.String System.Reflection.Assembly::get_FullName() */, L_61);
+		L_62 = VirtualFuncInvoker0< String_t* >::Invoke(10 /* System.String System.Reflection.Assembly::get_FullName() */, L_61);
 		String_t* L_63;
 		L_63 = String_Concat_m093934F71A9B351911EE46311674ED463B180006(L_55, L_58, _stringLiteral758733BDBED83CBFF4F635AC26CA92AAE477F75D, L_62, NULL);
 		V_8 = L_63;
