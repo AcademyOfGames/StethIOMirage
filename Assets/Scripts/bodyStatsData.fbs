@@ -1,0 +1,6 @@
+table Measurement {
+	value:float32;
+	timestamp:int64;
+}
+
+root_type Measurement;

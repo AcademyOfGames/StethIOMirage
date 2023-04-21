@@ -28197,7 +28197,7 @@ IL_008b_1:
 				// fileStream.Close();
 				FileStream_t07C7222EE10B75F352B89B76E60820160FF10AD8* L_31 = V_1;
 				NullCheck(L_31);
-				VirtualActionInvoker0::Invoke(18 /* System.Void System.IO.Stream::Close() */, L_31);
+				VirtualActionInvoker0::Invoke(19 /* System.Void System.IO.Stream::Close() */, L_31);
 				// }
 				goto IL_009d;
 			}

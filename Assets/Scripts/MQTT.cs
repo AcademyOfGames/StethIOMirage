@@ -9,6 +9,7 @@ using BestMQTT.Examples.Helpers;
 using BestMQTT.Packets;
 using BestMQTT.Packets.Builders;
 using TMPro;
+using FlatBuffers;
 
 public class MQTT : MonoBehaviour
 {
@@ -35,6 +36,11 @@ public class MQTT : MonoBehaviour
             .WithEventHandler(OnError)
             .CreateClient();
         client.BeginConnect(ConnectPacketBuilderCallback);
+    }
+
+    void LoadData()
+    {
+    //ByteBuffer loader = new(File.ReadAllBytes(heartDataPath));
     }
 
     private void OnDestroy()
@@ -84,8 +90,7 @@ public class MQTT : MonoBehaviour
     public void Subscribe()
     {
         QoSLevels qos = QoSLevels.AtMostOnceDelivery;
-        var topic = "live_metric";
-
+        var topic = "live_metric"; // /230220176260/hr";
         this.client?.CreateBulkSubscriptionBuilder()
             .WithTopic(new SubscribeTopicBuilder(topic)
                 .WithMaximumQoS(qos)
@@ -128,8 +133,8 @@ public class MQTT : MonoBehaviour
         if (applicationMessage.ContentType != null)
             contentType = $" ({applicationMessage.ContentType}) ";
 
-        // Add the final text to the demo's log view.
         if(MQTTLog != null) MQTTLog.text = "\n" + $"[{client.Options.Host}] [{topicName}] {contentType}{payload}";
+        print( $"[{client.Options.Host}] [{topicName}] {contentType}{payload}");
     }
 
     private SubscriptionListItem FindSubscriptionItem(string topicName) => subscriptionListItems.FirstOrDefault(s => s.Topic.IsMatching(topicName));
