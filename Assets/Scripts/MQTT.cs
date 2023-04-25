@@ -10,6 +10,7 @@ using BestMQTT.Packets;
 using BestMQTT.Packets.Builders;
 using TMPro;
 using FlatBuffers;
+using ChartUtil;
 
 public class MQTT : MonoBehaviour
 {
@@ -116,11 +117,13 @@ public class MQTT : MonoBehaviour
         var subscription = FindSubscriptionItem(topicName);
 
         string payload = string.Empty;
-        
+
         // Here we going to try to convert the payload as an UTF-8 string. Note that it's not guaranteed that the payload is a string!
         // While MQTT supports an additional Content-Type field in this demo we can't rely on its presense.
         if (applicationMessage.Payload != BufferSegment.Empty)
         {
+            LoadHeartData(applicationMessage.Payload.Data);
+
             payload = Encoding.UTF8.GetString(applicationMessage.Payload.Data, applicationMessage.Payload.Offset, applicationMessage.Payload.Count);
 
             const int MaxPayloadLength = 512;
@@ -137,6 +140,22 @@ public class MQTT : MonoBehaviour
         print( $"[{client.Options.Host}] [{topicName}] {contentType}{payload}");
     }
 
+    void SaveFlatBuffer(byte[] heartData)
+    {
+      /*  FlatBufferBuilder saver = new(1);
+
+        Offset<Measurement> measurment = Measurement.CreateMeasurement(saver,);
+
+        */
+    }
+
+    void LoadHeartData(byte[] data)
+    {
+        ByteBuffer loader = new(data);
+        Measurement measurement = Measurement.GetRootAsMeasurement(loader);
+
+        print("Heart data time " + measurement.Timestamp + " value");
+    }
     private SubscriptionListItem FindSubscriptionItem(string topicName) => subscriptionListItems.FirstOrDefault(s => s.Topic.IsMatching(topicName));
 
 }
