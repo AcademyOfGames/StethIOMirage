@@ -91,7 +91,7 @@ public class MQTT : MonoBehaviour
     public void Subscribe()
     {
         QoSLevels qos = QoSLevels.AtMostOnceDelivery;
-        var topic = "live_metric"; // /230220176260/hr";
+        var topic = "live_metric/230220176260";
         this.client?.CreateBulkSubscriptionBuilder()
             .WithTopic(new SubscribeTopicBuilder(topic)
                 .WithMaximumQoS(qos)
@@ -153,8 +153,8 @@ public class MQTT : MonoBehaviour
     {
         ByteBuffer loader = new(data);
         Measurement measurement = Measurement.GetRootAsMeasurement(loader);
+        if (MQTTLog != null) MQTTLog.text = "Heart data time " + measurement.Timestamp + " value";
 
-        print("Heart data time " + measurement.Timestamp + " value");
     }
     private SubscriptionListItem FindSubscriptionItem(string topicName) => subscriptionListItems.FirstOrDefault(s => s.Topic.IsMatching(topicName));
 
