@@ -2631,10 +2631,12 @@ struct SslClientAuthenticationOptions_tA5277DAACAFB33887D2513D9399C5154B0D5CBC9 
 	int32_t ____enabledSslProtocols_2;
 	// System.Boolean System.Net.Security.SslClientAuthenticationOptions::_allowRenegotiation
 	bool ____allowRenegotiation_3;
+	// System.Net.Security.LocalCertificateSelectionCallback System.Net.Security.SslClientAuthenticationOptions::<LocalCertificateSelectionCallback>k__BackingField
+	LocalCertificateSelectionCallback_t71A03329606A5610ECC62BFBE6327C1EF9195859* ___U3CLocalCertificateSelectionCallbackU3Ek__BackingField_4;
 	// System.String System.Net.Security.SslClientAuthenticationOptions::<TargetHost>k__BackingField
-	String_t* ___U3CTargetHostU3Ek__BackingField_4;
+	String_t* ___U3CTargetHostU3Ek__BackingField_5;
 	// System.Security.Cryptography.X509Certificates.X509CertificateCollection System.Net.Security.SslClientAuthenticationOptions::<ClientCertificates>k__BackingField
-	X509CertificateCollection_t2900D71D188EDCA7DEB5077D36103EE5DA6805CE* ___U3CClientCertificatesU3Ek__BackingField_5;
+	X509CertificateCollection_t2900D71D188EDCA7DEB5077D36103EE5DA6805CE* ___U3CClientCertificatesU3Ek__BackingField_6;
 };
 
 // System.String
@@ -32977,7 +32979,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void SslClientAuthenticationOptio
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* SslClientAuthenticationOptions_get_TargetHost_mC4CF1905E7B4F8193544D4997E305406B976A797_inline (SslClientAuthenticationOptions_tA5277DAACAFB33887D2513D9399C5154B0D5CBC9* __this, const RuntimeMethod* method) 
 {
 	{
-		String_t* L_0 = __this->___U3CTargetHostU3Ek__BackingField_4;
+		String_t* L_0 = __this->___U3CTargetHostU3Ek__BackingField_5;
 		return L_0;
 	}
 }
@@ -32985,15 +32987,15 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void SslClientAuthenticationOptio
 {
 	{
 		String_t* L_0 = ___value0;
-		__this->___U3CTargetHostU3Ek__BackingField_4 = L_0;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CTargetHostU3Ek__BackingField_4), (void*)L_0);
+		__this->___U3CTargetHostU3Ek__BackingField_5 = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CTargetHostU3Ek__BackingField_5), (void*)L_0);
 		return;
 	}
 }
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR X509CertificateCollection_t2900D71D188EDCA7DEB5077D36103EE5DA6805CE* SslClientAuthenticationOptions_get_ClientCertificates_mD6898001726E82ADD9E3083D78BD05DB619B313C_inline (SslClientAuthenticationOptions_tA5277DAACAFB33887D2513D9399C5154B0D5CBC9* __this, const RuntimeMethod* method) 
 {
 	{
-		X509CertificateCollection_t2900D71D188EDCA7DEB5077D36103EE5DA6805CE* L_0 = __this->___U3CClientCertificatesU3Ek__BackingField_5;
+		X509CertificateCollection_t2900D71D188EDCA7DEB5077D36103EE5DA6805CE* L_0 = __this->___U3CClientCertificatesU3Ek__BackingField_6;
 		return L_0;
 	}
 }
@@ -33001,8 +33003,8 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void SslClientAuthenticationOptio
 {
 	{
 		X509CertificateCollection_t2900D71D188EDCA7DEB5077D36103EE5DA6805CE* L_0 = ___value0;
-		__this->___U3CClientCertificatesU3Ek__BackingField_5 = L_0;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CClientCertificatesU3Ek__BackingField_5), (void*)L_0);
+		__this->___U3CClientCertificatesU3Ek__BackingField_6 = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CClientCertificatesU3Ek__BackingField_6), (void*)L_0);
 		return;
 	}
 }

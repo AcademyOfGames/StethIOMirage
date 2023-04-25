@@ -3608,6 +3608,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rigidbody_Sleep_m9826BDFCF078DF00223011B
 	_il2cpp_icall_func = (Rigidbody_Sleep_m9826BDFCF078DF00223011B3F0FA7F4894F8F4CA_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.Rigidbody::Sleep()");
 	_il2cpp_icall_func(__this);
 }
+// System.Void UnityEngine.Rigidbody::WakeUp()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rigidbody_WakeUp_m64CF3AFAAC3CBB5360947731C1F77F13CDB960AD (Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* __this, const RuntimeMethod* method) 
+{
+	typedef void (*Rigidbody_WakeUp_m64CF3AFAAC3CBB5360947731C1F77F13CDB960AD_ftn) (Rigidbody_t268697F5A994213ED97393309870968BC1C7393C*);
+	static Rigidbody_WakeUp_m64CF3AFAAC3CBB5360947731C1F77F13CDB960AD_ftn _il2cpp_icall_func;
+	if (!_il2cpp_icall_func)
+	_il2cpp_icall_func = (Rigidbody_WakeUp_m64CF3AFAAC3CBB5360947731C1F77F13CDB960AD_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.Rigidbody::WakeUp()");
+	_il2cpp_icall_func(__this);
+}
 // System.Void UnityEngine.Rigidbody::AddForce(UnityEngine.Vector3,UnityEngine.ForceMode)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rigidbody_AddForce_mBDBC288D0E266BC1B62E3649B4FCE46E7EA9CCBC (Rigidbody_t268697F5A994213ED97393309870968BC1C7393C* __this, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___force0, int32_t ___mode1, const RuntimeMethod* method) 
 {

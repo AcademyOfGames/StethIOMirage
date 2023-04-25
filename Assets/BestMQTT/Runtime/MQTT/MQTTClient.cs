@@ -340,7 +340,7 @@ namespace BestMQTT
 
                     try
                     {
-                        switch (packet.Type)
+                        switch (packet.Type)    
                         {
                             case PacketTypes.ConnectAck: HandleConnectAckPacket(packet); break;
                             case PacketTypes.Disconnect: HandleDisconnectPacket(packet); break;

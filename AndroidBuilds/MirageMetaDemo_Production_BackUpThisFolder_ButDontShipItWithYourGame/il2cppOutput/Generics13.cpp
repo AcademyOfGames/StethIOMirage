@@ -229,6 +229,8 @@ struct ClampedDragger_1_t38308021CEC312E002F1A5665B792022E28A1A3E;
 struct ClampedDragger_1_t85BD8A59129E3542BBED473547E42F62F071FA92;
 // UnityEngine.UIElements.ClampedDragger`1<System.Single>
 struct ClampedDragger_1_t18A937D027747303C3811CCC9FAD288366DF8DC3;
+// System.Net.Http.Headers.HeaderInfo/CollectionHeaderTypeInfo`2<System.Object,System.Object>
+struct CollectionHeaderTypeInfo_2_tD8AF22D0DA875365947D21FB141AFED417EDB103;
 // Newtonsoft.Json.Utilities.CollectionWrapper`1<System.Object>
 struct CollectionWrapper_1_t83D6BD1B5A9AB29C5C8F453767E62E29A5330D27;
 // System.Collections.ObjectModel.Collection`1<System.Object>
@@ -415,6 +417,8 @@ struct Dictionary_2_t4055F6540F36F21F9FEDAFB92D8E0089B38EBBC8;
 struct Func_1_tD5C081AE11746B200C711DD48DBEB00E3A9276D4;
 // System.Func`2<System.Object[],System.Object>
 struct Func_2_tDF54C067A76CC031380FDC1CAD2344D51038CC7A;
+// System.Func`2<System.Object,System.String>
+struct Func_2_t8A4E59735D50CEA34C30F6CD6B5804A38327CD0B;
 // System.Func`2<System.Single,System.Single>
 struct Func_2_t2A7432CC4F64D0DF6D8629208B154CF139B39AF2;
 // System.Func`3<System.Type,System.Type[],System.Type>
@@ -509,6 +513,10 @@ struct RefCounted_tA9FB4D63A1064BD322AFDFCD70319CB384C057D9;
 struct RefCounted_t812D790A2C787F18230F9234F6C9B84D4AC1A85A;
 // System.Collections.Generic.Stack`1<System.Object>
 struct Stack_1_tAD790A47551563636908E21E4F08C54C0C323EB5;
+// System.Net.Http.Headers.TryParseDelegate`1<System.Object>
+struct TryParseDelegate_1_t68AAA38F0E955758546B7533CA10878E95A4B0A5;
+// System.Net.Http.Headers.TryParseListDelegate`1<System.Object>
+struct TryParseListDelegate_1_t0D625C19EF72EA65D9F7E84D119235106C6353F1;
 // System.Collections.Generic.Dictionary`2/ValueCollection<System.Object,Oculus.Interaction.InteractableTriggerBroadcaster>
 struct ValueCollection_t2A6123EA9FF0CB234CC05AFD9EAC4849BD6ED34F;
 // System.Collections.Generic.Dictionary`2/ValueCollection<UnityEngine.Rigidbody,System.Collections.Generic.HashSet`1<System.Object>>
@@ -2144,6 +2152,19 @@ struct CultureInfo_t9BA817D41AD55AC8BD07480DD8AC22F8FFA378E0_marshaled_com
 	int32_t ___m_isInherited_29;
 };
 
+// System.Net.Http.Headers.HeaderInfo
+struct HeaderInfo_t782229DE42E48D05E18DC6D64B2C82D9907C74C9  : public RuntimeObject
+{
+	// System.Boolean System.Net.Http.Headers.HeaderInfo::AllowsMany
+	bool ___AllowsMany_0;
+	// System.Net.Http.Headers.HttpHeaderKind System.Net.Http.Headers.HeaderInfo::HeaderKind
+	int32_t ___HeaderKind_1;
+	// System.String System.Net.Http.Headers.HeaderInfo::Name
+	String_t* ___Name_2;
+	// System.Func`2<System.Object,System.String> System.Net.Http.Headers.HeaderInfo::<CustomToString>k__BackingField
+	Func_2_t8A4E59735D50CEA34C30F6CD6B5804A38327CD0B* ___U3CCustomToStringU3Ek__BackingField_3;
+};
+
 // System.Linq.Expressions.Interpreter.Instruction
 struct Instruction_t7ED95EF62BBC5003D30C1CE0FF8B1D79105A8998  : public RuntimeObject
 {
@@ -2348,6 +2369,13 @@ struct CustomStyleProperty_1_t8315EF5D1C5F5FB5F920B77E40695C07DAAB349A_marshaled
 	Il2CppChar* ___U3CnameU3Ek__BackingField_0;
 };
 #endif
+
+// System.Net.Http.Headers.HeaderInfo/HeaderTypeInfo`2<System.Object,System.Object>
+struct HeaderTypeInfo_2_t67DE691CC9F1FABB0B159D8C697416BED777A19C  : public HeaderInfo_t782229DE42E48D05E18DC6D64B2C82D9907C74C9
+{
+	// System.Net.Http.Headers.TryParseDelegate`1<T> System.Net.Http.Headers.HeaderInfo/HeaderTypeInfo`2::parser
+	TryParseDelegate_1_t68AAA38F0E955758546B7533CA10878E95A4B0A5* ___parser_4;
+};
 
 // System.Collections.Generic.KeyValuePair`2<System.Int32,System.Object>
 struct KeyValuePair_2_tDC26B09C26BA829DDE331BCB6AF7C508C763D7A3 
@@ -4823,6 +4851,17 @@ struct CastInstructionT_1_t423CD03F9DACCE016E86EAC21FB1DBFB039088DF  : public Ca
 {
 };
 
+// System.Net.Http.Headers.HeaderInfo/CollectionHeaderTypeInfo`2<System.Object,System.Object>
+struct CollectionHeaderTypeInfo_2_tD8AF22D0DA875365947D21FB141AFED417EDB103  : public HeaderTypeInfo_2_t67DE691CC9F1FABB0B159D8C697416BED777A19C
+{
+	// System.Int32 System.Net.Http.Headers.HeaderInfo/CollectionHeaderTypeInfo`2::minimalCount
+	int32_t ___minimalCount_5;
+	// System.String System.Net.Http.Headers.HeaderInfo/CollectionHeaderTypeInfo`2::separator
+	String_t* ___separator_6;
+	// System.Net.Http.Headers.TryParseListDelegate`1<T> System.Net.Http.Headers.HeaderInfo/CollectionHeaderTypeInfo`2::parser
+	TryParseListDelegate_1_t0D625C19EF72EA65D9F7E84D119235106C6353F1* ___parser_7;
+};
+
 // System.Collections.Generic.KeyValuePair`2<BestHTTP.PlatformSupport.Memory.BufferSegment,BestHTTP.PlatformSupport.Memory.BufferSegment>
 struct KeyValuePair_2_tF621D2B9ED0E350C3BC6A878AD8F4E55B1F8AADE 
 {
@@ -6392,6 +6431,16 @@ struct PointerEventBase_1_tED9D60928194E4D1F6C5F9C95D258E9102815B4B  : public Ev
 	bool ___U3CUnityEngine_UIElements_IPointerEventInternal_triggeredByOSU3Ek__BackingField_36;
 	// System.Boolean UnityEngine.UIElements.PointerEventBase`1::<UnityEngine.UIElements.IPointerEventInternal.recomputeTopElementUnderPointer>k__BackingField
 	bool ___U3CUnityEngine_UIElements_IPointerEventInternal_recomputeTopElementUnderPointerU3Ek__BackingField_37;
+};
+
+// System.Net.Http.Headers.TryParseDelegate`1<System.Object>
+struct TryParseDelegate_1_t68AAA38F0E955758546B7533CA10878E95A4B0A5  : public MulticastDelegate_t
+{
+};
+
+// System.Net.Http.Headers.TryParseListDelegate`1<System.Object>
+struct TryParseListDelegate_1_t0D625C19EF72EA65D9F7E84D119235106C6353F1  : public MulticastDelegate_t
+{
 };
 
 // System.Action
@@ -9664,6 +9713,33 @@ IL_0078:
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// System.Void System.Net.Http.Headers.HeaderInfo/CollectionHeaderTypeInfo`2<System.Object,System.Object>::.ctor(System.String,System.Net.Http.Headers.TryParseListDelegate`1<T>,System.Net.Http.Headers.HttpHeaderKind,System.Int32,System.String)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void CollectionHeaderTypeInfo_2__ctor_m5404683FC06D14D9CBF1ACC434E13E7136752622_gshared (CollectionHeaderTypeInfo_2_tD8AF22D0DA875365947D21FB141AFED417EDB103* __this, String_t* ___name0, TryParseListDelegate_1_t0D625C19EF72EA65D9F7E84D119235106C6353F1* ___parser1, int32_t ___headerKind2, int32_t ___minimalCount3, String_t* ___separator4, const RuntimeMethod* method) 
+{
+	{
+		String_t* L_0 = ___name0;
+		int32_t L_1 = ___headerKind2;
+		((  void (*) (HeaderTypeInfo_2_t67DE691CC9F1FABB0B159D8C697416BED777A19C*, String_t*, TryParseDelegate_1_t68AAA38F0E955758546B7533CA10878E95A4B0A5*, int32_t, const RuntimeMethod*))il2cpp_codegen_get_method_pointer(il2cpp_rgctx_method(method->klass->rgctx_data, 0)))((HeaderTypeInfo_2_t67DE691CC9F1FABB0B159D8C697416BED777A19C*)__this, L_0, (TryParseDelegate_1_t68AAA38F0E955758546B7533CA10878E95A4B0A5*)NULL, L_1, il2cpp_rgctx_method(method->klass->rgctx_data, 0));
+		TryParseListDelegate_1_t0D625C19EF72EA65D9F7E84D119235106C6353F1* L_2 = ___parser1;
+		__this->___parser_7 = L_2;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___parser_7), (void*)L_2);
+		int32_t L_3 = ___minimalCount3;
+		__this->___minimalCount_5 = L_3;
+		((HeaderInfo_t782229DE42E48D05E18DC6D64B2C82D9907C74C9*)__this)->___AllowsMany_0 = (bool)1;
+		String_t* L_4 = ___separator4;
+		__this->___separator_6 = L_4;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___separator_6), (void*)L_4);
+		return;
+	}
+}
 #ifdef __clang__
 #pragma clang diagnostic pop
 #endif

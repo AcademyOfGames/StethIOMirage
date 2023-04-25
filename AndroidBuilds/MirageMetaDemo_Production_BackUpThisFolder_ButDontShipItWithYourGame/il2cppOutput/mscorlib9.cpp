@@ -13139,6 +13139,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Volatile_Read_mFB26955190C17E3E35A2FE895
 		return L_2;
 	}
 }
+// System.Void System.Threading.Volatile::Write(System.Boolean&,System.Boolean)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Volatile_Write_m6612B577EB895FE2D35262000F555FA25B282AEE (bool* ___location0, bool ___value1, const RuntimeMethod* method) 
+{
+	{
+		bool* L_0 = ___location0;
+		VolatileBoolean_t9E1B0E7929E736D122D1C494D49E80C90874D041* L_1;
+		L_1 = il2cpp_unsafe_as_ref<VolatileBoolean_t9E1B0E7929E736D122D1C494D49E80C90874D041>(L_0);
+		bool L_2 = ___value1;
+		il2cpp_codegen_memory_barrier();
+		L_1->___Value_0 = L_2;
+		return;
+	}
+}
 // System.Int32 System.Threading.Volatile::Read(System.Int32&)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t Volatile_Read_mF665C6F65E2BE942262A5418C0CD4581B515CDA1 (int32_t* ___location0, const RuntimeMethod* method) 
 {

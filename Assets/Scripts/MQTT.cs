@@ -5,7 +5,7 @@ using System.Text;
 using BestHTTP.PlatformSupport.Memory;
 using UnityEngine;
 using BestMQTT;
-using BestMQTT.Examples.Helpers;
+//using BestMQTT.Examples.Helpers;
 using BestMQTT.Packets;
 using BestMQTT.Packets.Builders;
 using TMPro;
@@ -16,7 +16,7 @@ public class MQTT : MonoBehaviour
 {
     MQTTClient client;
     [SerializeField] private TextMeshProUGUI MQTTLog;
-    private List<SubscriptionListItem> subscriptionListItems = new List<SubscriptionListItem>();
+    //private List<SubscriptionListItem> subscriptionListItems = new List<SubscriptionListItem>();
 
     public void Init()
     {
@@ -38,11 +38,7 @@ public class MQTT : MonoBehaviour
             .CreateClient();
         client.BeginConnect(ConnectPacketBuilderCallback);
     }
-
-    void LoadData()
-    {
-    //ByteBuffer loader = new(File.ReadAllBytes(heartDataPath));
-    }
+    
 
     private void OnDestroy()
     {
@@ -69,14 +65,15 @@ public class MQTT : MonoBehaviour
             builder.WithPassword(password);
 
         builder.WithKeepAlive(60);
+        print("**Connecting..");
         return builder;
     }
 
     private void OnStateChanged(MQTTClient client, ClientStates oldState, ClientStates newState)
     {
        if(MQTTLog != null) MQTTLog.text = "\n" + $"{oldState} => {newState}";
-
-       if(newState == ClientStates.Connected) Subscribe();
+        print("Switching state " + oldState + " to " + newState);
+        if (newState == ClientStates.Connected) Invoke(nameof(Subscribe), 2f);
     }
 
     private void OnDisconnected(MQTTClient client, DisconnectReasonCodes code, string reason)
@@ -91,7 +88,7 @@ public class MQTT : MonoBehaviour
     public void Subscribe()
     {
         QoSLevels qos = QoSLevels.AtMostOnceDelivery;
-        var topic = "live_metric/230220176260";
+        var topic = "live_metric\\230220176260\\hr";
         this.client?.CreateBulkSubscriptionBuilder()
             .WithTopic(new SubscribeTopicBuilder(topic)
                 .WithMaximumQoS(qos)
@@ -99,22 +96,25 @@ public class MQTT : MonoBehaviour
                 .WithMessageCallback(OnApplicationMessage))
             .BeginSubscribe();
 
+        print("**Subscribing to live metric");
         if(MQTTLog != null) MQTTLog.text = "\n" + $"[{client.Options.Host}] Subscribe request for topic {topic}";
 
     }
     
     private void OnSubscriptionAcknowledgement(MQTTClient client, SubscriptionTopic topic, SubscribeAckReasonCodes reasonCode)
     {
-        var subscription = FindSubscriptionItem(topic.Filter.OriginalFilter);
+        print("**Subscription acknowledgement");
+        //var subscription = FindSubscriptionItem(topic.Filter.OriginalFilter);
 
         string reasonColor = reasonCode <= SubscribeAckReasonCodes.GrantedQoS2 ? "green" : "red";
-        if(MQTTLog != null) MQTTLog.text = "\n" +$"[{client.Options.Host}] Subscription request to topic <color=#{subscription.Color}>{topic.Filter.OriginalFilter}</color> returned with reason code: <color={reasonColor}>{reasonCode}</color>";
+        if(MQTTLog != null) MQTTLog.text = "\n" +$"[{client.Options.Host}] Subscription request to topic {topic.Filter.OriginalFilter}</color> returned with reason code: <color={reasonColor}>{reasonCode}</color>";
     }
     
     private void OnApplicationMessage(MQTTClient client, SubscriptionTopic topic, string topicName, ApplicationMessage applicationMessage)
     {
+        print("**onapplicationmessage");
         // find matching subscription for its color
-        var subscription = FindSubscriptionItem(topicName);
+       // var subscription = FindSubscriptionItem(topicName);
 
         string payload = string.Empty;
 
@@ -129,6 +129,10 @@ public class MQTT : MonoBehaviour
             const int MaxPayloadLength = 512;
             if (payload.Length > MaxPayloadLength)
                 payload = payload?.Remove(MaxPayloadLength);
+        }
+        else
+        {
+            print("payloadIs empty");
         }
 
         // Display the Content-Type if present
@@ -151,11 +155,12 @@ public class MQTT : MonoBehaviour
 
     void LoadHeartData(byte[] data)
     {
+        print("Getting heart data");
         ByteBuffer loader = new(data);
         Measurement measurement = Measurement.GetRootAsMeasurement(loader);
         if (MQTTLog != null) MQTTLog.text = "Heart data time " + measurement.Timestamp + " value";
 
     }
-    private SubscriptionListItem FindSubscriptionItem(string topicName) => subscriptionListItems.FirstOrDefault(s => s.Topic.IsMatching(topicName));
+   // private SubscriptionListItem FindSubscriptionItem(string topicName) => subscriptionListItems.FirstOrDefault(s => s.Topic.IsMatching(topicName));
 
 }
