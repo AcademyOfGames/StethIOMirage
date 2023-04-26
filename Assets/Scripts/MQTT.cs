@@ -16,7 +16,10 @@ public class MQTT : MonoBehaviour
 {
     MQTTClient client;
     [SerializeField] private TextMeshProUGUI MQTTLog;
-    //private List<SubscriptionListItem> subscriptionListItems = new List<SubscriptionListItem>();
+
+    [HideInInspector] public float MQTT_heartRate;
+    [HideInInspector] public float MQTT_breathVolume    ;
+    [HideInInspector] public float MQTT_heartRateVariability    ;
 
     public void Init()
     {
@@ -65,15 +68,13 @@ public class MQTT : MonoBehaviour
             builder.WithPassword(password);
 
         builder.WithKeepAlive(60);
-        print("**Connecting..");
         return builder;
     }
 
     private void OnStateChanged(MQTTClient client, ClientStates oldState, ClientStates newState)
     {
        if(MQTTLog != null) MQTTLog.text = "\n" + $"{oldState} => {newState}";
-        print("Switching state " + oldState + " to " + newState);
-        if (newState == ClientStates.Connected) Invoke(nameof(Subscribe), 2f);
+       if (newState == ClientStates.Connected) Invoke(nameof(Subscribe), 2f);
     }
 
     private void OnDisconnected(MQTTClient client, DisconnectReasonCodes code, string reason)
@@ -88,7 +89,8 @@ public class MQTT : MonoBehaviour
     public void Subscribe()
     {
         QoSLevels qos = QoSLevels.AtMostOnceDelivery;
-        var topic = "live_metric\\230220176260\\hr";
+        var topic = "live_metric/230220176260/#"; 
+        
         this.client?.CreateBulkSubscriptionBuilder()
             .WithTopic(new SubscribeTopicBuilder(topic)
                 .WithMaximumQoS(qos)
@@ -96,25 +98,19 @@ public class MQTT : MonoBehaviour
                 .WithMessageCallback(OnApplicationMessage))
             .BeginSubscribe();
 
-        print("**Subscribing to live metric");
         if(MQTTLog != null) MQTTLog.text = "\n" + $"[{client.Options.Host}] Subscribe request for topic {topic}";
 
     }
     
     private void OnSubscriptionAcknowledgement(MQTTClient client, SubscriptionTopic topic, SubscribeAckReasonCodes reasonCode)
     {
-        print("**Subscription acknowledgement");
-        //var subscription = FindSubscriptionItem(topic.Filter.OriginalFilter);
-
         string reasonColor = reasonCode <= SubscribeAckReasonCodes.GrantedQoS2 ? "green" : "red";
         if(MQTTLog != null) MQTTLog.text = "\n" +$"[{client.Options.Host}] Subscription request to topic {topic.Filter.OriginalFilter}</color> returned with reason code: <color={reasonColor}>{reasonCode}</color>";
     }
     
     private void OnApplicationMessage(MQTTClient client, SubscriptionTopic topic, string topicName, ApplicationMessage applicationMessage)
     {
-        print("**onapplicationmessage");
-        // find matching subscription for its color
-       // var subscription = FindSubscriptionItem(topicName);
+        print("**onapplicationmessage - topic " + topic + " - topicname" + topicName + " - app message " + applicationMessage);
 
         string payload = string.Empty;
 
@@ -122,7 +118,7 @@ public class MQTT : MonoBehaviour
         // While MQTT supports an additional Content-Type field in this demo we can't rely on its presense.
         if (applicationMessage.Payload != BufferSegment.Empty)
         {
-            LoadHeartData(applicationMessage.Payload.Data);
+            LoadBodyStatsData(applicationMessage.Payload.Data, topicName);
 
             payload = Encoding.UTF8.GetString(applicationMessage.Payload.Data, applicationMessage.Payload.Offset, applicationMessage.Payload.Count);
 
@@ -143,24 +139,31 @@ public class MQTT : MonoBehaviour
         if(MQTTLog != null) MQTTLog.text = "\n" + $"[{client.Options.Host}] [{topicName}] {contentType}{payload}";
         print( $"[{client.Options.Host}] [{topicName}] {contentType}{payload}");
     }
-
-    void SaveFlatBuffer(byte[] heartData)
+    
+    void LoadBodyStatsData(byte[] data, string topicName)
     {
-      /*  FlatBufferBuilder saver = new(1);
-
-        Offset<Measurement> measurment = Measurement.CreateMeasurement(saver,);
-
-        */
-    }
-
-    void LoadHeartData(byte[] data)
-    {
-        print("Getting heart data");
         ByteBuffer loader = new(data);
         Measurement measurement = Measurement.GetRootAsMeasurement(loader);
-        if (MQTTLog != null) MQTTLog.text = "Heart data time " + measurement.Timestamp + " value";
 
+        switch (topicName)
+        {
+            case "topicnamelive_metric/230220176260/volume":
+                MQTT_breathVolume = measurement.Value;
+                break;
+            case "topicnamelive_metric/230220176260/hr":
+                MQTT_heartRate= measurement.Value;
+                break;
+            case "topicnamelive_metric/230220176260/hrv":
+                MQTT_heartRateVariability = measurement.Value;
+                break;
+        }
+
+        print("MQTT_breathVolume " + MQTT_breathVolume + " - MQTT_heartRate " + MQTT_heartRate +
+              " - MQTT_heartRateVariability " + MQTT_heartRateVariability);
+        
+        print(topicName + " " + measurement.Value + " value");
+        
+        if (MQTTLog != null) MQTTLog.text = "Heart data time " + measurement.Timestamp + " value";
     }
-   // private SubscriptionListItem FindSubscriptionItem(string topicName) => subscriptionListItems.FirstOrDefault(s => s.Topic.IsMatching(topicName));
 
 }
