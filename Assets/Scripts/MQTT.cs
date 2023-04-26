@@ -21,10 +21,29 @@ public class MQTT : MonoBehaviour
     [HideInInspector] public float MQTT_breathVolume    ;
     [HideInInspector] public float MQTT_heartRateVariability    ;
 
+    
+    private static MQTT instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public static MQTT Instance
+    {
+        get { return instance; }
+    }
+    
     public void Init()
     {
-        DontDestroyOnLoad(gameObject);
-        
         var options = new ConnectionOptions();
         options.Host = "54.177.190.117";
         options.Port = 1883;
