@@ -84,7 +84,7 @@ public class DataVisualizer : MonoBehaviour
 
         // Calculate sinusoidal scale value between minScale and maxScale
         float scaleValue = (Mathf.Sin(normalizedTime * 2 * Mathf.PI) + 1) / 2;
-        float targetScaleValue = Mathf.Lerp(0.9f, 1.1f, scaleValue);
+        float targetScaleValue = Mathf.Lerp(0.1f, 1f, scaleValue);
         Vector3 targetScale = new Vector3(
             scaleX ? targetScaleValue : initialScale.x,
             scaleY ? targetScaleValue : initialScale.y,
@@ -92,6 +92,12 @@ public class DataVisualizer : MonoBehaviour
         );
 
         targetObject.transform.localScale = Vector3.Lerp(targetObject.transform.localScale, targetScale, Time.deltaTime * transitionSpeed);
+
+        if (moveMode)
+        {
+            Vector3 targetPosition = new Vector3(initialPosition.x, initialPosition.y + targetScaleValue, initialPosition.z);
+            targetObject.transform.localPosition = Vector3.Lerp(targetObject.transform.localPosition, targetPosition, Time.deltaTime * transitionSpeed);
+        }
     }
 
     private void UpdateScale()
@@ -122,9 +128,18 @@ public class DataVisualizer : MonoBehaviour
         }
     }
 
-    public void SetLungVolume(float value)
+    public void SetDataValue(float value)
     {
-        dataValue = Mathf.Clamp01(value);
+        if (visualizationType == VisualizationType.Heartbeat)
+        {
+            dataValue = value;
+        }
+        else
+        {
+            dataValue = value / 220f;
+            
+        }
+        
     }
 
     public void SetScalingFactor(float value)

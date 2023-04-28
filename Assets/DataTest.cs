@@ -16,6 +16,6 @@ public class DataTest : MonoBehaviour
 
         // Calculate sinusoidal lung volume value between 0 and 1
         float lungVolumeValue = (Mathf.Sin(normalizedTime * 2 * Mathf.PI) + 1) / 2;
-        dataVisualizer.SetLungVolume(lungVolumeValue);
+        dataVisualizer.SetDataValue(lungVolumeValue);
     }
 }

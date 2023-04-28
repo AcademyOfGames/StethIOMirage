@@ -14,6 +14,10 @@ public class MQTTDataVisualizer : MonoBehaviour
     [SerializeField] private TMP_Text hrText2;
     [SerializeField] private TMP_Text hrvText;
     [SerializeField] private TMP_Text brText;
+
+    public float DATA_HeartRate;
+    public float DATA_HeartRateVar;
+    public float DATA_BreathVolume;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,13 +27,14 @@ public class MQTTDataVisualizer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_MQTT.MQTT_heartRate != -1)
+        if (MQTT.Instance.MQTT_heartRate != -1)
         {
             foreach (var visualizer in heartRateDataVisualizer)
             {
-                visualizer.dataValue = _MQTT.MQTT_heartRate;
-                hrText1.text = _MQTT.MQTT_heartRate.ToString();
-                hrText2.text = _MQTT.MQTT_heartRate.ToString();
+                visualizer.SetDataValue(MQTT.Instance.MQTT_heartRate);
+                hrText1.text = MQTT.Instance.MQTT_heartRate.ToString();
+                hrText2.text = MQTT.Instance.MQTT_heartRate.ToString();
+                DATA_HeartRate = MQTT.Instance.MQTT_heartRate;
             }
         }
 
@@ -37,8 +42,9 @@ public class MQTTDataVisualizer : MonoBehaviour
         {
             foreach (var visualizer in heartRateVarDataVisualizer)
             {
-                visualizer.dataValue = _MQTT.MQTT_heartRateVariability;
+                visualizer.SetDataValue(_MQTT.MQTT_heartRateVariability);
                 hrvText.text = _MQTT.MQTT_heartRateVariability.ToString();
+                DATA_HeartRateVar = _MQTT.MQTT_heartRateVariability;
             }
         }
 
@@ -46,8 +52,9 @@ public class MQTTDataVisualizer : MonoBehaviour
         {
             foreach (var visualizer in breathVolDataVisualizer)
             {
-                visualizer.dataValue = _MQTT.MQTT_breathVolume;
+                visualizer.SetDataValue(_MQTT.MQTT_breathVolume);
                 brText.text = _MQTT.MQTT_breathVolume.ToString();
+                DATA_BreathVolume = _MQTT.MQTT_breathVolume;
             }
         }
     }
