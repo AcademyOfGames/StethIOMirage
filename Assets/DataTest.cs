@@ -11,11 +11,11 @@ public class DataTest : MonoBehaviour
 
     private void Update()
     {
-        currentTime += Time.deltaTime;
-        float normalizedTime = currentTime / cycleDuration;
+        //currentTime += Time.deltaTime;
+        //float normalizedTime = currentTime / cycleDuration;
 
-        // Calculate sinusoidal lung volume value between 0 and 1
-        float lungVolumeValue = (Mathf.Sin(normalizedTime * 2 * Mathf.PI) + 1) / 2;
-        dataVisualizer.SetDataValue(lungVolumeValue);
+        //// Calculate sinusoidal lung volume value between 0 and 1
+        //float lungVolumeValue = (Mathf.Sin(normalizedTime * 2 * Mathf.PI) + 1) / 2;
+        //dataVisualizer.SetDataValue(lungVolumeValue);
     }
 }

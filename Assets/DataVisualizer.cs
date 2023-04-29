@@ -5,6 +5,7 @@ using UnityEngine;
 public class DataVisualizer : MonoBehaviour
 {
     public enum VisualizationType { Constant, Heartbeat }
+    public enum DataType { HeartRate, HeartRateVariability, BreathVolume }
 
     [SerializeField] private GameObject targetObject; // The game object to be affected
     [SerializeField] public float dataValue = 0f; // The current lung volume or beats per minute
@@ -13,6 +14,7 @@ public class DataVisualizer : MonoBehaviour
 
     [Header("Visualization Type")]
     [SerializeField] private VisualizationType visualizationType = VisualizationType.Constant;
+    [SerializeField] private DataType selectedDataType = DataType.HeartRate;
 
     [Header("Constant Visualization Modes")]
     [SerializeField] private bool scaleMode = false;
@@ -136,7 +138,18 @@ public class DataVisualizer : MonoBehaviour
         }
         else
         {
-            dataValue = value / 220f;
+            if (selectedDataType == DataType.HeartRate)
+            {
+                dataValue = value / 220f;
+            }else if (selectedDataType == DataType.HeartRateVariability)
+            {
+                dataValue = value / 60f;
+            }else if (selectedDataType == DataType.BreathVolume)
+            {
+                dataValue = (value - 27500)/1000f;
+                
+            }
+            
             
         }
         

@@ -163,16 +163,17 @@ public class MQTT : MonoBehaviour
     {
         ByteBuffer loader = new(data);
         Measurement measurement = Measurement.GetRootAsMeasurement(loader);
+        Debug.Log("Topic Name :" + topicName);
 
         switch (topicName)
         {
-            case "topicnamelive_metric/230220176260/volume":
+            case "live_metric/230220176260/volume":
                 MQTT_breathVolume = measurement.Value;
                 break;
-            case "topicnamelive_metric/230220176260/hr":
+            case "live_metric/230220176260/hr":
                 MQTT_heartRate= measurement.Value;
                 break;
-            case "topicnamelive_metric/230220176260/hrv":
+            case "live_metric/230220176260/hrv":
                 MQTT_heartRateVariability = measurement.Value;
                 break;
         }
