@@ -32,29 +32,29 @@ public class MQTTDataVisualizer : MonoBehaviour
             foreach (var visualizer in heartRateDataVisualizer)
             {
                 visualizer.SetDataValue(MQTT.Instance.MQTT_heartRate);
-                hrText1.text = MQTT.Instance.MQTT_heartRate.ToString();
-                hrText2.text = MQTT.Instance.MQTT_heartRate.ToString();
+                if (hrText1 != null)    hrText1.text = MQTT.Instance.MQTT_heartRate.ToString();
+                if (hrText2 != null)    hrText2.text = MQTT.Instance.MQTT_heartRate.ToString();
                 DATA_HeartRate = MQTT.Instance.MQTT_heartRate;
             }
         }
 
-        if (_MQTT.MQTT_heartRateVariability != -1)
+        if (MQTT.Instance.MQTT_heartRateVariability != -1)
         {
             foreach (var visualizer in heartRateVarDataVisualizer)
             {
-                visualizer.SetDataValue(_MQTT.MQTT_heartRateVariability);
-                hrvText.text = _MQTT.MQTT_heartRateVariability.ToString();
-                DATA_HeartRateVar = _MQTT.MQTT_heartRateVariability;
+                visualizer.SetDataValue(MQTT.Instance.MQTT_heartRateVariability);
+                if (hrvText != null) hrvText.text = MQTT.Instance.MQTT_heartRateVariability.ToString();
+                DATA_HeartRateVar = MQTT.Instance.MQTT_heartRateVariability;
             }
         }
 
-        if (_MQTT.MQTT_breathVolume != -1)
+        if (MQTT.Instance.MQTT_breathVolume != -1)
         {
             foreach (var visualizer in breathVolDataVisualizer)
             {
-                visualizer.SetDataValue(_MQTT.MQTT_breathVolume);
-                brText.text = _MQTT.MQTT_breathVolume.ToString();
-                DATA_BreathVolume = _MQTT.MQTT_breathVolume;
+                visualizer.SetDataValue(MQTT.Instance.MQTT_breathVolume);
+                if (brText != null) brText.text = MQTT.Instance.MQTT_breathVolume.ToString();
+                DATA_BreathVolume = MQTT.Instance.MQTT_breathVolume;
             }
         }
     }

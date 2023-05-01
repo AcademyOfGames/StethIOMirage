@@ -146,7 +146,7 @@ public class DataVisualizer : MonoBehaviour
                 dataValue = value / 60f;
             }else if (selectedDataType == DataType.BreathVolume)
             {
-                dataValue = (value - 27500)/1000f;
+                dataValue = Mathf.Clamp((value - 27500)/1000f,0.0f,1.1f);
                 
             }
             

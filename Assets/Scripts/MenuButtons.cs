@@ -14,6 +14,8 @@ public class MenuButtons : MonoBehaviour
     public GameObject levelDetailsUI;
     public GameObject VRKeys;
     public AudioSource buttonSound;
+
+    public FirebaseData _FirebaseData;
     
     // Start is called before the first frame update
     void Start()
@@ -36,6 +38,8 @@ public class MenuButtons : MonoBehaviour
         if (startUI.activeSelf)
         {
             ActivateSignIn();
+            _FirebaseData.SetNewInput(_FirebaseData.passwordLoginField);
+            _FirebaseData.SetNewInput(_FirebaseData.emailLoginField);
         }
         else if (levelDetailsUI.activeSelf)
         {
@@ -47,7 +51,7 @@ public class MenuButtons : MonoBehaviour
         {
             print("show level details");
 
-            FindObjectsOfType<LevelButtonBehavior>()[1].ShowLevelDetails();
+            FindObjectsOfType<LevelButtonBehavior>()[0].ShowLevelDetails();
         }
         else if (signInUI.activeSelf)
         {
