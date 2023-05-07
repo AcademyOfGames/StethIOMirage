@@ -27,7 +27,7 @@ public class MQTTDataVisualizer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (MQTT.Instance.MQTT_heartRate != -1)
+        if (MQTT.Instance.MQTT_heartRate > 0)
         {
             foreach (var visualizer in heartRateDataVisualizer)
             {
@@ -38,7 +38,7 @@ public class MQTTDataVisualizer : MonoBehaviour
             }
         }
 
-        if (MQTT.Instance.MQTT_heartRateVariability != -1)
+        if (MQTT.Instance.MQTT_heartRateVariability > 0)
         {
             foreach (var visualizer in heartRateVarDataVisualizer)
             {
@@ -48,7 +48,7 @@ public class MQTTDataVisualizer : MonoBehaviour
             }
         }
 
-        if (MQTT.Instance.MQTT_breathVolume != -1)
+        if (MQTT.Instance.MQTT_breathVolume > 0)
         {
             foreach (var visualizer in breathVolDataVisualizer)
             {

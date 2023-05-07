@@ -31,7 +31,10 @@ public enum DataType
     HeartRateVariability,
     OxygenSaturation,
     RespiratoryRate,
-    RestingHeartRate
+    RestingHeartRate,
+    OxalifeHeartRate,
+    OxalifeHeartRateVar,
+    OxalifeBreathVolume
 }
 
 public class SessionDataLoader : MonoBehaviour
@@ -65,6 +68,12 @@ public class SessionDataLoader : MonoBehaviour
     Series series_OxygenSaturation;
     Series series_RespiratoryRate;
     Series series_RestingHeartRate;
+
+    //Oxalife Shirt Data Variables
+
+    Series series_OxaHeartRate;
+    Series series_OxaHeartRateVar;
+    Series series_OxaBreathVolume;
 
 
 

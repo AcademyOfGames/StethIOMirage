@@ -20,6 +20,10 @@ public class HandUI : MonoBehaviour
     public RectTransform WristUIPos;
     public RectTransform PalmUIPos;
 
+    public GameObject LeftController;
+    private bool connectedToHands = false;
+    private bool connectedToControllers = false;
+
     XRHandSubsystem m_Subsystem;
 
     private static HandUI instance;
@@ -43,7 +47,8 @@ public class HandUI : MonoBehaviour
         if (m_Subsystem != null)
         {
             m_Subsystem.trackingAcquired += OnHandTracked;
-            m_Subsystem.updatedHands += SetHandUI;
+            //m_Subsystem.updatedHands += SetHandUI;
+            m_Subsystem.trackingLost += OnTrackingLost;
         }
 
         if (SceneManager.GetActiveScene().name == "futuristicExamRoom")
@@ -92,6 +97,40 @@ public class HandUI : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    private void OnTrackingLost(XRHand obj)
+    {
+        switch (obj.handedness)
+        {
+            case Handedness.Left:
+                
+                WristUI.transform.SetParent(LeftController.transform, false);
+                PalmUI.transform.SetParent(LeftController.transform, false);
+                break;
+            case Handedness.Right:
+
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void Update()
+    {
+        if (LeftController.activeSelf == false && connectedToHands == false)
+        {
+            connectedToHands = true;
+            GameObject leftHand = handVisualizer.GetNamedChild("L_Wrist");
+            WristUI.transform.SetParent(leftHand.transform, false);
+            PalmUI.transform.SetParent(leftHand.transform, false);
+        }
+        else if (LeftController.activeSelf == true && connectedToControllers == false)
+        {
+            connectedToControllers = true;
+            WristUI.transform.SetParent(LeftController.transform, false);
+            PalmUI.transform.SetParent(LeftController.transform, false);
         }
     }
 

@@ -6,6 +6,8 @@ public class SoftFollow : MonoBehaviour
 {
     public Transform uiPos;
 
+
+
     public Transform playerView;
     // Start is called before the first frame update
     void Start()

@@ -26,6 +26,9 @@ public class DataVisualizer : MonoBehaviour
     [SerializeField] private bool scaleY = true;
     [SerializeField] private bool scaleZ = false;
 
+    private float maxBreathVolume = 0;
+    private float minBreathVolume = 100000;
+
     // Default scale and position of the target object
     private Vector3 initialScale;
     private Vector3 initialPosition;
@@ -141,12 +144,19 @@ public class DataVisualizer : MonoBehaviour
             if (selectedDataType == DataType.HeartRate)
             {
                 dataValue = value / 220f;
-            }else if (selectedDataType == DataType.HeartRateVariability)
+            } else if (selectedDataType == DataType.HeartRateVariability)
             {
                 dataValue = value / 60f;
-            }else if (selectedDataType == DataType.BreathVolume)
+            } else if (selectedDataType == DataType.BreathVolume)
             {
-                dataValue = Mathf.Clamp((value - 27500)/1000f,0.0f,1.1f);
+                if (dataValue > maxBreathVolume)
+                {
+                    maxBreathVolume = dataValue;
+                }else if (dataValue < minBreathVolume)
+                {
+                    minBreathVolume = dataValue;
+                }
+                dataValue = Mathf.Clamp((value - minBreathVolume)/(maxBreathVolume-minBreathVolume),0.05f,1.0f);
                 
             }
             
