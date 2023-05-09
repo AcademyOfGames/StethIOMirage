@@ -96,7 +96,6 @@ public class SwanMovement1 : MonoBehaviour
         float sineHeight = Mathf.Sin(Time.time * sineFrequency) * sineAmplitude;   
         
         newPos.y = initialFlightHeight + heartRateHeight + sineHeight;
-        print("heartRateHeight " + heartRateHeight + " sineHeight " + sineHeight);
         flightPath.position = newPos;
         
     }

@@ -27,6 +27,7 @@ public class MQTTDataVisualizer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(MQTT.Instance == null) return;
         if (MQTT.Instance.MQTT_heartRate > 0)
         {
             foreach (var visualizer in heartRateDataVisualizer)

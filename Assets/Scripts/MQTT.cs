@@ -21,7 +21,7 @@ public class MQTT : MonoBehaviour
     [HideInInspector] public float MQTT_breathVolume    ;
     [HideInInspector] public float MQTT_heartRateVariability    ;
 
-    
+    string deviceSerialNumber;
     private static MQTT instance;
 
     private void Awake()
@@ -42,7 +42,7 @@ public class MQTT : MonoBehaviour
         get { return instance; }
     }
     
-    public void Init()
+    public void Init(string serialNumber)
     {
         var options = new ConnectionOptions();
         options.Host = "54.177.190.117";
@@ -51,7 +51,7 @@ public class MQTT : MonoBehaviour
         options.UseTLS = false;
         options.Path = "/mqtt";
         options.ProtocolVersion = SupportedProtocolVersions.MQTT_5_0;
-        
+        deviceSerialNumber = serialNumber;
         client = new MQTTClientBuilder()
             .WithOptions(options)
             .WithEventHandler(OnDisconnected)
@@ -107,8 +107,10 @@ public class MQTT : MonoBehaviour
     }
     public void Subscribe()
     {
+        //mahesh 230220176260
+        //craig 221212177164
         QoSLevels qos = QoSLevels.AtMostOnceDelivery;
-        var topic = "live_metric/230220176260/#"; 
+        var topic = "live_metric/" + deviceSerialNumber + "/#"; 
         
         this.client?.CreateBulkSubscriptionBuilder()
             .WithTopic(new SubscribeTopicBuilder(topic)

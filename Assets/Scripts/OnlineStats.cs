@@ -26,11 +26,11 @@ public class OnlineStats : MonoBehaviour
     public bool ConnectMQTT;
     private MQTT mqttClient;
     
-    void Awake()
+    public void Connect(string MQTTSerialNumber)
     {
         if (ConnectMQTT)
         {
-            InitializeMQTT();
+            InitializeMQTT(MQTTSerialNumber);
         }
         else
         {
@@ -38,10 +38,10 @@ public class OnlineStats : MonoBehaviour
         }
     }
 
-    private void InitializeMQTT()
+    private void InitializeMQTT(string mqttSerial)
     {
         mqttClient = FindObjectOfType<MQTT>();
-        mqttClient.Init();
+        mqttClient.Init(mqttSerial);
     }
 
     public void GetHeartData(FirebaseUser _user)
