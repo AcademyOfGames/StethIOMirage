@@ -21,6 +21,7 @@ public class HandUI : MonoBehaviour
     public RectTransform PalmUIPos;
 
     public GameObject LeftController;
+    public GameObject WristUIParent;
     private bool connectedToHands = false;
     private bool connectedToControllers = false;
 
@@ -106,8 +107,8 @@ public class HandUI : MonoBehaviour
         {
             case Handedness.Left:
                 
-                WristUI.transform.SetParent(LeftController.transform, false);
-                PalmUI.transform.SetParent(LeftController.transform, false);
+                WristUI.transform.SetParent(WristUIParent.transform, false);
+                PalmUI.transform.SetParent(WristUIParent.transform, false);
                 break;
             case Handedness.Right:
 
@@ -129,8 +130,8 @@ public class HandUI : MonoBehaviour
         else if (LeftController.activeSelf == true && connectedToControllers == false)
         {
             connectedToControllers = true;
-            WristUI.transform.SetParent(LeftController.transform, false);
-            PalmUI.transform.SetParent(LeftController.transform, false);
+            WristUI.transform.SetParent(WristUIParent.transform, false);
+            PalmUI.transform.SetParent(WristUIParent.transform, false);
         }
     }
 

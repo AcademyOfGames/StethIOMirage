@@ -65,7 +65,7 @@ public class SwanMovement1 : MonoBehaviour
     
    private void FixedUpdate()
    {
-       CalculateFlightHeight();
+       //CalculateFlightHeight();
        FaceTowardMovement();
    }
    

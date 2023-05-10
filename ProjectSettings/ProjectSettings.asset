@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: StethIO
-  productName: Mirage
+  productName: MirageTestBuild
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -136,7 +136,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.2
+  bundleVersion: 0.3
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}
@@ -147,9 +147,9 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 11400000, guid: 6e49a864e32ff1e4788ca89d7154f24b, type: 2}
   - {fileID: -2846942187233710080, guid: 0945f5378fbcaac4cb0e255e88460782, type: 2}
   - {fileID: 1566029980679979988, guid: 8ef7800ded526b247a0e4da49f063476, type: 2}
-  - {fileID: 11400000, guid: 6e49a864e32ff1e4788ca89d7154f24b, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
