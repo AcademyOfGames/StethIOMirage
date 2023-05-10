@@ -74,7 +74,8 @@ public class HeartStatsTracker : MonoBehaviour
 
         if (mqtt.initialized)
         {
-            currentHeartRate = mqtt.MQTT_heartRate;
+            currentHeartRate = Mathf.Lerp(currentHeartRate, mqtt.MQTT_heartRate, .01f);
+            //currentHeartRate = mqtt.MQTT_heartRate;
         }
         else
         {

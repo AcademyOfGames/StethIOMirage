@@ -173,7 +173,6 @@ public class MQTT : MonoBehaviour
                 MQTT_breathVolume = measurement.Value;
                 break;
             case "live_metric/230220176260/hr":
-                print("Getting heart rate " + measurement.Value);
                 MQTT_heartRate= measurement.Value;
                 break;
             case "live_metric/230220176260/hrv":
