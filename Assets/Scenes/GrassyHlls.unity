@@ -7388,6 +7388,10 @@ PrefabInstance:
       propertyPath: handVisualizer
       value: 
       objectReference: {fileID: 196882591}
+    - target: {fileID: 2174591413333824854, guid: dae540a06f66e06469e054b44cc05e10, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dae540a06f66e06469e054b44cc05e10, type: 3}
 --- !u!1 &196882591 stripped
