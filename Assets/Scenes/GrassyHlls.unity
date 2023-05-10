@@ -43271,6 +43271,55 @@ Transform:
   m_Father: {fileID: 714859903}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -60.67756, y: -89.999985, z: 14.743555}
+--- !u!1 &1138680332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1138680334}
+  - component: {fileID: 1138680333}
+  m_Layer: 0
+  m_Name: MQTT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1138680333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138680332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98272e7197b9214094db64962ea0dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MQTTLog: {fileID: 0}
+  MQTT_heartRate: 0
+  MQTT_breathVolume: 0
+  MQTT_heartRateVariability: 0
+  initialized: 0
+--- !u!4 &1138680334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138680332}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3264.5046, y: 217.53859, z: 1570.1442}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1139215317
 GameObject:
   m_ObjectHideFlags: 0

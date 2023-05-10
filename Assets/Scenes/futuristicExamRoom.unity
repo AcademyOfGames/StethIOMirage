@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: b9f97e19950ef4440aaed08551add0e1, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 9e147f56d2f24684e8368e220b425d61, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: a6ba11bb142880b49885c51376ab4d5b, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1822813
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1303,7 +1303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &22552427
 Transform:
   m_ObjectHideFlags: 0
@@ -1344,6 +1344,7 @@ MonoBehaviour:
   scaleX: 1
   scaleY: 1
   scaleZ: 1
+  softFollowSpeed: 0
 --- !u!135 &22552429
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1474,7 +1475,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Texture: {fileID: 0}
-  isDirty: 1
+  isDirty: 0
   inited: 1
   num: 1
   interval: 1
@@ -2407,7 +2408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &51511826
 Transform:
   m_ObjectHideFlags: 0
@@ -2448,6 +2449,7 @@ MonoBehaviour:
   scaleX: 0
   scaleY: 1
   scaleZ: 0
+  softFollowSpeed: 0
 --- !u!136 &51511828
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5457,7 +5459,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &199314679
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25142,7 +25144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &616068545
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -25241,7 +25243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &619434437
 Transform:
   m_ObjectHideFlags: 0
@@ -25283,6 +25285,7 @@ MonoBehaviour:
   scaleX: 0
   scaleY: 0
   scaleZ: 0
+  softFollowSpeed: 0
 --- !u!136 &619434439
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -26308,6 +26311,7 @@ MonoBehaviour:
   MQTT_heartRate: 0
   MQTT_breathVolume: 0
   MQTT_heartRateVariability: 0
+  initialized: 0
 --- !u!4 &657126130
 Transform:
   m_ObjectHideFlags: 0
@@ -26554,6 +26558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 667519529}
   - component: {fileID: 667519528}
+  - component: {fileID: 667519530}
   m_Layer: 0
   m_Name: Area Light
   m_TagString: Untagged
@@ -26638,6 +26643,26 @@ Transform:
   m_Father: {fileID: 80459927}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 1.372, y: 147.609, z: 0.034}
+--- !u!114 &667519530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667519526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &670388613
 GameObject:
   m_ObjectHideFlags: 0
@@ -32122,6 +32147,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1582524835394581866, guid: 6f76ce4beb978ea4a8fb44a7f058f372, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1582524835433926011, guid: 6f76ce4beb978ea4a8fb44a7f058f372, type: 3}
       propertyPath: m_text
       value: Heart Rate (Constant)
@@ -32134,6 +32163,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4f41794b12ef3104590979d3ce4cf312, type: 2}
+    - target: {fileID: 1582524835489589915, guid: 6f76ce4beb978ea4a8fb44a7f058f372, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1582524836051988239, guid: 6f76ce4beb978ea4a8fb44a7f058f372, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.08
@@ -32146,6 +32179,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4f41794b12ef3104590979d3ce4cf312, type: 2}
+    - target: {fileID: 1582524836183744558, guid: 6f76ce4beb978ea4a8fb44a7f058f372, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1582524836760627457, guid: 6f76ce4beb978ea4a8fb44a7f058f372, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -32154,6 +32191,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4f41794b12ef3104590979d3ce4cf312, type: 2}
+    - target: {fileID: 1582524837134711077, guid: 6f76ce4beb978ea4a8fb44a7f058f372, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3262636655751588397, guid: 6f76ce4beb978ea4a8fb44a7f058f372, type: 3}
       propertyPath: m_RootOrder
       value: 27
@@ -33160,6 +33201,7 @@ MonoBehaviour:
   scaleX: 1
   scaleY: 1
   scaleZ: 1
+  softFollowSpeed: 0
 --- !u!135 &892013529
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -42910,7 +42952,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1078699047
 Transform:
   m_ObjectHideFlags: 0
@@ -42951,6 +42993,7 @@ MonoBehaviour:
   scaleX: 0
   scaleY: 1
   scaleZ: 0
+  softFollowSpeed: 0
 --- !u!136 &1078699049
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -43911,7 +43954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1102732434
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44229,7 +44272,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Texture: {fileID: 0}
-  isDirty: 1
+  isDirty: 0
   inited: 1
   num: 5
   interval: 1
@@ -44331,7 +44374,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1130430987
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -52824,7 +52867,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1452723797
 Transform:
   m_ObjectHideFlags: 0
@@ -52865,6 +52908,7 @@ MonoBehaviour:
   scaleX: 1
   scaleY: 1
   scaleZ: 1
+  softFollowSpeed: 0
 --- !u!135 &1452723799
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -53276,6 +53320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1478791938}
   - component: {fileID: 1478791937}
+  - component: {fileID: 1478791939}
   m_Layer: 0
   m_Name: Area Light (1)
   m_TagString: Untagged
@@ -53360,6 +53405,26 @@ Transform:
   m_Father: {fileID: 80459927}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -6.821, y: 175.981, z: 0}
+--- !u!114 &1478791939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478791935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &1480843748
 GameObject:
   m_ObjectHideFlags: 0
@@ -56728,6 +56793,7 @@ MonoBehaviour:
   scaleX: 0
   scaleY: 0
   scaleZ: 0
+  softFollowSpeed: 0
 --- !u!136 &1611255841
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -57934,7 +58000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1637304057
 Transform:
   m_ObjectHideFlags: 0
@@ -57976,6 +58042,7 @@ MonoBehaviour:
   scaleX: 0
   scaleY: 0
   scaleZ: 0
+  softFollowSpeed: 0
 --- !u!136 &1637304059
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -58355,7 +58422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1649103352
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62226,8 +62293,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817128544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.59, y: 1.119, z: 17.82}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.58572, y: 1.1241, z: 17.602}
+  m_LocalScale: {x: 1.2652686, y: 1.2652686, z: 1.2652686}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1613946006}
@@ -73678,9 +73745,9 @@ RectTransform:
   m_Father: {fileID: 584378778}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 175, y: -10.5}
   m_SizeDelta: {x: 122, y: 21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1903611806
@@ -73796,6 +73863,7 @@ MonoBehaviour:
   scaleX: 0
   scaleY: 1
   scaleZ: 0
+  softFollowSpeed: 0
 --- !u!136 &1907918134
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -99050,6 +99118,10 @@ PrefabInstance:
     - target: {fileID: 8261895779240670083, guid: b4253cba3d8129547829ff80665dde97, type: 3}
       propertyPath: m_Name
       value: CircleBreathVisual
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261895779240670083, guid: b4253cba3d8129547829ff80665dde97, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4253cba3d8129547829ff80665dde97, type: 3}

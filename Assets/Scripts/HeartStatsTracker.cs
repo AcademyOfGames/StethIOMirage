@@ -76,14 +76,12 @@ public class HeartStatsTracker : MonoBehaviour
         if (mqtt.initialized)
         {
             currentHeartRate = mqtt.MQTT_heartRate;
-            print("MQTT INITIALIZED HEART RATE IS " + currentHeartRate);
         }
         else
         {
             currentHeartRate = stats.currentHeartRate;
         }
         timeSinceLastBeat -= Time.deltaTime;
-        print("Time since last beat " + timeSinceLastBeat);
         if (timeSinceLastBeat <= 0)
         {
             
@@ -96,7 +94,6 @@ public class HeartStatsTracker : MonoBehaviour
             }
             else*/
             
-                print("Updating Heart Rate" + currentHeartRate);
                 heartRateText.text =currentHeartRate.ToString("F1");  
                 heartRateText.color = Color.white;
 
