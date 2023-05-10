@@ -47,7 +47,7 @@ public class SwanHeartSyncer : MonoBehaviour
 //        print("On Beat");
         m_timer = 0;
         m_isBeat = true;
-       SwanAnim.FlapWings();
+       //SwanAnim.FlapWings();
     }
 
     public virtual void OnUpdate()

@@ -21,13 +21,11 @@ public class HeartStatsTracker : MonoBehaviour
     private bool softGlowing;
     
     private float timeSinceLastBeat = 0f;
-    private SwanMovement1 swan;
 
-    private LevelManager lvl;
     
     public TextMeshProUGUI heartRateText;
     public float currentHeartRate;
-
+    MQTT mqtt;
     public float placeholderHeartRate;
     private void Awake()
     {
@@ -39,8 +37,7 @@ public class HeartStatsTracker : MonoBehaviour
         }
 
 
-        lvl = FindObjectOfType<LevelManager>();
-        swan = FindObjectOfType<SwanMovement1>();
+        mqtt = FindObjectOfType<MQTT>();
         stats = FindObjectOfType<OnlineStats>();
 
         initialHeartRate = stats == null ? placeholderHeartRate : stats.currentHeartRate;
@@ -67,32 +64,44 @@ public class HeartStatsTracker : MonoBehaviour
     }
     public void Update()
     {
-        if (stats == null)
+        if (stats == null && !mqtt.initialized)
         {
+            print("Stats is null");
             currentHeartRate = placeholderHeartRate;
-placeholderHeartRate -= Time.deltaTime * .4f;
-            heartRateText.text =currentHeartRate.ToString("F1");
+            placeholderHeartRate -= Time.deltaTime * .4f;
+            heartRateText.text = currentHeartRate.ToString("F1");
             return;
         }
 
-        currentHeartRate = stats.currentHeartRate;
-
+        if (mqtt.initialized)
+        {
+            currentHeartRate = mqtt.MQTT_heartRate;
+            print("MQTT INITIALIZED HEART RATE IS " + currentHeartRate);
+        }
+        else
+        {
+            currentHeartRate = stats.currentHeartRate;
+        }
         timeSinceLastBeat -= Time.deltaTime;
+        print("Time since last beat " + timeSinceLastBeat);
         if (timeSinceLastBeat <= 0)
         {
-            if (stats.missingHeartData)
+            
+          /*  if (stats.missingHeartData)
+
             {
                 heartRateText.text = "No \n Data";
                 heartRateText.color = Color.magenta;
 
             }
-            else
-            {
+            else*/
+            
+                print("Updating Heart Rate" + currentHeartRate);
                 heartRateText.text =currentHeartRate.ToString("F1");  
                 heartRateText.color = Color.white;
 
-            }
             
+            if(currentHeartRate == 0) currentHeartRate = 50f;
             timeSinceLastBeat =  60f/currentHeartRate ;
 
             if (currentHeartRate < initialHeartRate * LevelSettings.Instance.levelHeartTarget)

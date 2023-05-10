@@ -26,8 +26,8 @@ public class DataVisualizer : MonoBehaviour
     [SerializeField] private bool scaleY = true;
     [SerializeField] private bool scaleZ = false;
 
-    private float maxBreathVolume = 0;
-    private float minBreathVolume = 100000;
+    private float maxBreathVolume = 1000000;
+    private float minBreathVolume = -1000;
 
     // Default scale and position of the target object
     private Vector3 initialScale;
@@ -38,7 +38,8 @@ public class DataVisualizer : MonoBehaviour
     private Renderer targetRenderer;
 
     private float currentTime;
-
+    bool normalizeBreathValue;
+    public float softFollowSpeed;
     private void Start()
     {
         if (targetObject == null)
@@ -149,22 +150,33 @@ public class DataVisualizer : MonoBehaviour
                 dataValue = value / 60f;
             } else if (selectedDataType == DataType.BreathVolume)
             {
-                if (dataValue > maxBreathVolume)
+                if (!normalizeBreathValue)
                 {
-                    maxBreathVolume = dataValue;
-                }else if (dataValue < minBreathVolume)
-                {
-                    minBreathVolume = dataValue;
+                    normalizeBreathValue = true;
+                    
+                    Invoke("StartAdjustingValue", 1);
                 }
-                dataValue = Mathf.Clamp((value - minBreathVolume)/(maxBreathVolume-minBreathVolume),0.05f,1.0f);
-                
+                if (value > maxBreathVolume)
+                {
+                    maxBreathVolume = value;
+                }else if (value < minBreathVolume)
+                {
+                    minBreathVolume = value;
+                }
+                float breathRange = (value - minBreathVolume) / (maxBreathVolume - minBreathVolume);
+
+                dataValue = Mathf.Lerp(0.6f,1.3f, breathRange);
+
             }
-            
-            
-        }
+    }
         
     }
-
+    void StartAdjustingValue()
+    {
+        print("starting to adjust value");
+        maxBreathVolume = 25500;
+        minBreathVolume = 27500;
+    }
     public void SetScalingFactor(float value)
     {
         scalingFactor = Mathf.Max(0f, value);

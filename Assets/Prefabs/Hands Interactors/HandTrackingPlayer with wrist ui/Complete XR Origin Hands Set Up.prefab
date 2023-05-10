@@ -72,6 +72,7 @@ MonoBehaviour:
   PalmUI: {fileID: 7159848805973316539}
   WristUIPos: {fileID: 7159848805973316538}
   PalmUIPos: {fileID: 7159848805829649672}
+  LeftController: {fileID: 0}
 --- !u!1 &7159848804059420938
 GameObject:
   m_ObjectHideFlags: 0

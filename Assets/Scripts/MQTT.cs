@@ -21,7 +21,7 @@ public class MQTT : MonoBehaviour
     [HideInInspector] public float MQTT_breathVolume    ;
     [HideInInspector] public float MQTT_heartRateVariability    ;
 
-    
+    [HideInInspector]  public bool initialized;
     private static MQTT instance;
 
     private void Awake()
@@ -30,6 +30,7 @@ public class MQTT : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            Init();
         }
         else
         {
@@ -107,6 +108,10 @@ public class MQTT : MonoBehaviour
     }
     public void Subscribe()
     {
+        print("INITIALIZED IS TRUE **");
+        initialized = true;
+        // 221212177164
+
         QoSLevels qos = QoSLevels.AtMostOnceDelivery;
         var topic = "live_metric/230220176260/#"; 
         
@@ -129,7 +134,6 @@ public class MQTT : MonoBehaviour
     
     private void OnApplicationMessage(MQTTClient client, SubscriptionTopic topic, string topicName, ApplicationMessage applicationMessage)
     {
-        print("**onapplicationmessage - topic " + topic + " - topicname" + topicName + " - app message " + applicationMessage);
 
         string payload = string.Empty;
 
@@ -156,14 +160,12 @@ public class MQTT : MonoBehaviour
             contentType = $" ({applicationMessage.ContentType}) ";
 
         if(MQTTLog != null) MQTTLog.text = "\n" + $"[{client.Options.Host}] [{topicName}] {contentType}{payload}";
-        print( $"[{client.Options.Host}] [{topicName}] {contentType}{payload}");
     }
     
     void LoadBodyStatsData(byte[] data, string topicName)
     {
         ByteBuffer loader = new(data);
         Measurement measurement = Measurement.GetRootAsMeasurement(loader);
-        Debug.Log("Topic Name :" + topicName);
 
         switch (topicName)
         {
@@ -171,18 +173,14 @@ public class MQTT : MonoBehaviour
                 MQTT_breathVolume = measurement.Value;
                 break;
             case "live_metric/230220176260/hr":
+                print("Getting heart rate " + measurement.Value);
                 MQTT_heartRate= measurement.Value;
                 break;
             case "live_metric/230220176260/hrv":
                 MQTT_heartRateVariability = measurement.Value;
                 break;
         }
-
-        print("MQTT_breathVolume " + MQTT_breathVolume + " - MQTT_heartRate " + MQTT_heartRate +
-              " - MQTT_heartRateVariability " + MQTT_heartRateVariability);
-        
-        print(topicName + " " + measurement.Value + " value");
-        
+                
         if (MQTTLog != null) MQTTLog.text = "Heart data time " + measurement.Timestamp + " value";
     }
 
