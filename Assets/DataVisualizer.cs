@@ -119,7 +119,6 @@ public class DataVisualizer : MonoBehaviour
         {
             targetObject.transform.localScale = Vector3.Lerp(targetObject.transform.localScale, targetScale, Time.deltaTime * transitionSpeed);
         }
-        print("Target scale " + targetScale);
     }
 
     private void UpdatePosition()
