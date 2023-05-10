@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18931781, g: 0.53688663, b: 0.8418617, a: 1}
+  m_IndirectSpecularColor: {r: 0.18939051, g: 0.5378386, b: 0.84328425, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -684,6 +684,7 @@ MonoBehaviour:
   MQTT_heartRate: 0
   MQTT_breathVolume: 0
   MQTT_heartRateVariability: 0
+  initialized: 0
 --- !u!4 &41585317
 Transform:
   m_ObjectHideFlags: 0
@@ -19108,7 +19109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7958564081406471156, guid: 9074c31d235dfbd498e176cb71966363, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 53
+      value: 78
       objectReference: {fileID: 0}
     - target: {fileID: 7958564081406471156, guid: 9074c31d235dfbd498e176cb71966363, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19152,7 +19153,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7958564081406471157, guid: 9074c31d235dfbd498e176cb71966363, type: 3}
       propertyPath: settings.showHandles
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958564081406471157, guid: 9074c31d235dfbd498e176cb71966363, type: 3}
+      propertyPath: settings.showPointPosition
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7958564081406471157, guid: 9074c31d235dfbd498e176cb71966363, type: 3}
       propertyPath: points.Array.data[22].curve
@@ -30691,7 +30696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flightPath: {fileID: 974189105}
-  maxPathHeight: 160
+  maxPathHeight: 120
   sineAmplitude: 6
   sineFrequency: 0.3
   anim: {fileID: 0}
@@ -38183,7 +38188,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2581741017357224875}
   m_LocalRotation: {x: -0, y: -0.6339865, z: -0, w: 0.77334416}
-  m_LocalPosition: {x: 3261.9438, y: 215.58, z: 1570.4437}
+  m_LocalPosition: {x: 3261.9438, y: 240.58, z: 1570.4437}
   m_LocalScale: {x: 2.6657705, y: 2.6657705, z: 2.6657705}
   m_ConstrainProportionsScale: 0
   m_Children:

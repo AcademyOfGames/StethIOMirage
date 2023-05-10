@@ -78,6 +78,7 @@ public class SwanMovement1 : MonoBehaviour
 
     public void FlapWings()
     {
+        print("flapping ");
         float heartSpeed =  Mathf.Lerp(1f, 2.8f, (heart.currentHeartRate - 50) / 50) ;
         anim.SetFloat("FlapSpeed", heartSpeed);
         anim.SetTrigger(("Flap"));

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class DataVisualizer : MonoBehaviour
 {
@@ -114,7 +115,11 @@ public class DataVisualizer : MonoBehaviour
             scaleY ? initialScale.y * adjustedVolume : initialScale.y,
             scaleZ ? initialScale.z * adjustedVolume : initialScale.z
         );
-        targetObject.transform.localScale = Vector3.Lerp(targetObject.transform.localScale, targetScale, Time.deltaTime * transitionSpeed);
+        if (!float.IsNaN(targetScale.x))
+        {
+            targetObject.transform.localScale = Vector3.Lerp(targetObject.transform.localScale, targetScale, Time.deltaTime * transitionSpeed);
+        }
+        print("Target scale " + targetScale);
     }
 
     private void UpdatePosition()

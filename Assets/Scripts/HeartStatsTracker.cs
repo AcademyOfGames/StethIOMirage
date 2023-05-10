@@ -66,7 +66,6 @@ public class HeartStatsTracker : MonoBehaviour
     {
         if (stats == null && !mqtt.initialized)
         {
-            print("Stats is null");
             currentHeartRate = placeholderHeartRate;
             placeholderHeartRate -= Time.deltaTime * .4f;
             heartRateText.text = currentHeartRate.ToString("F1");
