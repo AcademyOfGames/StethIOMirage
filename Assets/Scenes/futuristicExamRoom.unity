@@ -10987,7 +10987,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Texture: {fileID: 0}
-  isDirty: 0
+  isDirty: 1
   inited: 1
   num: 5
   interval: 1
@@ -21837,7 +21837,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Texture: {fileID: 0}
-  isDirty: 0
+  isDirty: 1
   inited: 1
   num: 1
   interval: 1
@@ -23336,7 +23336,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Texture: {fileID: 0}
-  isDirty: 0
+  isDirty: 1
   inited: 1
   num: 1
   interval: 1
@@ -55278,6 +55278,7 @@ MonoBehaviour:
   VRKeys: {fileID: 900467491400815985}
   buttonSound: {fileID: 1613946007}
   _FirebaseData: {fileID: 1753715090}
+  autoLoginWithMaheshData: 1
 --- !u!114 &1613946005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59092,7 +59093,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Texture: {fileID: 0}
-  isDirty: 0
+  isDirty: 1
   inited: 1
   num: 5
   interval: 1

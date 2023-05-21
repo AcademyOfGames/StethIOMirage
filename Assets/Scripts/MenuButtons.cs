@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using static OVRPlugin;
+using BestHTTP.SecureProtocol.Org.BouncyCastle.Security.Certificates;
 
 public class MenuButtons : MonoBehaviour
 {
@@ -16,11 +18,16 @@ public class MenuButtons : MonoBehaviour
     public AudioSource buttonSound;
 
     public FirebaseData _FirebaseData;
+
+    public bool autoLoginWithMaheshData = true;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (autoLoginWithMaheshData)
+        {
+            StartCoroutine(AutoSignIn());
+        }
     }
 
     private void OnEnable()
@@ -31,6 +38,24 @@ public class MenuButtons : MonoBehaviour
     private void OnDisable()
     {
         PCControls.OnEnter -= EnterPressed;
+    }
+
+    private IEnumerator AutoSignIn()
+    {
+        bool loggedIn = false;
+        while (!loggedIn)
+        {
+            ActivateSignIn();
+
+            yield return new WaitForSeconds(.5f);
+
+            _FirebaseData.emailLoginField.text = "mahesh@stethio.com";
+            _FirebaseData.passwordLoginField.text = "6Camera8";
+
+            yield return new WaitForSeconds(.5f);
+
+            _FirebaseData.LoginButton();
+        }
     }
 
     void EnterPressed()
@@ -67,10 +92,22 @@ public class MenuButtons : MonoBehaviour
 
     public void ActivateSignIn()
     {
-        signInUI.SetActive(true);
-        startUI.SetActive(false);
-        VRKeys.SetActive(true);
-        buttonSound.Play();
+        if (autoLoginWithMaheshData)
+        {
+            signInUI.SetActive(true);
+            startUI.SetActive(false);
+            buttonSound.Play();
+
+            
+        }
+        else
+        {
+            signInUI.SetActive(true);
+            startUI.SetActive(false);
+            VRKeys.SetActive(true);
+            buttonSound.Play();
+        }
+        
     }
 
 
