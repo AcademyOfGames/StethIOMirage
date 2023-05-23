@@ -41,6 +41,8 @@ public class DataVisualizer : MonoBehaviour
     private float currentTime;
     bool normalizeBreathValue;
     public float softFollowSpeed;
+
+    public float breathRange;
     private void Start()
     {
         if (targetObject == null)
@@ -167,7 +169,7 @@ public class DataVisualizer : MonoBehaviour
                 {
                     minBreathVolume = value;
                 }
-                float breathRange = (value - minBreathVolume) / (maxBreathVolume - minBreathVolume);
+                 breathRange = (value - minBreathVolume) / (maxBreathVolume - minBreathVolume);
 
                 dataValue = Mathf.Lerp(0.6f,1.3f, breathRange);
 

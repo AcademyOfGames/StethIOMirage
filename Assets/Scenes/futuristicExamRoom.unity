@@ -1243,6 +1243,7 @@ MonoBehaviour:
   scaleY: 1
   scaleZ: 1
   softFollowSpeed: 0
+  breathRange: 0
 --- !u!135 &22552429
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -32273,6 +32274,7 @@ MonoBehaviour:
   scaleY: 1
   scaleZ: 1
   softFollowSpeed: 0
+  breathRange: 0
 --- !u!135 &892013529
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -45693,8 +45695,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
+    rgba: 4282335039
+  m_fontColor: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -51574,6 +51576,7 @@ MonoBehaviour:
   scaleY: 1
   scaleZ: 1
   softFollowSpeed: 0
+  breathRange: 0
 --- !u!135 &1452723799
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -53248,7 +53251,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527961331}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.63856, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.0704312, y: 3.0704312, z: 3.0704312}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -54680,7 +54683,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1573611234
 RectTransform:
   m_ObjectHideFlags: 0
@@ -73687,7 +73690,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2022653913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86658,7 +86661,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -86869,6 +86872,7 @@ MonoBehaviour:
   scaleY: 1
   scaleZ: 1
   softFollowSpeed: 0
+  breathRange: 0
 --- !u!1 &1582524835426902205
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 public class GrassBehavior : MonoBehaviour
 
 {    public TerrainData terrain; 
-    public AudioSpectrum spectrum;
+    public DataVisualizer data;
 
     public float grassMovementStrength;
     // Start is called before the first frame update
@@ -18,7 +18,7 @@ public class GrassBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        terrain.wavingGrassStrength = spectrum.avgSpectrumValue * grassMovementStrength;
+        terrain.wavingGrassStrength = data.breathRange * grassMovementStrength;
 
     }
 }
