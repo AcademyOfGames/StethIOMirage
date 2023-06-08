@@ -27,8 +27,8 @@ public class DataVisualizer : MonoBehaviour
     [SerializeField] private bool scaleY = true;
     [SerializeField] private bool scaleZ = false;
 
-    private float maxBreathVolume = 1000000;
-    private float minBreathVolume = -1000;
+    [SerializeField] private float maxBreathVolume = 20000;
+    [SerializeField] private float minBreathVolume = 30000;
 
     // Default scale and position of the target object
     private Vector3 initialScale;
@@ -39,10 +39,14 @@ public class DataVisualizer : MonoBehaviour
     private Renderer targetRenderer;
 
     private float currentTime;
-    bool normalizeBreathValue;
+    bool normalizeBreathValue = false;
     public float softFollowSpeed;
 
     public float breathRange;
+
+    [SerializeField]public float MaxBreathVolume { get => maxBreathVolume; set => maxBreathVolume = value; }
+    [SerializeField] public float MinBreathVolume { get => minBreathVolume; set => minBreathVolume = value; }
+
     private void Start()
     {
         if (targetObject == null)
@@ -156,12 +160,13 @@ public class DataVisualizer : MonoBehaviour
                 dataValue = value / 60f;
             } else if (selectedDataType == DataType.BreathVolume)
             {
-                if (!normalizeBreathValue)
-                {
-                    normalizeBreathValue = true;
-                    
-                    Invoke("StartAdjustingValue", 1);
-                }
+                //normalizeBreathValue = true;
+                //if (!normalizeBreathValue)
+                //{
+                //    normalizeBreathValue = true;
+
+                //    Invoke("StartAdjustingValue", 1);
+                //}
                 if (value > maxBreathVolume)
                 {
                     maxBreathVolume = value;

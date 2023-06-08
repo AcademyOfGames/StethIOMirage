@@ -8547,8 +8547,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53aa283db4c1be479859d00754aa90a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  handVisualizer: {fileID: 0}
   WristUI: {fileID: 2174591411883354451}
   PalmUI: {fileID: 2174591411492249569}
+  WristUIPos: {fileID: 0}
+  PalmUIPos: {fileID: 0}
+  LeftController: {fileID: 0}
+  WristUIParent: {fileID: 0}
 --- !u!1 &2174591413333824848
 GameObject:
   m_ObjectHideFlags: 0

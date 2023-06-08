@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using static UnityEngine.Rendering.DebugUI;
 
 public class MQTTDataVisualizer : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class MQTTDataVisualizer : MonoBehaviour
     public float DATA_HeartRate;
     public float DATA_HeartRateVar;
     public float DATA_BreathVolume;
+
+    public float maxBreathVolume = 0;
+    public float minBreathVolume = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,11 +54,32 @@ public class MQTTDataVisualizer : MonoBehaviour
 
         if (MQTT.Instance.MQTT_breathVolume > 0)
         {
+            if (maxBreathVolume == 0 || minBreathVolume == 0)
+            {
+                maxBreathVolume = MQTT.Instance.MQTT_breathVolume + 10;
+                minBreathVolume = MQTT.Instance.MQTT_breathVolume - 10;
+            }
+            //if (maxBreathVolume - minBreathVolume > 300)
+            //{
+            //    maxBreathVolume = MQTT.Instance.MQTT_breathVolume + 100;
+            //    minBreathVolume = MQTT.Instance.MQTT_breathVolume - 100;
+            //}
+
+
             foreach (var visualizer in breathVolDataVisualizer)
             {
                 visualizer.SetDataValue(MQTT.Instance.MQTT_breathVolume);
                 if (brText != null) brText.text = MQTT.Instance.MQTT_breathVolume.ToString();
                 DATA_BreathVolume = MQTT.Instance.MQTT_breathVolume;
+
+                if (DATA_BreathVolume > maxBreathVolume)
+                {
+                    maxBreathVolume = DATA_BreathVolume + 10;
+                }
+                else if (DATA_BreathVolume < minBreathVolume)
+                {
+                    minBreathVolume = DATA_BreathVolume - 10;
+                }
             }
         }
     }

@@ -100,6 +100,7 @@ public class MQTT : MonoBehaviour
     private void OnDisconnected(MQTTClient client, DisconnectReasonCodes code, string reason)
     {
         if(MQTTLog != null) MQTTLog.text = "\n" + $"OnDisconnected - code: {code}, reason: '{reason}'";
+        client.BeginConnect(ConnectPacketBuilderCallback);
     }
     
     private void OnError(MQTTClient client, string reason)
@@ -113,8 +114,10 @@ public class MQTT : MonoBehaviour
         // 221212177164
 
         QoSLevels qos = QoSLevels.AtMostOnceDelivery;
-        var topic = "live_metric/230220176260/#"; 
-        
+        var topic = "live_metric/230220176260/#";
+        //Mahesh: 230220176260
+        //Vibu: 221125144285
+        //Craig: 221212177164
         this.client?.CreateBulkSubscriptionBuilder()
             .WithTopic(new SubscribeTopicBuilder(topic)
                 .WithMaximumQoS(qos)

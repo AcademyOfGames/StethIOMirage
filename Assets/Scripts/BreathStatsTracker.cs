@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BreathStatsTracker : MonoBehaviour
 {
@@ -23,17 +24,22 @@ public class BreathStatsTracker : MonoBehaviour
     public TMP_Text breathIndicatorUI;
 
     private PetalIconMovement petals;
+
+    private bool heartSounds = true;
+    public Image heartImage;
+
+    public ToggleFeatures toggleFeatures;
     // Start is called before the first frame update
     void Start()
     {
-        petals = FindObjectOfType<PetalIconMovement>();
+        //petals = FindObjectOfType<PetalIconMovement>();
 
         breathSound = GetComponent<AudioSource>();
         initialBreathVolume = breathSound.volume;
         
         breathSound.clip = inhaleClip;
         breathSound.Play();
-        StartCoroutine("Breath");
+        StartCoroutine(Breath());
 
         breathPerMinuteUI.text = LevelSettings.Instance.breathsPerMinute.ToString("0.0");
 
@@ -42,10 +48,10 @@ public class BreathStatsTracker : MonoBehaviour
     IEnumerator Breath()
     {
         float holdTime = LevelSettings.Instance.levelInhaleHoldTarget;
-        float taperTime = 3;
+        float taperTime = .1f;
         float breathTime = LevelSettings.Instance.levelInhaleTarget - taperTime;
         breathIndicatorUI.text = "Breath In";
-        petals.BreathingIn();
+        //petals.BreathingIn();
 
         yield return new WaitForSeconds(breathTime);
 
@@ -63,7 +69,7 @@ public class BreathStatsTracker : MonoBehaviour
             yield return new WaitForSeconds(holdTime);
         }
         breathIndicatorUI.text = "Breath Out";
-        petals.BreathingOut();
+        //petals.BreathingOut();
 
 
         breathSound.clip = exhaleClip;
@@ -71,7 +77,7 @@ public class BreathStatsTracker : MonoBehaviour
         breathSound.volume = initialBreathVolume;
 
         holdTime = LevelSettings.Instance.levelExhaleHoldTarget;
-        taperTime = 3;
+        taperTime = .1f;
         breathTime = LevelSettings.Instance.levelExhaleTarget - taperTime;
         yield return new WaitForSeconds(breathTime);
         
@@ -93,7 +99,7 @@ public class BreathStatsTracker : MonoBehaviour
         breathSound.clip = inhaleClip;
         breathSound.Play();        
         
-        StartCoroutine("Breath");
+        StartCoroutine(Breath());
     }
     
     private void SetUpCorrectBreathAudio()
@@ -138,5 +144,21 @@ public class BreathStatsTracker : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ToggleHeartbeat()
+    {
+        if (heartSounds == true)
+        {
+            heartSounds = false;
+            breathSound.volume = 0f;
+            heartImage.color = toggleFeatures.offColour;
+        }
+        else
+        {
+            heartSounds = true;
+            breathSound.volume = 0.764f;
+            heartImage.color = toggleFeatures.onColour;
+        }
     }
 }

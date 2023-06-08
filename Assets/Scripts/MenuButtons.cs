@@ -76,7 +76,7 @@ public class MenuButtons : MonoBehaviour
         {
             print("show level details");
 
-            FindObjectsOfType<LevelButtonBehavior>()[0].ShowLevelDetails();
+            FindObjectsOfType<LevelButtonBehavior>()[1].ShowLevelDetails();
         }
         else if (signInUI.activeSelf)
         {

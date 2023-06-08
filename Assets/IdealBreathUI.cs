@@ -16,17 +16,21 @@ public class IdealBreathUI : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(BreathingCycle());
         InhaleHoldTime = LevelSettings.Instance.levelInhaleHoldTarget;
         ExhaleHoldTime = LevelSettings.Instance.levelExhaleHoldTarget;
         InhaleTime = LevelSettings.Instance.levelInhaleTarget;
         ExhaleTime = LevelSettings.Instance.levelExhaleTarget;
+        StartCoroutine(BreathingCycle());
+        
     }
 
     IEnumerator BreathingCycle()
     {
+        //yield return new WaitForSeconds(1);
         while (true)
         {
+            
+
             // Inhale phase
             yield return StartCoroutine(LerpBreathInOut(InhaleTime, 0.26f, 1f, ExhaleHoldImage, 0f, 1f));
             yield return StartCoroutine(LerpFill(InhaleHoldTime, InhaleHoldImage, 1f, 0f));
@@ -36,6 +40,8 @@ public class IdealBreathUI : MonoBehaviour
             yield return StartCoroutine(LerpBreathInOut(ExhaleTime, 1f, 0.26f, InhaleHoldImage, 0f, 1f));
             yield return StartCoroutine(LerpFill(ExhaleHoldTime, ExhaleHoldImage, 1f, 0f));
             SetAlphaAndFill(ExhaleHoldImage, 0f, 1f);
+
+
         }
     }
 

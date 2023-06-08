@@ -42,7 +42,7 @@ public class EnvironmentControls : MonoBehaviour
         
         while (timeLeft >= 0)
         {
-            timeLeft -= Time.deltaTime*.11f;
+            timeLeft -= Time.deltaTime*.6f;
             
             b.intensity.value = Mathf.Lerp(80,initialIntensity, timeLeft);
             b.scatter.value = Mathf.Lerp(1,initialScatter, timeLeft);
