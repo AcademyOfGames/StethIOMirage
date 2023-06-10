@@ -5,6 +5,7 @@ Shader "Nicrom/LPW/ASE/Low Poly Vegetation"
 	Properties
 	{
 		_EmissionColor("Emission Color", Color) = (1,1,1,1)
+		_ambientColor("Ambient Color", Color) = (0,0,0,1)
 		 _AlphaCutoff("Alpha Cutoff ", Range(0, 1)) = 0.5
 		[ASEBegin][NoScaleOffset][Header(Surface)]_MainTex("Main Texture", 2D) = "white" {}
 		_Metallic("Metallic", Range( 0 , 1)) = 0
@@ -237,6 +238,7 @@ Shader "Nicrom/LPW/ASE/Low Poly Vegetation"
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _NoiseTextureTilling;
+			float4 _ambientColor;
 			float4 _MainTex_ST;
 			float2 _NoisePannerSpeed;
 			float _MBWindDir;
@@ -321,7 +323,7 @@ Shader "Nicrom/LPW/ASE/Low Poly Vegetation"
 				float4 StaticWorldNoise30 = tex2Dlod( _NoiseTexture, float4( ( WorldSpaceUVs11 * StaticNoileTilling17 ), 0, 0.0) );
 				float3 objToWorld129 = mul( GetObjectToWorldMatrix(), float4( float3( 0,0,0 ), 1 ) ).xyz;
 				float MB_Frequency43 = _MBFrequency;
-				float MB_FrequencyOffset39 = _MBFrequencyOffset;
+				float MB_FrequencyOffset39 = _MBFrequencyOffset; 
 				float MB_Phase65 = _MBPhase;
 				float MB_DefaultBending80 = _MBDefaultBending;
 				float MB_MaxHeight78 = _MBMaxHeight;
@@ -656,7 +658,9 @@ Shader "Nicrom/LPW/ASE/Low Poly Vegetation"
 						color.rgb = MixFog(color.rgb, IN.fogFactorAndVertexLight.x);
 					#endif
 				#endif
-				
+
+				//color.rgb = half3(0,0,0);
+				color.rgb += Albedo.r * half3(.5,.4,.8);
 				return color;
 			}
 
@@ -722,6 +726,7 @@ Shader "Nicrom/LPW/ASE/Low Poly Vegetation"
 			CBUFFER_START(UnityPerMaterial)
 			float4 _NoiseTextureTilling;
 			float4 _MainTex_ST;
+			//float4 _ambientColor;
 			float2 _NoisePannerSpeed;
 			float _MBWindDir;
 			float _MBWindDirOffset;
@@ -1878,6 +1883,7 @@ Shader "Nicrom/LPW/ASE/Low Poly Vegetation"
 				
 				
 				float3 Albedo = Albedo119.rgb;
+				//Albedo += _ambientColor;
 				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
 
@@ -1887,7 +1893,9 @@ Shader "Nicrom/LPW/ASE/Low Poly Vegetation"
 					clip(Alpha - AlphaClipThreshold);
 				#endif
 
-				return color;
+				color.rgb = half3(0,0,0);
+				//color.rgb += Albedo * half3(.2,.2,.3);
+					return color;
 			}
 			ENDHLSL
 		}

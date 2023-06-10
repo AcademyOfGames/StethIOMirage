@@ -54235,7 +54235,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1417282177}
   - component: {fileID: 1417282176}
-  - component: {fileID: 1417282178}
   - component: {fileID: 1417282179}
   - component: {fileID: 1417282180}
   - component: {fileID: 1417282181}
@@ -54258,7 +54257,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.93673694, b: 0.7311321, a: 1}
-  m_Intensity: 5.15
+  m_Intensity: 1.8
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -54315,30 +54314,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417282175}
-  m_LocalRotation: {x: -0.97019684, y: 0.14112556, z: 0.03984848, w: -0.19290873}
+  m_LocalRotation: {x: -0.9071758, y: 0.12917551, z: 0.068271406, w: -0.39456916}
   m_LocalPosition: {x: 517.5413, y: 22.087618, z: 517.6854}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 867248297}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 21.289, y: -171.87, z: -521.917}
---- !u!123 &1417282178
-LensFlare:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417282175}
-  m_Enabled: 0
-  m_Flare: {fileID: 12100000, guid: 09ebe82dbd1113c3d000dc0b8d76c639, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_Brightness: 1.6
-  m_FadeSpeed: 3
-  m_IgnoreLayers:
-    serializedVersion: 2
-    m_Bits: 1
-  m_Directional: 0
+  m_LocalEulerAnglesHint: {x: 135.713, y: -341.613, z: -696.256}
 --- !u!114 &1417282179
 MonoBehaviour:
   m_ObjectHideFlags: 0
