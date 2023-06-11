@@ -104,6 +104,7 @@ public class GrassBehavior : MonoBehaviour
     //}
     private BreathTracker _breathTracker;
     private float targetValue=0f;
+    private bool updateGrass = false;
     private void Start()
     {
         _breathTracker = new BreathTracker(20);
@@ -113,16 +114,27 @@ public class GrassBehavior : MonoBehaviour
     {
         // Here you'll need to set 'currentNormalizedValue' based on your actual breath tracking
         currentNormalizedValue = NormalizeValue(_breathTracker.Update(_mQTTDataVisualizer.DATA_BreathVolume), _mQTTDataVisualizer.minBreathVolume, _mQTTDataVisualizer.maxBreathVolume);
-        print("Current Normalized Value" + currentNormalizedValue);
-        targetValue = Mathf.SmoothDamp(targetValue, currentNormalizedValue,ref velocity, 0.4f);
-        grassMat.SetFloat("_MBDefaultBending", targetValue * 50);
+        //print("Current Normalized Value" + currentNormalizedValue);
+        targetValue = Mathf.SmoothDamp(targetValue, currentNormalizedValue,ref velocity, 0.2f);
+
+        if (updateGrass)
+        {
+            grassMat.SetFloat("_MBDefaultBending", targetValue * 60);
+        }
+        StartCoroutine(WaitForGrass());
         float t = currentLerpTime / lerpTime;
 
         
         //terrain.wavingGrassAmount = Mathf.SmoothDamp(terrain.wavingGrassStrength, -1, ref velocity, 0.1f);
-        print("Waving Grass Amount: " + grassMat.GetFloat("_MBDefaultBending") + " Current lerp time: " + currentLerpTime);
+        //print("Waving Grass Amount: " + grassMat.GetFloat("_MBDefaultBending") + " Current lerp time: " + currentLerpTime);
 
         currentLerpTime += Time.deltaTime;
+    }
+
+    private IEnumerator WaitForGrass()
+    {
+        yield return new WaitForSeconds(5f);
+        updateGrass= true;
     }
 
     float NormalizeValue(float value, float min, float max)

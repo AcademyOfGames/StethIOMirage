@@ -114,7 +114,7 @@ public class MQTT : MonoBehaviour
         // 221212177164
 
         QoSLevels qos = QoSLevels.AtMostOnceDelivery;
-        var topic = "live_metric/221125144285/#";
+        var topic = "live_metric/230220176260/#";
         //Mahesh: 230220176260
         //Vibu: 221125144285
         //Craig: 221212177164
@@ -172,13 +172,13 @@ public class MQTT : MonoBehaviour
 
         switch (topicName)
         {
-            case "live_metric/221125144285/volume":
+            case "live_metric/230220176260/volume":
                 MQTT_breathVolume = measurement.Value;
                 break;
-            case "live_metric/221125144285/hr":
+            case "live_metric/230220176260/hr":
                 MQTT_heartRate= measurement.Value;
                 break;
-            case "live_metric/221125144285/hrv":
+            case "live_metric/230220176260/hrv":
                 MQTT_heartRateVariability = measurement.Value;
                 break;
         }

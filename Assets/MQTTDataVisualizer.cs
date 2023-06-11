@@ -33,17 +33,19 @@ public class MQTTDataVisualizer : MonoBehaviour
     {
         if (MQTT.Instance.MQTT_heartRate > 0)
         {
+            DATA_HeartRate = MQTT.Instance.MQTT_heartRate;
             foreach (var visualizer in heartRateDataVisualizer)
             {
                 visualizer.SetDataValue(MQTT.Instance.MQTT_heartRate);
                 if (hrText1 != null)    hrText1.text = MQTT.Instance.MQTT_heartRate.ToString();
                 if (hrText2 != null)    hrText2.text = MQTT.Instance.MQTT_heartRate.ToString();
-                DATA_HeartRate = MQTT.Instance.MQTT_heartRate;
+                
             }
         }
 
         if (MQTT.Instance.MQTT_heartRateVariability > 0)
         {
+            DATA_HeartRateVar = MQTT.Instance.MQTT_heartRateVariability;
             foreach (var visualizer in heartRateVarDataVisualizer)
             {
                 visualizer.SetDataValue(MQTT.Instance.MQTT_heartRateVariability);
@@ -65,21 +67,22 @@ public class MQTTDataVisualizer : MonoBehaviour
             //    minBreathVolume = MQTT.Instance.MQTT_breathVolume - 100;
             //}
 
+            if (brText != null) brText.text = MQTT.Instance.MQTT_breathVolume.ToString();
+            DATA_BreathVolume = MQTT.Instance.MQTT_breathVolume;
+
+            if (DATA_BreathVolume > maxBreathVolume)
+            {
+                maxBreathVolume = DATA_BreathVolume + 10;
+            }
+            else if (DATA_BreathVolume < minBreathVolume)
+            {
+                minBreathVolume = DATA_BreathVolume - 10;
+            }
 
             foreach (var visualizer in breathVolDataVisualizer)
             {
                 visualizer.SetDataValue(MQTT.Instance.MQTT_breathVolume);
-                if (brText != null) brText.text = MQTT.Instance.MQTT_breathVolume.ToString();
-                DATA_BreathVolume = MQTT.Instance.MQTT_breathVolume;
-
-                if (DATA_BreathVolume > maxBreathVolume)
-                {
-                    maxBreathVolume = DATA_BreathVolume + 10;
-                }
-                else if (DATA_BreathVolume < minBreathVolume)
-                {
-                    minBreathVolume = DATA_BreathVolume - 10;
-                }
+                
             }
         }
     }

@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.Interactions;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 
 public class HeartStatsTracker : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class HeartStatsTracker : MonoBehaviour
     public float currentHeartRate;
     MQTT mqtt;
     public float placeholderHeartRate;
+
+    private float _velocity;
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -42,6 +45,31 @@ public class HeartStatsTracker : MonoBehaviour
 
         initialHeartRate = stats == null ? placeholderHeartRate : stats.currentHeartRate;
 
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        mqtt = FindObjectOfType<MQTT>();
+        stats = FindObjectOfType<OnlineStats>();
+
+        initialHeartRate = stats == null ? placeholderHeartRate : stats.currentHeartRate;
+    }
+
+
+
+    private void Start()
+    {
+        
     }
 
     private bool tempSwitch;
@@ -74,12 +102,15 @@ public class HeartStatsTracker : MonoBehaviour
 
         if (mqtt.initialized)
         {
-            currentHeartRate = Mathf.Lerp(currentHeartRate, mqtt.MQTT_heartRate, .01f);
+            ///currentHeartRate = Mathf.Lerp(currentHeartRate, mqtt.MQTT_heartRate, .01f);
+            currentHeartRate = Mathf.SmoothDamp(currentHeartRate, mqtt.MQTT_heartRate, ref _velocity, 0.1f);
             //currentHeartRate = mqtt.MQTT_heartRate;
+            //print("Heart Rate: " + mqtt.MQTT_heartRate);
+
         }
         else
         {
-            currentHeartRate = stats.currentHeartRate;
+            //currentHeartRate = stats.currentHeartRate;
         }
         timeSinceLastBeat -= Time.deltaTime;
         if (timeSinceLastBeat <= 0)

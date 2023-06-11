@@ -71,28 +71,28 @@ public class DandelionController : MonoBehaviour
         {
             
 
-            // Limit the breathPercent to a maximum of 80%
-            breathPercent = Mathf.Min(breathPercent, 0.8f);
+            //// Limit the breathPercent to a maximum of 80%
+            //breathPercent = Mathf.Min(breathPercent, 0.8f);
 
-            // If the breathPercent has increased since the last frame, move the force field
-            if (breathPercent > lastBreathPercent)
-            {
-                // Calculate the movement amount as a proportion of the total possible movement
-                float movementAmount = (breathPercent / 0.8f) * (startPos - endPos);
+            //// If the breathPercent has increased since the last frame, move the force field
+            //if (breathPercent > lastBreathPercent)
+            //{
+            //    // Calculate the movement amount as a proportion of the total possible movement
+            //    float movementAmount = (breathPercent / 0.8f) * (startPos - endPos);
 
-                // Calculate the target position
-                Vector3 targetPos = new Vector3(transform.localPosition.x, transform.localPosition.y, startPos - movementAmount);
+            //    // Calculate the target position
+            //    Vector3 targetPos = new Vector3(transform.localPosition.x, transform.localPosition.y, startPos - movementAmount);
 
-                // Interpolate the movement of the force field
-                float smoothTime = 0.3f; // Adjust this value to your liking
-                transform.localPosition = Vector3.SmoothDamp(transform.localPosition, targetPos, ref velocity, smoothTime);
+            //    // Interpolate the movement of the force field
+            //    float smoothTime = 0.3f; // Adjust this value to your liking
+            //    transform.localPosition = Vector3.SmoothDamp(transform.localPosition, targetPos, ref velocity, smoothTime);
 
-                transform.localPosition = targetPos;
-            }         
+            //    transform.localPosition = targetPos;
+            //}         
 
-            // Update lastBreathLevel and lastBreathPercent for the next frame
-            lastBreathLevel = currentBreathLevel;
-            lastBreathPercent = breathPercent;
+            //// Update lastBreathLevel and lastBreathPercent for the next frame
+            //lastBreathLevel = currentBreathLevel;
+            //lastBreathPercent = breathPercent;
         }
     }
 
@@ -126,9 +126,11 @@ public class DandelionController : MonoBehaviour
 
         currentBreathLevel = _visualizer.DATA_BreathVolume;
         lastBreathLevel = _visualizer.DATA_BreathVolume;
-        maxBreathCapacity = _visualizer.maxBreathVolume;
+        maxBreathCapacity = lastBreathLevel;
         minBreathCapacity = _visualizer.minBreathVolume;
-        lastBreathPercent = (lastBreathLevel - currentBreathLevel) / (maxBreathCapacity - minBreathCapacity);
+        lastBreathPercent = 100f;
+        print ("Full Breath Level: "+lastBreathLevel +"  Full Breath Percentage: " + lastBreathPercent); 
+        print("Max: " + maxBreathCapacity + "  Min: " + minBreathCapacity);
 
         countdownText.text = "1";
         yield return new WaitForSeconds(1f);
@@ -138,12 +140,40 @@ public class DandelionController : MonoBehaviour
 
         // Here you'll need to update 'currentBreathLevel' based on your actual breath tracking
         currentBreathLevel = _visualizer.DATA_BreathVolume;
-        maxBreathCapacity = _visualizer.maxBreathVolume;
+        maxBreathCapacity = lastBreathLevel;
         minBreathCapacity = _visualizer.minBreathVolume;
         // Calculate breathPercent
         breathPercent = (lastBreathLevel - currentBreathLevel) / (maxBreathCapacity - minBreathCapacity);
+        print("Empty Breath Level: " + currentBreathLevel + "  Empty Breath Percentage: " + breathPercent);
+        print("Max: " + maxBreathCapacity + "  Min: " + minBreathCapacity);
         savedPercent = breathPercent;
         buttonPressed = true;
+
+        
+
+        // If the breathPercent has increased since the last frame, move the force field
+        if (breathPercent > 0f)
+        {
+            // Limit the breathPercent to a maximum of 80%
+            breathPercent = Mathf.Min(breathPercent, 0.8f);
+
+            // Calculate the movement amount as a proportion of the total possible movement
+            float movementAmount = (breathPercent / 0.8f) * (startPos - endPos);
+
+            // Calculate the target position
+            Vector3 targetPos = new Vector3(transform.localPosition.x, transform.localPosition.y, startPos - movementAmount);
+
+            // Interpolate the movement of the force field
+            float smoothTime = 0.3f; // Adjust this value to your liking
+            transform.localPosition = Vector3.SmoothDamp(transform.localPosition, targetPos, ref velocity, smoothTime);
+            print("New Forcefield Pos: " + targetPos.z);
+            transform.localPosition = targetPos;
+        }
+
+        // Update lastBreathLevel and lastBreathPercent for the next frame
+        lastBreathLevel = currentBreathLevel;
+        lastBreathPercent = breathPercent;
+
         StartCoroutine(OneSecondBreath());
 
         
@@ -151,11 +181,14 @@ public class DandelionController : MonoBehaviour
 
     IEnumerator OneSecondBreath()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         buttonPressed = false;
-
+        if (savedPercent > 0f)
+        {
+            countdownText.text = $"You blew out {savedPercent * 100:F2}% of your total lung capacity!";
+        }
         //countdownText.text = "You blew out "+savedPercent*100+"% of your total lung capacity!";
-        countdownText.text = $"You blew out {savedPercent * 100:F2}% of your total lung capacity!";
+        
 
 
         startButton.SetActive(true);
