@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HeartSoundControls : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class HeartSoundControls : MonoBehaviour
     private HeartButterflyMovement[] butterflies;
 
     private float heartSpeedRatio;
+
+    private bool heartSounds = true;
+    public Image heartImage;
+
+    public ToggleFeatures toggleFeatures;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,5 +52,23 @@ public class HeartSoundControls : MonoBehaviour
         yield return new WaitForSeconds(Mathf.Lerp(.38f,.2f,heartSpeedRatio));
         heartS2.Play();
     }
-    
+
+    public void ToggleHeartbeat()
+    {
+        if (heartSounds == true)
+        {
+            heartSounds = false;
+            heartS1.volume = 0f;
+            heartS2.volume = 0f;
+            heartImage.color = toggleFeatures.offColour;
+        }
+        else
+        {
+            heartSounds = true;
+            heartS1.volume = 0.8f;
+            heartS2.volume = 0.8f;
+            heartImage.color = toggleFeatures.onColour;
+        }
+    }
+
 }

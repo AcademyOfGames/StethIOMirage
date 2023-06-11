@@ -19,6 +19,9 @@ public class ToggleFeatures : MonoBehaviour
 
     public Color onColour;
     public Color offColour;
+
+    bool IdealBreathBool = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,15 +63,17 @@ public class ToggleFeatures : MonoBehaviour
     }
     public void ToggleIdealBreathVisual()
     {
-        if (IdealBreathVisual.activeSelf)
+        if (IdealBreathBool)
         {
-            IdealBreathVisual.SetActive(false);
+            IdealBreathVisual.layer = 12;
             VisualImage.color = offColour;
+            IdealBreathBool = false;
         }
         else
         {
-            IdealBreathVisual.SetActive(true);
+            IdealBreathVisual.layer = 5;
             VisualImage.color= onColour;
+            IdealBreathBool = true;
         }
     }
 

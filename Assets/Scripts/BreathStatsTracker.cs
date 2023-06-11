@@ -25,10 +25,7 @@ public class BreathStatsTracker : MonoBehaviour
 
     private PetalIconMovement petals;
 
-    private bool heartSounds = true;
-    public Image heartImage;
-
-    public ToggleFeatures toggleFeatures;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -146,19 +143,5 @@ public class BreathStatsTracker : MonoBehaviour
         
     }
 
-    public void ToggleHeartbeat()
-    {
-        if (heartSounds == true)
-        {
-            heartSounds = false;
-            breathSound.volume = 0f;
-            heartImage.color = toggleFeatures.offColour;
-        }
-        else
-        {
-            heartSounds = true;
-            breathSound.volume = 0.764f;
-            heartImage.color = toggleFeatures.onColour;
-        }
-    }
+    
 }

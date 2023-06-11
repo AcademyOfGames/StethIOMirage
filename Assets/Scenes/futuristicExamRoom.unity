@@ -1242,6 +1242,8 @@ MonoBehaviour:
   scaleX: 1
   scaleY: 1
   scaleZ: 1
+  maxBreathVolume: 20000
+  minBreathVolume: 30000
   softFollowSpeed: 0
   breathRange: 0
 --- !u!135 &22552429
@@ -10988,7 +10990,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Texture: {fileID: 0}
-  isDirty: 1
+  isDirty: 0
   inited: 1
   num: 5
   interval: 1
@@ -21838,7 +21840,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Texture: {fileID: 0}
-  isDirty: 1
+  isDirty: 0
   inited: 1
   num: 1
   interval: 1
@@ -23337,7 +23339,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Texture: {fileID: 0}
-  isDirty: 1
+  isDirty: 0
   inited: 1
   num: 1
   interval: 1
@@ -31415,6 +31417,8 @@ MonoBehaviour:
   DATA_HeartRate: 0
   DATA_HeartRateVar: 0
   DATA_BreathVolume: 0
+  maxBreathVolume: 0
+  minBreathVolume: 0
 --- !u!1 &864912560
 GameObject:
   m_ObjectHideFlags: 0
@@ -32273,6 +32277,8 @@ MonoBehaviour:
   scaleX: 1
   scaleY: 1
   scaleZ: 1
+  maxBreathVolume: 20000
+  minBreathVolume: 30000
   softFollowSpeed: 0
   breathRange: 0
 --- !u!135 &892013529
@@ -51575,6 +51581,8 @@ MonoBehaviour:
   scaleX: 1
   scaleY: 1
   scaleZ: 1
+  maxBreathVolume: 20000
+  minBreathVolume: 30000
   softFollowSpeed: 0
   breathRange: 0
 --- !u!135 &1452723799
@@ -59096,7 +59104,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Texture: {fileID: 0}
-  isDirty: 1
+  isDirty: 0
   inited: 1
   num: 5
   interval: 1
@@ -86871,6 +86879,8 @@ MonoBehaviour:
   scaleX: 1
   scaleY: 1
   scaleZ: 1
+  maxBreathVolume: 20000
+  minBreathVolume: 30000
   softFollowSpeed: 0
   breathRange: 0
 --- !u!1 &1582524835426902205
@@ -101766,7 +101776,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8753239355159382229}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -105184,7 +105194,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8054223929564191368}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

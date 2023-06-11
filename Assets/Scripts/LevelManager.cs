@@ -19,19 +19,20 @@ public class LevelManager : MonoBehaviour
 
     public AudioClip endChime;
 
-    //private void OnEnable()
-    //{
-    //    //grip
-    //    gripAction.action.started += Gripping;
-    //    gripAction.action.canceled += GripRelease;
-    //}
+    private void Awake()
+    {
+        //grip
+        gripAction.action.started += Gripping;
+        gripAction.action.canceled += GripRelease;
+    }
 
-    //private void OnDisable()
-    //{
-    //    //grip
-    //    gripAction.action.started -= Gripping;
-    //    gripAction.action.canceled -= GripRelease;
-    //}
+    private void OnDestroy()
+    {
+        //grip
+        gripAction.action.started -= Gripping;
+        gripAction.action.canceled -= GripRelease;
+        
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +52,8 @@ public class LevelManager : MonoBehaviour
         rHand.GetComponent<LineRenderer>().enabled = true;
         lHand.GetComponent<XRInteractorLineVisual>().enabled = true;
         rHand.GetComponent<XRInteractorLineVisual>().enabled = true;
+        lHand.GetComponent<XRRayInteractor>().enabled = true;
+        rHand.GetComponent<XRRayInteractor>().enabled = true;
     }
 
     public void EndSession(string message)
@@ -69,11 +72,13 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Gripping clicked");
         rHand.GetComponent<XRInteractorLineVisual>().enabled = true;
         rHand.GetComponent<LineRenderer>().enabled = true;
+        rHand.GetComponent<XRRayInteractor>().enabled = true;
     }
 
     private void GripRelease(InputAction.CallbackContext obj)
     {
         rHand.GetComponent<XRInteractorLineVisual>().enabled = false;
         rHand.GetComponent<LineRenderer>().enabled = false;
+        rHand.GetComponent<XRRayInteractor>().enabled = true;
     }
 }
