@@ -129,23 +129,25 @@ public class DandelionController : MonoBehaviour
         maxBreathCapacity = lastBreathLevel;
         minBreathCapacity = _visualizer.minBreathVolume;
         lastBreathPercent = 100f;
-        print ("Full Breath Level: "+lastBreathLevel +"  Full Breath Percentage: " + lastBreathPercent); 
-        print("Max: " + maxBreathCapacity + "  Min: " + minBreathCapacity);
+        //print ("Full Breath Level: "+lastBreathLevel +"  Full Breath Percentage: " + lastBreathPercent); 
+        //print("Max: " + maxBreathCapacity + "  Min: " + minBreathCapacity);
 
         countdownText.text = "1";
         yield return new WaitForSeconds(1f);
 
         countdownText.text = "Breath Out!";       
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         // Here you'll need to update 'currentBreathLevel' based on your actual breath tracking
         currentBreathLevel = _visualizer.DATA_BreathVolume;
         maxBreathCapacity = lastBreathLevel;
         minBreathCapacity = _visualizer.minBreathVolume;
+        
         // Calculate breathPercent
         breathPercent = (lastBreathLevel - currentBreathLevel) / (maxBreathCapacity - minBreathCapacity);
-        print("Empty Breath Level: " + currentBreathLevel + "  Empty Breath Percentage: " + breathPercent);
-        print("Max: " + maxBreathCapacity + "  Min: " + minBreathCapacity);
+        
+        //print("Empty Breath Level: " + currentBreathLevel + "  Empty Breath Percentage: " + breathPercent);
+        //print("Max: " + maxBreathCapacity + "  Min: " + minBreathCapacity);
         savedPercent = breathPercent;
         buttonPressed = true;
 
@@ -166,7 +168,7 @@ public class DandelionController : MonoBehaviour
             // Interpolate the movement of the force field
             float smoothTime = 0.3f; // Adjust this value to your liking
             transform.localPosition = Vector3.SmoothDamp(transform.localPosition, targetPos, ref velocity, smoothTime);
-            print("New Forcefield Pos: " + targetPos.z);
+           // print("New Forcefield Pos: " + targetPos.z);
             transform.localPosition = targetPos;
         }
 
