@@ -44,9 +44,10 @@ public class MQTT : MonoBehaviour
     
     public void Init(string serialNumber)
     {
+        var secrets = MirageSecrets.Load();
         var options = new ConnectionOptions();
-        options.Host = "54.177.190.117";
-        options.Port = 1883;
+        options.Host = secrets.mqttHost;
+        options.Port = secrets.mqttPort;
         options.Transport = SupportedTransports.TCP;
         options.UseTLS = false;
         options.Path = "/mqtt";
@@ -74,8 +75,9 @@ public class MQTT : MonoBehaviour
     {
         if(MQTTLog != null) MQTTLog.text = "\n" + $"[{client.Options.Host}] Creating connect packet.";
 
-        var userName = "testuser";
-        var password = "Password@2023";
+        var secrets = MirageSecrets.Load();
+        var userName = secrets.mqttUserName;
+        var password = secrets.mqttPassword;
 
         var session = SessionHelper.HasAny(client.Options.Host) ? SessionHelper.Get(client.Options.Host) : SessionHelper.CreateNullSession(client.Options.Host);
         builder.WithSession(session);
@@ -107,8 +109,6 @@ public class MQTT : MonoBehaviour
     }
     public void Subscribe()
     {
-        //mahesh 230220176260
-        //craig 221212177164
         QoSLevels qos = QoSLevels.AtMostOnceDelivery;
         var topic = "live_metric/" + deviceSerialNumber + "/#"; 
         
@@ -167,18 +167,13 @@ public class MQTT : MonoBehaviour
         Measurement measurement = Measurement.GetRootAsMeasurement(loader);
         Debug.Log("Topic Name :" + topicName);
 
-        switch (topicName)
-        {
-            case "live_metric/230220176260/volume":
-                MQTT_breathVolume = measurement.Value;
-                break;
-            case "live_metric/230220176260/hr":
-                MQTT_heartRate= measurement.Value;
-                break;
-            case "live_metric/230220176260/hrv":
-                MQTT_heartRateVariability = measurement.Value;
-                break;
-        }
+        // Topics are live_metric/<serial>/<metric>; match on the metric so any shirt works.
+        if (topicName.EndsWith("/volume"))
+            MQTT_breathVolume = measurement.Value;
+        else if (topicName.EndsWith("/hrv"))
+            MQTT_heartRateVariability = measurement.Value;
+        else if (topicName.EndsWith("/hr"))
+            MQTT_heartRate = measurement.Value;
 
         print("MQTT_breathVolume " + MQTT_breathVolume + " - MQTT_heartRate " + MQTT_heartRate +
               " - MQTT_heartRateVariability " + MQTT_heartRateVariability);

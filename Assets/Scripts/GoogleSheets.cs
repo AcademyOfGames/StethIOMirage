@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GoogleSheets : MonoBehaviour
 {
-    string BASE_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSc9T5FuV5aLl-1RUsM9mVFmUBMWojrGIoYivfs3SIQQmvMq8Q/formResponse";
     public string userName = "Guest";
     void Start()
     {
@@ -16,7 +15,8 @@ public class GoogleSheets : MonoBehaviour
        form.AddField("entry.593286627", userName);
    
        byte[] rawData = form.data;
-       string url = BASE_URL;
+       string url = MirageSecrets.Load().feedbackFormUrl;
+       if (string.IsNullOrEmpty(url)) yield break;
    
        // Post a request to an URL with our custom headers
        WWW www = new WWW(url, rawData);

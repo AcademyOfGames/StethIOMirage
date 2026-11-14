@@ -36,8 +36,6 @@ public class FirebaseData : MonoBehaviour
     public TextMeshProUGUI heartRateText;
     public GameObject levelSelectUI;
 
-    private string GenericLoginText = "t@t.com";
-    private string GenericPasswordText = "123456";
     void Awake()
     {
         if (FindObjectOfType<OnlineStats>().userLoggedIn) return;
@@ -69,7 +67,9 @@ public class FirebaseData : MonoBehaviour
     
     public void GenericLogin()
     {
-        StartCoroutine(Login(GenericLoginText, GenericPasswordText));
+        // Test account for demos, read from the git-ignored MirageSecrets.json.
+        var secrets = MirageSecrets.Load();
+        StartCoroutine(Login(secrets.testLoginEmail, secrets.testLoginPassword));
     }
     
     public void LoginButton()
